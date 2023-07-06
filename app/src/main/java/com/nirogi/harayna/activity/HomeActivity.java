@@ -2,20 +2,32 @@ package com.nirogi.harayna.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.model.response.DistrictModel;
+import com.nirogi.harayna.network.APIInterface;
+import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
 
 import org.honorato.multistatetogglebutton.MultiStateToggleButton;
 import org.honorato.multistatetogglebutton.ToggleButton;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity {
 
@@ -29,6 +41,10 @@ public class HomeActivity extends BaseActivity {
     private AppCompatTextView submitSearch;
 
     private boolean mCheckType;
+    String selDistrict;
+    private ArrayList<String> mDistrictList, mDistrictListNames;
+
+    String token="eyJGaXJzdG5hbWUiOiJUZXN0IiwiTGFzdG5hbWUiOiJVc2VyIiwiRGlzdHJpY3QiOiJBbWJhbGEiLCJGYWNpbGl0eVR5cGUiOiIgRENIICIsIkZhY2lsaXR5IjoiIEFtYmFsYSAiLCJSb2xlIjoiVVNFUiIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJUZXN0VXNlcksiLCJleHAiOjE2ODg2NzE4MTIsImlhdCI6MTY4ODYzNTgxMn0.U8EreP7_stF3p0DdmSbLx99uhDZQwsriFfmndjB5FI-V_FJTe2FqNMz5UVysTqKe5LLJ0d8YGi2zvhy-VMcpJw";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +52,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
         initView();
         initListeners();
+        getDistricts();
     }
 
     private void initView() {
@@ -94,5 +111,78 @@ public class HomeActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private void getDistricts() {
+        if (isNetworkAvailable()) {
+            try {
+                createProgressBar(R.id.relMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(token).create(APIInterface.class);
+                Call<ArrayList<DistrictModel>> call = apiInterface.getDistList();
+                call.enqueue(new Callback<ArrayList<DistrictModel>>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ArrayList<DistrictModel>> call, @NonNull Response<ArrayList<DistrictModel>> response) {
+                        try {
+                            try {
+                                if (response.isSuccessful()) {
+
+                                    mDistrictList = new ArrayList<>();
+                                    mDistrictListNames = new ArrayList<>();
+                                    mDistrictList.add(getString(R.string.sel_district));
+                                    mDistrictListNames.add(getString(R.string.sel_district));
+                                    if(response.body().size()>0)
+                                    {
+                                        for (DistrictModel model:response.body())
+                                        {
+                                            mDistrictList.add(model.getDistid()+"");
+                                            mDistrictListNames.add(model.getDistname());
+                                        }
+                                        ArrayAdapter<String> adapter =new ArrayAdapter<String>(HomeActivity.this,android.R.layout.simple_spinner_item, mDistrictListNames);
+                                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                        spinDistrict.setAdapter(adapter);
+                                        spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                            @Override
+                                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                                if(position>0)
+                                                {
+                                                    selDistrict=mDistrictList.get(position);
+
+                                                }
+
+                                            }
+
+                                            @Override
+                                            public void onNothingSelected(AdapterView<?> parent) {
+
+                                            }
+                                        });
+                                    }
+                                }
+                            }catch (Exception e)
+                            {
+                                mShowToast(getString(R.string.api_failure));
+                            }
+
+                            disableProgressBar();
+
+                        } catch (Exception exp) {
+                            Log.e(" Exception ", "" + exp.getMessage());
+                            disableProgressBar();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ArrayList<DistrictModel>> call, @NonNull Throwable throwable) {
+                        Log.e(" Exception ", "" + throwable.getMessage());
+                        disableProgressBar();
+                    }
+                });
+            } catch (Exception exp) {
+                Log.e(" Exception", "" + exp.getMessage());
+            }
+
+
+        }
+        else mShowToast(getString(R.string.no_internet));
     }
 }

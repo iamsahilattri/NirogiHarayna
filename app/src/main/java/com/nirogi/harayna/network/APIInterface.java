@@ -3,8 +3,10 @@ package com.nirogi.harayna.network;
 
 
 import com.nirogi.harayna.model.request.LoginModelRequest;
+import com.nirogi.harayna.model.response.DistrictModel;
 import com.nirogi.harayna.model.response.LoginModelResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -19,5 +21,6 @@ public interface APIInterface
        @POST("login")
        Call<LoginModelResponse> getLogin(@Body LoginModelRequest modelRequest);
 
-
+       @GET("api/v1/distList")
+       Call<ArrayList<DistrictModel>> getDistList();
 }

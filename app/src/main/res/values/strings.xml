@@ -29,6 +29,7 @@
     <string name="password">Password</string>
     <string name="enter_password">Enter password</string>
     <string name="powered_by_semt">SeMT, DITECH, Haryana</string>
+    <string name="sel_district" >Please Select District</string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>

@@ -3,6 +3,7 @@ package com.nirogi.harayna.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -18,7 +19,16 @@ import com.nirogi.harayna.model.response.LoginModelResponse;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.EncryptionHelper;
+import com.nirogi.harayna.utils.JWTUtils;
 import com.nirogi.harayna.utils.Nirogi;
+
+import java.security.spec.AlgorithmParameterSpec;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,19 +56,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         if (view.getId() == R.id.btnLogin) {
             if (isNetworkAvailable()) {
-                mSendIntent();
-
-//                if (!TextUtils.isEmpty(enEmailUser.getText()) && !TextUtils.isEmpty(enPassword.getText())) {
-////                    loginCheck();
-////                    mSendIntent();
-//                } else {
-//                    mShowToast("Please enter valid Credentials !");
-//                }
-//            } else {
-//                mShowToast(getString(R.string.no_internet));
-//            }
+                if (!TextUtils.isEmpty(enEmailUser.getText()) && !TextUtils.isEmpty(enPassword.getText())) {
+                    loginCheck();
+//                    mSendIntent();
+                } else {
+                    mShowToast("Please enter valid Credentials !");
+                }
+            } else {
+                mShowToast(getString(R.string.no_internet));
+            }
         }
-    }
+
     }
 
     private void mSendIntent()
@@ -73,18 +81,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 createProgressBar(R.id.relMain);
                 APIInterface apiInterface = ApiClient.getClientAuthentication().create(APIInterface.class);
                 LoginModelRequest modelRequest= new LoginModelRequest();
-                modelRequest.setUsername("");
-                modelRequest.setPassword("");
+                modelRequest.setUsername(EncryptionHelper.encrypt(enEmailUser.getText().toString()));
+                modelRequest.setPassword(EncryptionHelper.encrypt(enPassword.getText().toString()));
                 Call<LoginModelResponse> call = apiInterface.getLogin(modelRequest);
                 call.enqueue(new Callback<LoginModelResponse>() {
                     @Override
                     public void onResponse(@NonNull Call<LoginModelResponse> call, @NonNull Response<LoginModelResponse> response) {
                         try {
-//                            if (response.body().getOutput().equalsIgnoreCase("success")) {
+                            if (response.isSuccessful()) {
+//                                JWTUtils.parseJWT(response.body().getToken());
+                                Log.e(" LoginModelResponse ",""+response.body());
 //                                Intent mIntent = new Intent(LoginActivity.this, HomeActivity.class);
 //                                mIntent.putExtra("token", "" + enMobileNumber.getText().toString());
 //                                startActivity(mIntent);
-//                            }
+                            }
                             disableProgressBar();
 
                         } catch (Exception exp) {
@@ -109,6 +119,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
+
+
     private void initView() {
 
 
@@ -121,10 +133,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    private String encryptData(String valueToEncrypt) {
-        return "";
-//        this.encryptObj.username=CryptoJS.AES.encrypt(JSON.stringify(this.credential.username), "EDUNPS").toString();
-//        this.encryptObj.password=CryptoJS.AES.encrypt(JSON.stringify(this.credential.password), "EDUNPS").toString();
 
-    }
+
 }
