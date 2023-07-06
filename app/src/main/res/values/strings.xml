@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Nirogi Harayna</string>
+    <string name="gov_en">Government of Haryana</string>
+    <string name="gov">हरियाणा सरकार</string>
+    <string name="designed_by">Designed and developed by SeMT, CRID</string>
+    <string name="content_desc"> Content Owned byHealth Department,<br></br> Government of Haryana.</string>
+
+    <string name="alert">चेतावनी!</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="please_wait">Please wait..</string>
+    <string name="api_failure">Please Check</string>
+    <string name="default_notification_channel_id" />
+
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="we_will_send">we will send an OTP on this number for verification</string>
+    <string name="lets_start">Lets start by verifying your mobile number</string>
+    <string name="mobile_number">Enter Email Address/Username</string>
+    <string name="mobile_number_h"> Email Address/Username</string>
+    <string name="no_internet">No internet connection..</string>
+    <string name="search_patient">Search Patient</string>
+    <string name="welcome">Welcome,</string>
+    <string name="select_district">Select District*</string>
+    <string name="search_via">Search Via*</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="log_in">Log in</string>
+    <string name="welcome_back_please_enter_your_details">Welcome Back! Please enter your details.</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter password</string>
+    <string name="powered_by_semt">SeMT, DITECH, Haryana</string>
+
+    <string-array name="spinner_district">
+         <item>Please select district</item>
+    </string-array>
+
+    <string-array name="arr_searchType">
+        <item> PPPID </item>
+        <item> Reference Number</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1E2752</color>
+    <color name="colorPrimaryDark">#12244A</color>
+    <color name="colorAccent">#662F6C</color>
+    <color name="l_title">#23767E</color>
+    <color name="m_title">#23767E</color>
+    <color name="darkgrey">#807f7f</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#363b35</color>
+    <color name="black_trans">#57363B35</color>
+    <color name="transperent">#00000000</color>
+    <color name="unselected_txt">#5c5e5b</color>
+    <color name="menu_text">#A2A2A2</color>
+    <color name="seleted_txt">#43c2af</color>
+    <color name="bottom_tab_backround">#eef3ed</color>
+    <color name="view_line">#d4d9d5</color>
+    <color name="bg_color">#F7FAEF</color>
+
+    <!--Category Type Tab Color-->
+    <color name="Indicator_tabTextColor">#2e332d</color>
+    <color name="Indicator_tabSelectedTextColor">#5e9188</color>
+    <color name="tabindiacator_background">#eef3ed</color>
+    <color name="tabIndicator_color">#5e9188</color>
+
+    <color name="yellow">#ec8f04</color>
+    <color name="gray">#bdbdbd</color>
+
+    <!--    <color name="text_color">#282d27</color>-->
+    <color name="text_color">#0D0E0C</color>
+    <color name="sub_text_color">#95989a</color>
+    <color name="bg_card_g">#CBC3C2C2</color>
+
+    <color name="btn_txt_color">#36ae9e</color>
+
+
+    <color name="hindi">#07a252</color>
+    <color name="hindi_color">#8D0C529E</color>
+    <color name="english">#DC357982</color>
+    <color name="english_color">#60357982</color>
+
+
+    <color name="box_1">#378CBB</color>
+    <color name="box_2">#53B4BA</color>
+    <color name="box_3">#71A330</color>
+    <color name="box_4">#F29C33</color>
+    <color name="box_5">#DC692F</color>
+    <color name="box_6">#71A330</color>
+    <color name="box_7">#5279C3</color>
+    <color name="box_8">#378CBB</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhite_trans">#E8FFFFFF</color>
+    <color name="colorBlack">@color/text_color</color>
+    <color name="colorGray">#dbdbdb</color>
+    <color name="colorLGray">#E6E5E5</color>
+    <color name="ui_grad_2">#F5B874</color>
+    <color name="darkorrange">#cc2303</color>
+    <color name="note_text_disabled">#333333</color>
+    <color name="btn_disable">#DADADA</color>
+    <color name="btn_active">#2D6B98</color>
+    <color name="bottom_un_sel">#E9E9E9</color>
+    <color name="bottom_sel">#F5F5F5</color>
+    <color name="textColor">#5B5B5B</color>
+    <color name="static_">#FF8E6D</color>
+    <color name="static_o">#e08061</color>
+
+    <color name="digi">#ffc15f</color>
+    <color name="digi_o">#e3a94b</color>
+
+
+    <color name="social_">#01B291</color>
+    <color name="social_o">#149B7C</color>
+
+    <color name="saral_">#a74b8d</color>
+    <color name="saral_o">#A1872F68</color>
+    <color name="share">#EBFEFE</color>
+
+    <color name="tab_color">#F5F5F5</color>
+    <color name="private_profit">#FA474E</color>
+    <color name="private_non_profit">#036E80</color>
+    <color name="public_j">#D57500</color>
+    <color name="goi">#5C598A</color>
+    <color name="search">#2ED2F2</color>
+</resources>

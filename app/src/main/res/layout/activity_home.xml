@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:background="@drawable/nirogi_haryana"
+                    android:layout_height="30dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/app_name"
+                        android:textColor="@color/yellow"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/home"
+                        android:textColor="@color/seleted_txt"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"
+                    android:drawableStart="@drawable/baseline_supervised"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/homeUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="SAHIL SHARMA"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_patient"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="15dp"
+                android:layout_height="wrap_content">
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_district"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gray_rect"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:padding="15dp">
+
+                    <Spinner
+                        android:id="@+id/spinDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/spinner_district"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/search_via"
+                android:textSize="15sp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
+
+
+                    <org.honorato.multistatetogglebutton.MultiStateToggleButton
+                        android:id="@+id/mstbSearchType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/colorWhite"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        app:mstbPrimaryColor="@color/seleted_txt"
+                        app:mstbSecondaryColor="@color/colorWhite"
+                        app:values="@array/arr_searchType" />
+
+
+            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyPPPID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="PPPID*"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/enPPPID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:background="#00000000"
+                            android:fontFamily="@font/robotolight"
+                            android:hint="Enter PPPID"
+                            android:lines="1"
+                            android:padding="5dp"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/colorGray"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyRefID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Reference ID*"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/enRefID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:background="#00000000"
+                            android:fontFamily="@font/robotolight"
+                            android:hint="Enter Reference ID"
+                            android:lines="1"
+                            android:padding="5dp"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHint="@color/colorGray"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/submitSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_grad"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"
+                    android:padding="15dp"
+                    android:text="@string/search"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</LinearLayout>
