@@ -1,5 +1,6 @@
 package com.nirogi.harayna.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,10 +16,12 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.model.request.SearchPPPIDRequest;
 import com.nirogi.harayna.model.response.DistrictModel;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.NIROGI;
 
 import org.honorato.multistatetogglebutton.MultiStateToggleButton;
 import org.honorato.multistatetogglebutton.ToggleButton;
@@ -44,7 +47,6 @@ public class HomeActivity extends BaseActivity {
     String selDistrict;
     private ArrayList<String> mDistrictList, mDistrictListNames;
 
-    String token="eyJGaXJzdG5hbWUiOiJUZXN0IiwiTGFzdG5hbWUiOiJVc2VyIiwiRGlzdHJpY3QiOiJBbWJhbGEiLCJGYWNpbGl0eVR5cGUiOiIgRENIICIsIkZhY2lsaXR5IjoiIEFtYmFsYSAiLCJSb2xlIjoiVVNFUiIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJUZXN0VXNlcksiLCJleHAiOjE2ODg2NzE4MTIsImlhdCI6MTY4ODYzNTgxMn0.U8EreP7_stF3p0DdmSbLx99uhDZQwsriFfmndjB5FI-V_FJTe2FqNMz5UVysTqKe5LLJ0d8YGi2zvhy-VMcpJw";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,11 +90,13 @@ public class HomeActivity extends BaseActivity {
             public void onClick(View view) {
                 if (spinDistrict.getSelectedItemPosition()>0)
                 {
-                    if(mCheckType)
+                    if(mstbSearchType.getValue()==0)
                     {
                         if(!TextUtils.isEmpty(enPPPID.getText()))
                         {
-
+                            Intent mIntent= new Intent(HomeActivity.this, SearchedPPPIDDetails.class);
+                            mIntent.putExtra("PPPID",enPPPID.getText().toString());
+                            startActivity(mIntent);
                         }else {
                             mShowToast("Please Enter PPPID to search");
                         }
@@ -100,7 +104,8 @@ public class HomeActivity extends BaseActivity {
                     }else {
                         if(!TextUtils.isEmpty(enRefID.getText()))
                         {
-
+                            Intent mIntent= new Intent(HomeActivity.this, SearchedReferenceIDDetails.class);
+                            startActivity(mIntent);
                         }else {
                             mShowToast("Please Enter Reference to search");
                         }
@@ -117,7 +122,7 @@ public class HomeActivity extends BaseActivity {
         if (isNetworkAvailable()) {
             try {
                 createProgressBar(R.id.relMain);
-                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(token).create(APIInterface.class);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
                 Call<ArrayList<DistrictModel>> call = apiInterface.getDistList();
                 call.enqueue(new Callback<ArrayList<DistrictModel>>() {
                     @Override

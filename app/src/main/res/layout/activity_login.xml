@@ -141,6 +141,7 @@
                                 android:fontFamily="@font/robotolight"
                                 android:hint="@string/enter_password"
                                 android:lines="1"
+                                android:inputType="textPassword"
                                 android:padding="5dp"
                                 android:text="user123@"
                                 android:textColor="@color/colorBlack"

@@ -3,7 +3,6 @@ package com.nirogi.harayna.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,15 +19,7 @@ import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
 import com.nirogi.harayna.utils.EncryptionHelper;
-import com.nirogi.harayna.utils.JWTUtils;
-import com.nirogi.harayna.utils.Nirogi;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import com.nirogi.harayna.utils.NIROGI;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +37,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = Nirogi.getInstance().getPreferences();
+        preferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_login);
         initView();
     }
@@ -57,8 +48,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (view.getId() == R.id.btnLogin) {
             if (isNetworkAvailable()) {
                 if (!TextUtils.isEmpty(enEmailUser.getText()) && !TextUtils.isEmpty(enPassword.getText())) {
-                    loginCheck();
-//                    mSendIntent();
+//                    loginCheck();
+                    mSendIntent();
                 } else {
                     mShowToast("Please enter valid Credentials !");
                 }

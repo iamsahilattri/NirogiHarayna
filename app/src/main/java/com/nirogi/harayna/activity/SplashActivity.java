@@ -9,7 +9,7 @@ import android.text.TextUtils;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.utils.BaseActivity;
-import com.nirogi.harayna.utils.Nirogi;
+import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.SharedParams;
 
 
@@ -20,7 +20,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = Nirogi.getInstance().getPreferences();
+        preferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_splash_screen);
 
         int SPLASH_TIME_OUT = 3000;

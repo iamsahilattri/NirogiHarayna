@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/mainLy"
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:visibility="visible"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/pppid"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientPPPID"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:visibility="visible"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="Name"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientName"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/father_husband_name"
+                android:fontFamily="@font/robotolight"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientHusFather"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/gender"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientGender"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/age"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientAge"
+                android:layout_width="match_parent"
+                android:text="--"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/mobile"
+                android:fontFamily="@font/robotolight"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientMobile"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/address"
+                android:fontFamily="@font/robotolight"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientAddress"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/district"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientDistrict"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:text="@string/income"
+                android:fontFamily="@font/robotolight"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/patientIncome"
+                android:layout_width="match_parent"
+                android:text="---"
+                android:layout_marginStart="5dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
