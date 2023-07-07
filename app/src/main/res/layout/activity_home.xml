@@ -24,6 +24,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="30dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/nirogi_haryana"
                     android:layout_height="30dp"/>
                 <LinearLayout
@@ -36,14 +37,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:singleLine="true"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_medium"
                         android:text="@string/app_name"
                         android:textColor="@color/yellow"
                         android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_medium"
                         android:text="@string/home"
                         android:textColor="@color/seleted_txt"
                         android:textSize="15sp" />
@@ -88,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/baseline_supervised"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_regular"
                         android:gravity="center"
                         android:text="@string/welcome"
                         android:textColor="@color/text_color"
@@ -99,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_semibold"
                         android:text="SAHIL SHARMA"
                         android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
@@ -110,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/dosis_medium"
                     android:gravity="center"
                     android:text="@string/search_patient"
                     android:textColor="@color/text_color"
@@ -127,9 +128,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_regular"
                         android:text="@string/select_district"
-                        android:textColor="@color/text_color"
+                        android:textColor="@color/valueTextColor"
                         android:textSize="15sp" />
 
                     <LinearLayout
@@ -138,13 +139,14 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/gray_rect"
                         android:orientation="vertical"
-                        android:padding="15dp">
+                        android:padding="5dp">
 
-                        <Spinner
+                        <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/spinDistrict"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#00000000"
+                            style="@style/SpinnerTheme"
                             android:entries="@array/spinner_district" />
                     </LinearLayout>
 
@@ -161,9 +163,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_regular"
                         android:text="@string/search_via"
-                        android:textColor="@color/text_color"
+                        android:textColor="@color/valueTextColor"
                         android:textSize="15sp"
                         android:visibility="visible" />
 
@@ -182,6 +184,7 @@
                             android:background="@color/colorWhite"
                             android:gravity="center"
                             android:padding="15dp"
+
                             app:mstbPrimaryColor="@color/seleted_txt"
                             app:mstbSecondaryColor="@color/colorWhite"
                             app:values="@array/arr_searchType" />
@@ -202,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_regular"
                         android:text="PPPID*"
                         android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
@@ -226,7 +229,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="5dp"
                                 android:background="#00000000"
-                                android:fontFamily="@font/robotolight"
+                                android:fontFamily="@font/dosis_light"
                                 android:hint="@string/enter_pppid"
                                 android:lines="1"
                                 android:padding="5dp"
@@ -250,7 +253,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_regular"
                         android:text="Reference ID*"
                         android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
@@ -274,7 +277,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="5dp"
                                 android:background="#00000000"
-                                android:fontFamily="@font/robotolight"
+                                android:fontFamily="@font/dosis_light"
                                 android:hint="@string/enter_reference_id"
                                 android:lines="1"
                                 android:padding="5dp"
@@ -300,7 +303,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_grad"
-                        android:fontFamily="@font/roboto_regular"
+                        android:fontFamily="@font/dosis_medium"
                         android:gravity="center"
                         android:padding="15dp"
                         android:text="@string/search"

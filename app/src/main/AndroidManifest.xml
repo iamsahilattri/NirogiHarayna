@@ -54,6 +54,9 @@
         <activity
             android:name=".activity.SearchedReferenceIDDetails"
             android:exported="false"/>
+        <activity
+            android:name=".activity.PPPPatientEntryActivity"
+            android:exported="false"/>
 
     </application>
 

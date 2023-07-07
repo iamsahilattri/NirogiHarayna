@@ -56,7 +56,7 @@
     <color name="ui_grad_2">#F5B874</color>
     <color name="darkorrange">#cc2303</color>
     <color name="note_text_disabled">#333333</color>
-    <color name="btn_disable">#DADADA</color>
+    <color name="btn_disable">#236545</color>
     <color name="btn_active">#2D6B98</color>
     <color name="bottom_un_sel">#E9E9E9</color>
     <color name="bottom_sel">#F5F5F5</color>
@@ -81,4 +81,9 @@
     <color name="public_j">#D57500</color>
     <color name="goi">#5C598A</color>
     <color name="search">#2ED2F2</color>
+
+    <color name="headingTextColor">#80878D</color>
+    <color name="valueTextColor">#212529</color>
+    <color name="colorHeadingText">#E78232</color>
+    <color name="hintColorText">#B2B2B2</color>
 </resources>

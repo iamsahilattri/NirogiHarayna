@@ -2,9 +2,10 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:textColor="@color/l_title"
+    android:textColor="@color/valueTextColor"
     android:textSize="14sp"
-    android:fontFamily="@font/roboto_regular"
+    android:padding="10dp"
+    android:fontFamily="@font/dosis_regular"
     android:layout_height="wrap_content">
 
 </TextView>

@@ -142,8 +142,8 @@ public class HomeActivity extends BaseActivity {
                                             mDistrictList.add(model.getDistid()+"");
                                             mDistrictListNames.add(model.getDistname());
                                         }
-                                        ArrayAdapter<String> adapter =new ArrayAdapter<String>(HomeActivity.this,android.R.layout.simple_spinner_item, mDistrictListNames);
-                                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                        ArrayAdapter<String> adapter =new ArrayAdapter<String>(HomeActivity.this,R.layout.spinner_text, mDistrictListNames);
+                                        adapter.setDropDownViewResource(R.layout.spinner_text);
                                         spinDistrict.setAdapter(adapter);
                                         spinDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                             @Override
@@ -151,7 +151,6 @@ public class HomeActivity extends BaseActivity {
                                                 if(position>0)
                                                 {
                                                     selDistrict=mDistrictList.get(position);
-
                                                 }
 
                                             }

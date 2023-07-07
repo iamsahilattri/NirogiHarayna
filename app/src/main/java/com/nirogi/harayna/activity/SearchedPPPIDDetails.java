@@ -1,5 +1,6 @@
 package com.nirogi.harayna.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -114,11 +115,8 @@ public class SearchedPPPIDDetails extends BaseActivity {
                                 recyclerPatientList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerPatientList, new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-//                                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, V3BeneficiaryMembersDetailsActivity.class);
-//                                        mIntent.putExtra("familyID",""+mDataList.get(position).getFamilyid());
-//                                        mIntent.putExtra("blockId",""+zoneID);
-//                                        mIntent.putExtra("wvId",""+wvId);
-//                                        startActivity(mIntent);
+                                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, PPPPatientEntryActivity.class);
+                                        startActivity(mIntent);
                                     }
 
                                     @Override
