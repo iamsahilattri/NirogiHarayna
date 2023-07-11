@@ -1,4 +1,4 @@
-package com.nirogi.harayna.activity;
+package com.nirogi.harayna.activity.category;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.utils.BaseActivity;
 
-public class PPPPatientEntryActivity extends BaseActivity implements View.OnClickListener {
+public class CategoryVIPatientEntryActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout mRelMain;
     private SwipeRefreshLayout mSwipeDown;
@@ -114,7 +114,7 @@ public class PPPPatientEntryActivity extends BaseActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_input);
+        setContentView(R.layout.activity_patient_input_cat_vi);
         initView();
     }
 

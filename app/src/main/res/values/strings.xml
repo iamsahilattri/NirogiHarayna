@@ -97,6 +97,10 @@
     <string name="basophils_in">Basophils (in % )</string>
     <string name="_2_cvs">2. CVS</string>
     <string name="_1_chest">1. Chest</string>
+    <string name="name_of_patient">Name of Patient</string>
+    <string name="name_of_facility">Name of Facility</string>
+    <string name="name_of_facility_incharge">Name of Facility incharge</string>
+    <string name="date">Date</string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>

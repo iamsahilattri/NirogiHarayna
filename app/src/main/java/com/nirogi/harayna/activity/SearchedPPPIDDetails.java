@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.activity.category.CategoryIIIPatientEntryActivity;
 import com.nirogi.harayna.adapter.PatientListAdapter;
 import com.nirogi.harayna.model.request.SearchPPPIDRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
@@ -115,7 +116,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
                                 recyclerPatientList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerPatientList, new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-                                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, PPPPatientEntryActivity.class);
+                                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
                                         startActivity(mIntent);
                                     }
 

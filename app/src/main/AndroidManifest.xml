@@ -55,8 +55,25 @@
             android:name=".activity.SearchedReferenceIDDetails"
             android:exported="false"/>
         <activity
-            android:name=".activity.PPPPatientEntryActivity"
+            android:name=".activity.category.CategoryIPatientEntryActivity"
             android:exported="false"/>
+        <activity
+            android:name=".activity.category.CategoryIIPatientEntryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.category.CategoryIIIPatientEntryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.category.CategoryIVPatientEntryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.category.CategoryVPatientEntryActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.category.CategoryVIPatientEntryActivity"
+            android:exported="false"/>
+
+
 
     </application>
 
