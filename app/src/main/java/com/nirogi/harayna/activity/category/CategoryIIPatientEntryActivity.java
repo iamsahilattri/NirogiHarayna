@@ -1,6 +1,7 @@
 package com.nirogi.harayna.activity.category;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +15,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.utils.BaseActivity;
 
 public class CategoryIIPatientEntryActivity extends BaseActivity implements View.OnClickListener {
@@ -116,7 +118,32 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_input_cat_ii);
         initView();
+        mSetValuesToViews();
     }
+
+    private void mSetValuesToViews()
+    {
+        try {
+            if(getIntent()!=null)
+            {
+                PatientListModelResponse memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
+                if(memberData !=null)
+                {
+                    mSetBackToolbar("Patient Details",true,"Category II (6-59 Months)");
+                    mTxtPatientPPPID.setText(memberData.getPppid()+"");
+                    mTxtPatientName.setText(memberData.getFirstname()+" "+ memberData.getLastname());
+                    mTxtPatientGenderAge.setText(memberData.getGender()+"");
+                    mTxtPatientMobile.setText(memberData.getMobileno()+"");
+                    mTxtPatientAddress.setText(memberData.getAddress()+"");
+                    mTxtPatientDistrict.setText(memberData.getDistrict()+"");
+                }
+            }
+        }catch (Exception e)
+        {
+            Log.e(" Exception memberData",""+e.getMessage());
+        }
+    }
+
 
     private void initView() {
         mRelMain = (RelativeLayout) findViewById(R.id.relMain);

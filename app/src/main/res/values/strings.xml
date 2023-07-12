@@ -45,7 +45,9 @@
     <string name="enter_reference_id">Enter Reference ID</string>
     <string name="test_refrence_id">Jh-PH-716634</string>
     <string name="enter_pppid">Enter PPPID</string>
-    <string name="test_ppid">7HJC0068</string>
+<!--    <string name="test_ppid">7HJC0068</string>-->
+    <string name="test_ppid">1TSG7151</string>
+
     <string name="age_gender"><![CDATA[Age & Gender]]></string>
     <string name="general_physical_examination">General Physical Examination</string>
     <string name="_1_weight_in_kg">1. Weight (in kg)*</string>
@@ -101,6 +103,11 @@
     <string name="name_of_facility">Name of Facility</string>
     <string name="name_of_facility_incharge">Name of Facility incharge</string>
     <string name="date">Date</string>
+    <string name="reference_id">Reference ID*</string>
+    <string name="_3_head_circumference_in_cm">3. Head circumference in cm*</string>
+    <string name="_11_congenital_anomalies">11. Congenital anomalies</string>
+    <string name="history_symptoms_complaints">History/symptoms/complaints</string>
+    <string name="_9_capillary_refill_time_3_sec"><![CDATA[9. Capillary Refill Time (< 3 sec*]]></string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>
@@ -161,5 +168,20 @@
         <item> Normal </item>
         <item> Abnormal </item>
 
+    </string-array>
+
+    <string-array name="arr_mode_del">
+        <item> NVD </item>
+        <item> LSCS </item>
+    </string-array>
+
+    <string-array name="arr_cry">
+        <item> Immediate </item>
+        <item> Delayed </item>
+    </string-array>
+
+    <string-array name="arr_feeding">
+        <item> Breast feeding </item>
+        <item> Top feeding </item>
     </string-array>
 </resources>

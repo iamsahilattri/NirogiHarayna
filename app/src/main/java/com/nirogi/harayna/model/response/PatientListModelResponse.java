@@ -3,7 +3,9 @@ package com.nirogi.harayna.model.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public  class PatientListModelResponse {
+import java.io.Serializable;
+
+public  class PatientListModelResponse implements Serializable {
 
 
     @Expose

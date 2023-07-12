@@ -37,9 +37,15 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    public void mSetBackToolbar(String mValue)
+    public void mSetBackToolbar(String mValue,boolean mCheck,String desText)
     {
         TextView title= findViewById(R.id.title);
+        if(mCheck)
+        {
+            TextView titleDesc= findViewById(R.id.titleDesc);
+            titleDesc.setText(desText);
+        }
+
         title.setText(mValue);
         findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
             @Override

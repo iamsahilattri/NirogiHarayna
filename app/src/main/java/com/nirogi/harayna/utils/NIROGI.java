@@ -8,7 +8,7 @@ public class NIROGI extends Application {
     public static NIROGI _instance;
     private SharedPreferences _sharedPReferences;
     // Get a Realm instance for this thread
-    public static String token="eyJGaXJzdG5hbWUiOiJOaWtoaWwiLCJMYXN0bmFtZSI6IkJhbnNhbCIsIkRpc3RyaWN0IjoiQW1iYWxhIiwiRmFjaWxpdHlUeXBlIjoiUEhDIiwiRmFjaWxpdHkiOiJLZXNhcmkiLCJSb2xlIjoiVVNFUiIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJwaGNrZXNyaSIsImV4cCI6MTY4ODc1MTAwNywiaWF0IjoxNjg4NzE1MDA3fQ.5DFrKatgXOJglan4k4R1vXOcEVhec94RkZs7-dsDNRleV5JeyxApMxR4Bhi3QmEA_CEaA7fA-Q7KjwYCzJp0OQ";
+    public static String token="eyJGaXJzdG5hbWUiOiJOaWtoaWwiLCJMYXN0bmFtZSI6IkJhbnNhbCIsIkRpc3RyaWN0IjoiQW1iYWxhIiwiRmFjaWxpdHlUeXBlIjoiUEhDIiwiRmFjaWxpdHkiOiJLZXNhcmkiLCJSb2xlIjoiVVNFUiIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJwaGNrZXNyaSIsImV4cCI6MTY4OTE4OTk0NCwiaWF0IjoxNjg5MTUzOTQ0fQ.zM4mDmHD4VIjkf5pbdHTEvyMupKbzPtQEeQ5jovAr6yVq7BppuXkg1IM26XTVUtZeayX4lzCk-gFh3oObYUpgQ";
 
     @Override
     public void onCreate() {

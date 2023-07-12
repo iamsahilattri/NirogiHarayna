@@ -54,7 +54,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
         initView();
         initListeners();
-        getDistricts();
+//        getDistricts();
     }
 
     private void initView() {
@@ -88,7 +88,7 @@ public class HomeActivity extends BaseActivity {
         submitSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (spinDistrict.getSelectedItemPosition()>0)
+//                if (spinDistrict.getSelectedItemPosition()>0)
                 {
                     if(mstbSearchType.getValue()==0)
                     {
@@ -110,9 +110,10 @@ public class HomeActivity extends BaseActivity {
                             mShowToast("Please Enter Reference to search");
                         }
                     }
-                }else {
-                    mShowToast("Please Select district to search");
                 }
+//                else {
+//                    mShowToast("Please Select district to search");
+//                }
 
             }
         });

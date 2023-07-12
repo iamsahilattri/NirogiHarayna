@@ -121,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
 
@@ -254,7 +255,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/dosis_regular"
-                        android:text="Reference ID*"
+                        android:text="@string/reference_id"
                         android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
