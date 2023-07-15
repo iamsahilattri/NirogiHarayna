@@ -96,57 +96,57 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     }
 
     private void initView() {
-        mRelMain = (RelativeLayout) findViewById(R.id.relMain);
-        mSwipeDown = (SwipeRefreshLayout) findViewById(R.id.swipeDown);
-        mInfoLy =findViewById(R.id.infoLy);
-        mTxtPatientPPPID =findViewById(R.id.txtPatientPPPID);
-        mTxtPatientName =findViewById(R.id.txtPatientName);
-        mTxtPatientGenderAge =findViewById(R.id.txtPatientGenderAge);
-        mTxtPatientMobile =findViewById(R.id.txtPatientMobile);
-        mTxtPatientAddress =findViewById(R.id.txtPatientAddress);
-        mTxtPatientDistrict =findViewById(R.id.txtPatientDistrict);
-        mTxtFacilityName =findViewById(R.id.txtFacilityName);
-        mTxtFacilityIncharge =findViewById(R.id.txtFacilityIncharge);
-        mTxtDate =findViewById(R.id.txtDate);
-        mLyInput =findViewById(R.id.lyInput);
-        mLyGenPhysicalEx =findViewById(R.id.lyGenPhysicalEx);
+        mRelMain = findViewById(R.id.cIrelMain);
+        mSwipeDown = findViewById(R.id.cIswipeDown);
+        mInfoLy =findViewById(R.id.cIinfoLy);
+        mTxtPatientPPPID =findViewById(R.id.cItxtPatientPPPID);
+        mTxtPatientName =findViewById(R.id.cItxtPatientName);
+        mTxtPatientGenderAge =findViewById(R.id.cItxtPatientGenderAge);
+        mTxtPatientMobile =findViewById(R.id.cItxtPatientMobile);
+        mTxtPatientAddress =findViewById(R.id.cItxtPatientAddress);
+        mTxtPatientDistrict =findViewById(R.id.cItxtPatientDistrict);
+        mTxtFacilityName =findViewById(R.id.cItxtFacilityName);
+        mTxtFacilityIncharge =findViewById(R.id.cItxtFacilityIncharge);
+        mTxtDate =findViewById(R.id.cItxtDate);
+        mLyInput =findViewById(R.id.cIlyInput);
+        mLyGenPhysicalEx =findViewById(R.id.cIlyGenPhysicalEx);
         mLyGenPhysicalEx.setOnClickListener(this);
-        mIconGenPhy =  findViewById(R.id.iconGenPhy);
-        mLyGenPhysicalxValue =findViewById(R.id.lyGenPhysicalxValue);
+        mIconGenPhy =  findViewById(R.id.cIiconGenPhy);
+        mLyGenPhysicalxValue =findViewById(R.id.cIlyGenPhysicalxValue);
 
-        mLySysExa =findViewById(R.id.lySysExa);
+        mLySysExa =findViewById(R.id.cIlySysExa);
         mLySysExa.setOnClickListener(this);
-        mIconSysExa =  findViewById(R.id.iconSysExa);
-        mLySysExaValue =findViewById(R.id.lySysExaValue);
+        mIconSysExa =  findViewById(R.id.cIiconSysExa);
+        mLySysExaValue =findViewById(R.id.cIlySysExaValue);
       
-        mLyMandatoryInvest =findViewById(R.id.lyMandatoryInvest);
+        mLyMandatoryInvest =findViewById(R.id.cIlyMandatoryInvest);
         mLyMandatoryInvest.setOnClickListener(this);
-        mIconMandatoryInvest = findViewById(R.id.iconMandatoryInvest);
-        mLyMandatoryInvestValue =findViewById(R.id.lyMandatoryInvestValue);
+        mIconMandatoryInvest = findViewById(R.id.cIiconMandatoryInvest);
+        mLyMandatoryInvestValue =findViewById(R.id.cIlyMandatoryInvestValue);
 
-        mLyDiagnosis =findViewById(R.id.lyDiagnosis);
+        mLyDiagnosis =findViewById(R.id.cIlyDiagnosis);
         mLyDiagnosis.setOnClickListener(this);
-        mIconDiagnosis =  findViewById(R.id.iconDiagnosis);
-        mLyDiagnosisValue =findViewById(R.id.lyDiagnosisValue);
-        mDropDiagnosis = findViewById(R.id.dropDiagnosis);
-        mChkDAlreadyKnown = findViewById(R.id.chkDAlreadyKnown);
-        mLyPrescription =findViewById(R.id.lyPrescription);
+        mIconDiagnosis =  findViewById(R.id.cIiconDiagnosis);
+        mLyDiagnosisValue =findViewById(R.id.cIlyDiagnosisValue);
+        mDropDiagnosis = findViewById(R.id.cIdropDiagnosis);
+        mChkDAlreadyKnown = findViewById(R.id.cIchkDAlreadyKnown);
+        mLyPrescription =findViewById(R.id.cIlyPrescription);
         mLyPrescription.setOnClickListener(this);
-        mIconPrescription =  findViewById(R.id.iconPrescription);
-        mLyPrescriptionValue =findViewById(R.id.lyPrescriptionValue);
-        mInputPrescription =findViewById(R.id.inputPrescription);
+        mIconPrescription =  findViewById(R.id.cIiconPrescription);
+        mLyPrescriptionValue =findViewById(R.id.cIlyPrescriptionValue);
+        mInputPrescription =findViewById(R.id.cIinputPrescription);
 
 
-        lyHistoryEx =  findViewById(R.id.lyHistoryEx);
+        lyHistoryEx =  findViewById(R.id.cIlyHistoryEx);
         lyHistoryEx.setOnClickListener(this);
-        iconHistory =findViewById(R.id.iconHistory);
-        lyHistoryExValue =findViewById(R.id.lyHistoryExValue);
+        iconHistory =findViewById(R.id.cIiconHistory);
+        lyHistoryExValue =findViewById(R.id.cIlyHistoryExValue);
 
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.lyGenPhysicalEx) {
+        if (view.getId() == R.id.cIlyGenPhysicalEx) {
             if(mClickOne)
             {
                 mShowHideLayouts(0);
@@ -156,7 +156,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickOne=true;
             }
         }
-        if (view.getId() == R.id.lySysExa) {
+        if (view.getId() == R.id.cIlySysExa) {
             if(mClickTwo)
             {
                 mShowHideLayouts(1);
@@ -166,7 +166,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickTwo=true;
             }
         }
-        if (view.getId() == R.id.lyMandatoryInvest) {
+        if (view.getId() == R.id.cIlyMandatoryInvest) {
             if(mClickThree)
             {
                 mShowHideLayouts(2);
@@ -176,7 +176,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickThree=true;
             }
         }
-        if (view.getId() == R.id.lyDiagnosis) {
+        if (view.getId() == R.id.cIlyDiagnosis) {
             if(mClickFour)
             {
                 mShowHideLayouts(3);
@@ -186,7 +186,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickFour=true;
             }
         }
-        if (view.getId() == R.id.lyPrescription) {
+        if (view.getId() == R.id.cIlyPrescription) {
             if(mClickFive)
             {
                 mShowHideLayouts(4);
@@ -196,7 +196,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickFive=true;
             }
         }
-        if (view.getId() == R.id.lyHistoryEx) {
+        if (view.getId() == R.id.cIlyHistoryEx) {
             if(mClickSix)
             {
                 mShowHideLayouts(5);

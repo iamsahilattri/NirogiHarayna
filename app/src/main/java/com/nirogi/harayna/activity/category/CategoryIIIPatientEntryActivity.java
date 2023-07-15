@@ -146,8 +146,8 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
 
 
     private void initView() {
-        mRelMain = (RelativeLayout) findViewById(R.id.relMain);
-        mSwipeDown = (SwipeRefreshLayout) findViewById(R.id.swipeDown);
+        mRelMain = findViewById(R.id.relMain);
+        mSwipeDown = findViewById(R.id.swipeDown);
         mInfoLy =findViewById(R.id.infoLy);
         mTxtPatientPPPID =findViewById(R.id.txtPatientPPPID);
         mTxtPatientName =findViewById(R.id.txtPatientName);
@@ -161,7 +161,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mLyInput =findViewById(R.id.lyInput);
         mLyGenPhysicalEx =findViewById(R.id.lyGenPhysicalEx);
         mLyGenPhysicalEx.setOnClickListener(this);
-        mIconGenPhy = (AppCompatImageView) findViewById(R.id.iconGenPhy);
+        mIconGenPhy =  findViewById(R.id.iconGenPhy);
         mLyGenPhysicalxValue =findViewById(R.id.lyGenPhysicalxValue);
         mInputWeightGenPhy =findViewById(R.id.inputWeightGenPhy);
         mInputHeightGenPhy =findViewById(R.id.inputHeightGenPhy);
@@ -175,7 +175,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mDropPOedemaGenPhy = findViewById(R.id.dropPOedemaGenPhy);
         mLySysExa =findViewById(R.id.lySysExa);
         mLySysExa.setOnClickListener(this);
-        mIconSysExa = (AppCompatImageView) findViewById(R.id.iconSysExa);
+        mIconSysExa =  findViewById(R.id.iconSysExa);
         mLySysExaValue =findViewById(R.id.lySysExaValue);
         mDropChestSysExa = findViewById(R.id.dropChestSysExa);
         mDropCVSSysExa = findViewById(R.id.dropCVSSysExa);
@@ -232,13 +232,13 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mInputAdvisedMandatoryInvest =findViewById(R.id.inputAdvisedMandatoryInvest);
         mLyDiagnosis =findViewById(R.id.lyDiagnosis);
         mLyDiagnosis.setOnClickListener(this);
-        mIconDiagnosis = (AppCompatImageView) findViewById(R.id.iconDiagnosis);
+        mIconDiagnosis =  findViewById(R.id.iconDiagnosis);
         mLyDiagnosisValue =findViewById(R.id.lyDiagnosisValue);
         mDropDiagnosis = findViewById(R.id.dropDiagnosis);
         mChkDAlreadyKnown = findViewById(R.id.chkDAlreadyKnown);
         mLyPrescription =findViewById(R.id.lyPrescription);
         mLyPrescription.setOnClickListener(this);
-        mIconPrescription = (AppCompatImageView) findViewById(R.id.iconPrescription);
+        mIconPrescription =  findViewById(R.id.iconPrescription);
         mLyPrescriptionValue =findViewById(R.id.lyPrescriptionValue);
         mInputPrescription =findViewById(R.id.inputPrescription);
     }

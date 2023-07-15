@@ -44,6 +44,7 @@ public class BaseActivity extends AppCompatActivity {
         {
             TextView titleDesc= findViewById(R.id.titleDesc);
             titleDesc.setText(desText);
+            titleDesc.setVisibility(View.VISIBLE);
         }
 
         title.setText(mValue);

@@ -57,6 +57,7 @@
     <string name="_6_pallor">6. Pallor</string>
     <string name="name">Name :</string>
     <string name="_5_bp_mmhg">5. BP (mmHg)*</string>
+    <string name="_6_bp_mmhg">6. BP (mmHg)*</string>
     <string name="_7_jaundice_cyanosis">7. Jaundice/Cyanosis</string>
     <string name="_8_clubbing">8. Clubbing</string>
     <string name="_9_lymphadenopathy">9.Lymphadenopathy</string>
@@ -90,7 +91,9 @@
     <string name="_14_blood_urea_in_mg_dl">14. Blood urea (in mg/ dL)</string>
     <string name="_15_serum_creatinine_in_mg_dl">15. Serum creatinine (in mg/ dL)</string>
     <string name="_16_urine_routine_examination">16. Urine routine examination</string>
+    <string name="_18_urine_routine_examination">18. Urine routine examination</string>
     <string name="_17_relevant_investigation_if_advised_by_specialist">17. Relevant investigation if advised by specialist</string>
+    <string name="_20_relevant_investigation_if_advised_by_specialist">20. Relevant investigation if advised by specialist</string>
     <string name="_3_dlc">3. DLC</string>
     <string name="neutrophils_in">Neutrophils (in %)</string>
     <string name="lymphocytes_in">Lymphocytes (in % )</string>
@@ -106,6 +109,7 @@
     <string name="reference_id">Reference ID*</string>
     <string name="_3_head_circumference_in_cm">3. Head circumference in cm*</string>
     <string name="_11_congenital_anomalies">11. Congenital anomalies</string>
+    <string name="_12_congenital_anomalies">12. Congenital anomalies</string>
     <string name="history_symptoms_complaints">History/symptoms/complaints</string>
     <string name="_9_capillary_refill_time_3_sec"><![CDATA[9. Capillary Refill Time (< 3 sec*]]></string>
 
@@ -180,8 +184,36 @@
         <item> Delayed </item>
     </string-array>
 
+    <string-array name="arr_anterior">
+        <item> Open </item>
+        <item> Close </item>
+    </string-array>
+
+
     <string-array name="arr_feeding">
         <item> Breast feeding </item>
         <item> Top feeding </item>
+    </string-array>
+
+    <string-array name="arr_orl_exm">
+        <item> Normal </item>
+        <item> Any White Patch</item>
+        <item> Abnormality </item>
+
+    </string-array>
+    <string-array name="arr_dental_ex">
+        <item> Normal </item>
+        <item> Any Abnormality </item>
+
+    </string-array>
+
+    <string-array name="arr_hair_tex">
+        <item> Normal </item>
+        <item> Frizzy </item>
+        <item> De-pigmented </item>
+    </string-array>
+    <string-array name="arr_skin">
+        <item> Smooth </item>
+        <item> Rough </item>
     </string-array>
 </resources>

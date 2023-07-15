@@ -111,7 +111,10 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     private LinearLayout mLyPrescriptionValue;
     private AppCompatEditText mInputPrescription;
 
-    private boolean mClickOne=true,mClickTwo=true,mClickThree=true,mClickFour=true,mClickFive=true;
+    private LinearLayout cVIlySystomComplainExa,cVIlySysCompValue;
+    private AppCompatImageView cVIiconSysComp;
+
+    private boolean mClickOne=true,mClickTwo=true,mClickThree=true,mClickFour=true,mClickFive=true,mClickSix=true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -145,106 +148,108 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     }
 
     private void initView() {
-        mRelMain = (RelativeLayout) findViewById(R.id.relMain);
-        mSwipeDown = (SwipeRefreshLayout) findViewById(R.id.swipeDown);
-        mInfoLy =findViewById(R.id.infoLy);
-        mTxtPatientPPPID =findViewById(R.id.txtPatientPPPID);
-        mTxtPatientName =findViewById(R.id.txtPatientName);
-        mTxtPatientGenderAge =findViewById(R.id.txtPatientGenderAge);
-        mTxtPatientMobile =findViewById(R.id.txtPatientMobile);
-        mTxtPatientAddress =findViewById(R.id.txtPatientAddress);
-        mTxtPatientDistrict =findViewById(R.id.txtPatientDistrict);
-        mTxtFacilityName =findViewById(R.id.txtFacilityName);
-        mTxtFacilityIncharge =findViewById(R.id.txtFacilityIncharge);
-        mTxtDate =findViewById(R.id.txtDate);
-        mLyInput =findViewById(R.id.lyInput);
-        mLyGenPhysicalEx =findViewById(R.id.lyGenPhysicalEx);
+        mRelMain = findViewById(R.id.cVIrelMain);
+        mSwipeDown = findViewById(R.id.cVIswipeDown);
+        mInfoLy =findViewById(R.id.cVIinfoLy);
+        mTxtPatientPPPID =findViewById(R.id.cVItxtPatientPPPID);
+        mTxtPatientName =findViewById(R.id.cVItxtPatientName);
+        mTxtPatientGenderAge =findViewById(R.id.cVItxtPatientGenderAge);
+        mTxtPatientMobile =findViewById(R.id.cVItxtPatientMobile);
+        mTxtPatientAddress =findViewById(R.id.cVItxtPatientAddress);
+        mTxtPatientDistrict =findViewById(R.id.cVItxtPatientDistrict);
+        mTxtFacilityName =findViewById(R.id.cVItxtFacilityName);
+        mTxtFacilityIncharge =findViewById(R.id.cVItxtFacilityIncharge);
+        mTxtDate =findViewById(R.id.cVItxtDate);
+        mLyInput =findViewById(R.id.cVIlyInput);
+        mLyGenPhysicalEx =findViewById(R.id.cVIlyGenPhysicalEx);
         mLyGenPhysicalEx.setOnClickListener(this);
-        mIconGenPhy = (AppCompatImageView) findViewById(R.id.iconGenPhy);
-        mLyGenPhysicalxValue =findViewById(R.id.lyGenPhysicalxValue);
-        mInputWeightGenPhy =findViewById(R.id.inputWeightGenPhy);
-        mInputHeightGenPhy =findViewById(R.id.inputHeightGenPhy);
-        mInputBMIGenPhy =findViewById(R.id.inputBMIGenPhy);
-        mInputPulseGenPhy =findViewById(R.id.inputPulseGenPhy);
-        mInputBPGenPhy =findViewById(R.id.inputBPGenPhy);
-        mDropPallorGenPhy = findViewById(R.id.dropPallorGenPhy);
-        mDropJaundiceGenPhy = findViewById(R.id.dropJaundiceGenPhy);
-        mDropClubbingGenPhy = findViewById(R.id.dropClubbingGenPhy);
-        mDropLymphadenopathyGenPhy = findViewById(R.id.dropLymphadenopathyGenPhy);
-        mDropPOedemaGenPhy = findViewById(R.id.dropPOedemaGenPhy);
-        mLySysExa =findViewById(R.id.lySysExa);
+        mIconGenPhy = findViewById(R.id.cVIiconGenPhy);
+        mLyGenPhysicalxValue =findViewById(R.id.cVIlyGenPhysicalxValue);
+        mInputWeightGenPhy =findViewById(R.id.cVIinputWeightGenPhy);
+        mInputHeightGenPhy =findViewById(R.id.cVIinputHeightGenPhy);
+        mInputBMIGenPhy =findViewById(R.id.cVIinputBMIGenPhy);
+        mInputPulseGenPhy =findViewById(R.id.cVIinputPulseGenPhy);
+        mInputBPGenPhy =findViewById(R.id.cVIinputBPGenPhy);
+     
+        mLySysExa =findViewById(R.id.cVIlySysExa);
         mLySysExa.setOnClickListener(this);
-        mIconSysExa = (AppCompatImageView) findViewById(R.id.iconSysExa);
-        mLySysExaValue =findViewById(R.id.lySysExaValue);
-        mDropChestSysExa = findViewById(R.id.dropChestSysExa);
-        mDropCVSSysExa = findViewById(R.id.dropCVSSysExa);
-        mDropPAbdomenSysExa = findViewById(R.id.dropPAbdomenSysExa);
-        mDropCNSSysExa = findViewById(R.id.dropCNSSysExa);
-        mDropHearingSysExa = findViewById(R.id.dropHearingSysExa);
-        mInputRightEyeSysExa =findViewById(R.id.inputRightEyeSysExa);
-        mInputLeftEyeSysExa =findViewById(R.id.inputLeftEyeSysExa);
-        mDropColourBlindnesSysExa = findViewById(R.id.dropColourBlindnesSysExa);
-        mDropDentalSysExa = findViewById(R.id.dropDentalSysExa);
-        mDropGenitalSysExa = findViewById(R.id.dropGenitalSysExa);
-        mInputBreastSysExa =findViewById(R.id.inputBreastSysExa);
-        mLyMandatoryInvest =findViewById(R.id.lyMandatoryInvest);
+        mIconSysExa = findViewById(R.id.cVIiconSysExa);
+        mLySysExaValue =findViewById(R.id.cVIlySysExaValue);
+        mDropChestSysExa = findViewById(R.id.cVIdropChestSysExa);
+        mDropCVSSysExa = findViewById(R.id.cVIdropCVSSysExa);
+        mDropPAbdomenSysExa = findViewById(R.id.cVIdropPAbdomenSysExa);
+        mDropCNSSysExa = findViewById(R.id.cVIdropCNSSysExa);
+        mDropHearingSysExa = findViewById(R.id.cVIdropHearingSysExa);
+        mInputRightEyeSysExa =findViewById(R.id.cVIinputRightEyeSysExa);
+        mInputLeftEyeSysExa =findViewById(R.id.cVIinputLeftEyeSysExa);
+        mDropColourBlindnesSysExa = findViewById(R.id.cVIdropColourBlindnesSysExa);
+        mDropDentalSysExa = findViewById(R.id.cVIdropDentalSysExa);
+        mDropGenitalSysExa = findViewById(R.id.cVIdropGenitalSysExa);
+        mInputBreastSysExa =findViewById(R.id.cVIinputBreastSysExa);
+        mLyMandatoryInvest =findViewById(R.id.cVIlyMandatoryInvest);
         mLyMandatoryInvest.setOnClickListener(this);
-        mIconMandatoryInvest = findViewById(R.id.iconMandatoryInvest);
-        mLyMandatoryInvestValue =findViewById(R.id.lyMandatoryInvestValue);
-        mChkHBMandatoryInvest = findViewById(R.id.chkHBMandatoryInvest);
-        mInputHBMandatoryInvest =findViewById(R.id.inputHBMandatoryInvest);
-        mChkTLCMandatoryInvest = findViewById(R.id.chkTLCMandatoryInvest);
-        mInputTLCMandatoryInvest =findViewById(R.id.inputTLCMandatoryInvest);
-        mChkDLCMandatoryInvest = findViewById(R.id.chkDLCMandatoryInvest);
-        mInputDLCNeutrophilsMandatoryInvest =findViewById(R.id.inputDLCNeutrophilsMandatoryInvest);
-        mInputLymphocytesMandatoryInvest =findViewById(R.id.inputLymphocytesMandatoryInvest);
-        mInputDLCMonocytesMandatoryInvest =findViewById(R.id.inputDLCMonocytesMandatoryInvest);
-        mInputDLCEosinophilsMandatoryInvest =findViewById(R.id.inputDLCEosinophilsMandatoryInvest);
-        mInputDLCBasophilsMandatoryInvest =findViewById(R.id.inputDLCBasophilsMandatoryInvest);
-        mChkPackedCellMandatoryInvest = findViewById(R.id.chkPackedCellMandatoryInvest);
-        mInputPackedCellMandatoryInvest =findViewById(R.id.inputPackedCellMandatoryInvest);
-        mChkCorpuscularMandatoryInvest = findViewById(R.id.chkCorpuscularMandatoryInvest);
-        mInputCorpuscularMandatoryInvest =findViewById(R.id.inputCorpuscularMandatoryInvest);
-        mChkCorpuscularHBMandatoryInvest = findViewById(R.id.chkCorpuscularHBMandatoryInvest);
-        mInputCorpuscularHBMandatoryInvest =findViewById(R.id.inputCorpuscularHBMandatoryInvest);
-        mChkHBConcentrationMandatoryInvest = findViewById(R.id.chkHBConcentrationMandatoryInvest);
-        mInputHBConcentrationMandatoryInvest =findViewById(R.id.inputHBConcentrationMandatoryInvest);
-        mChkPlateletMandatoryInvest = findViewById(R.id.chkPlateletMandatoryInvest);
-        mInputPlateletMandatoryInvest =findViewById(R.id.inputPlateletMandatoryInvest);
-        mChkRDWMandatoryInvest = findViewById(R.id.chkRDWMandatoryInvest);
-        mInputRDWMandatoryInvest =findViewById(R.id.inputRDWMandatoryInvest);
-        mChkRDWSDMandatoryInvest = findViewById(R.id.chkRDWSDMandatoryInvest);
-        mInputRDWSDMandatoryInvest =findViewById(R.id.inputRDWSDMandatoryInvest);
-        mChkRbcCountMandatoryInvest = findViewById(R.id.chkRbcCountMandatoryInvest);
-        mInputRbcCountMandatoryInvest =findViewById(R.id.inputRbcCountMandatoryInvest);
-        mChkRBSMandatoryInvest = findViewById(R.id.chkRBSMandatoryInvest);
-        mInputRBSMandatoryInvest =findViewById(R.id.inputRBSMandatoryInvest);
-        mChkCholesterolMandatoryInvest = findViewById(R.id.chkCholesterolMandatoryInvest);
-        mInputCholesterolMandatoryInvest =findViewById(R.id.inputCholesterolMandatoryInvest);
-        mChkBloodUreaMandatoryInvest = findViewById(R.id.chkBloodUreaMandatoryInvest);
-        mInputBloodUreaMandatoryInvest =findViewById(R.id.inputBloodUreaMandatoryInvest);
-        mChkCreatinineMandatoryInvest = findViewById(R.id.chkCreatinineMandatoryInvest);
-        mInputCreatinineMandatoryInvest =findViewById(R.id.inputCreatinineMandatoryInvest);
-        mChkUrineMandatoryInvest = findViewById(R.id.chkUrineMandatoryInvest);
-        mInputUrineMandatoryInvest =findViewById(R.id.inputUrineMandatoryInvest);
-        mChkAdvisedMandatoryInvest = findViewById(R.id.chkAdvisedMandatoryInvest);
-        mInputAdvisedMandatoryInvest =findViewById(R.id.inputAdvisedMandatoryInvest);
-        mLyDiagnosis =findViewById(R.id.lyDiagnosis);
+        mIconMandatoryInvest = findViewById(R.id.cVIiconMandatoryInvest);
+        mLyMandatoryInvestValue =findViewById(R.id.cVIlyMandatoryInvestValue);
+        mChkHBMandatoryInvest = findViewById(R.id.cVIchkHBMandatoryInvest);
+        mInputHBMandatoryInvest =findViewById(R.id.cVIinputHBMandatoryInvest);
+        mChkTLCMandatoryInvest = findViewById(R.id.cVIchkTLCMandatoryInvest);
+        mInputTLCMandatoryInvest =findViewById(R.id.cVIinputTLCMandatoryInvest);
+        mChkDLCMandatoryInvest = findViewById(R.id.cVIchkDLCMandatoryInvest);
+        mInputDLCNeutrophilsMandatoryInvest =findViewById(R.id.cVIinputDLCNeutrophilsMandatoryInvest);
+        mInputLymphocytesMandatoryInvest =findViewById(R.id.cVIinputLymphocytesMandatoryInvest);
+        mInputDLCMonocytesMandatoryInvest =findViewById(R.id.cVIinputDLCMonocytesMandatoryInvest);
+        mInputDLCEosinophilsMandatoryInvest =findViewById(R.id.cVIinputDLCEosinophilsMandatoryInvest);
+        mInputDLCBasophilsMandatoryInvest =findViewById(R.id.cVIinputDLCBasophilsMandatoryInvest);
+        mChkPackedCellMandatoryInvest = findViewById(R.id.cVIchkPackedCellMandatoryInvest);
+        mInputPackedCellMandatoryInvest =findViewById(R.id.cVIinputPackedCellMandatoryInvest);
+        mChkCorpuscularMandatoryInvest = findViewById(R.id.cVIchkCorpuscularMandatoryInvest);
+        mInputCorpuscularMandatoryInvest =findViewById(R.id.cVIinputCorpuscularMandatoryInvest);
+        mChkCorpuscularHBMandatoryInvest = findViewById(R.id.cVIchkCorpuscularHBMandatoryInvest);
+        mInputCorpuscularHBMandatoryInvest =findViewById(R.id.cVIinputCorpuscularHBMandatoryInvest);
+        mChkHBConcentrationMandatoryInvest = findViewById(R.id.cVIchkHBConcentrationMandatoryInvest);
+        mInputHBConcentrationMandatoryInvest =findViewById(R.id.cVIinputHBConcentrationMandatoryInvest);
+        mChkPlateletMandatoryInvest = findViewById(R.id.cVIchkPlateletMandatoryInvest);
+        mInputPlateletMandatoryInvest =findViewById(R.id.cVIinputPlateletMandatoryInvest);
+        mChkRDWMandatoryInvest = findViewById(R.id.cVIchkRDWMandatoryInvest);
+        mInputRDWMandatoryInvest =findViewById(R.id.cVIinputRDWMandatoryInvest);
+        mChkRDWSDMandatoryInvest = findViewById(R.id.cVIchkRDWSDMandatoryInvest);
+        mInputRDWSDMandatoryInvest =findViewById(R.id.cVIinputRDWSDMandatoryInvest);
+        mChkRbcCountMandatoryInvest = findViewById(R.id.cVIchkRbcCountMandatoryInvest);
+        mInputRbcCountMandatoryInvest =findViewById(R.id.cVIinputRbcCountMandatoryInvest);
+        mChkRBSMandatoryInvest = findViewById(R.id.cVIchkRBSMandatoryInvest);
+        mInputRBSMandatoryInvest =findViewById(R.id.cVIinputRBSMandatoryInvest);
+        mChkCholesterolMandatoryInvest = findViewById(R.id.cVIchkCholesterolMandatoryInvest);
+        mInputCholesterolMandatoryInvest =findViewById(R.id.cVIinputCholesterolMandatoryInvest);
+        mChkBloodUreaMandatoryInvest = findViewById(R.id.cVIchkBloodUreaMandatoryInvest);
+        mInputBloodUreaMandatoryInvest =findViewById(R.id.cVIinputBloodUreaMandatoryInvest);
+        mChkCreatinineMandatoryInvest = findViewById(R.id.cVIchkCreatinineMandatoryInvest);
+        mInputCreatinineMandatoryInvest =findViewById(R.id.cVIinputCreatinineMandatoryInvest);
+        mChkUrineMandatoryInvest = findViewById(R.id.cVIchkUrineMandatoryInvest);
+        mInputUrineMandatoryInvest =findViewById(R.id.cVIinputUrineMandatoryInvest);
+        mChkAdvisedMandatoryInvest = findViewById(R.id.cVIchkAdvisedMandatoryInvest);
+        mInputAdvisedMandatoryInvest =findViewById(R.id.cVIinputAdvisedMandatoryInvest);
+        mLyDiagnosis =findViewById(R.id.cVIlyDiagnosis);
         mLyDiagnosis.setOnClickListener(this);
-        mIconDiagnosis = (AppCompatImageView) findViewById(R.id.iconDiagnosis);
-        mLyDiagnosisValue =findViewById(R.id.lyDiagnosisValue);
-        mDropDiagnosis = findViewById(R.id.dropDiagnosis);
-        mChkDAlreadyKnown = findViewById(R.id.chkDAlreadyKnown);
-        mLyPrescription =findViewById(R.id.lyPrescription);
+        mIconDiagnosis = findViewById(R.id.cVIiconDiagnosis);
+        mLyDiagnosisValue =findViewById(R.id.cVIlyDiagnosisValue);
+        mDropDiagnosis = findViewById(R.id.cVIdropDiagnosis);
+        mChkDAlreadyKnown = findViewById(R.id.cVIchkDAlreadyKnown);
+        mLyPrescription =findViewById(R.id.cVIlyPrescription);
         mLyPrescription.setOnClickListener(this);
-        mIconPrescription = (AppCompatImageView) findViewById(R.id.iconPrescription);
-        mLyPrescriptionValue =findViewById(R.id.lyPrescriptionValue);
-        mInputPrescription =findViewById(R.id.inputPrescription);
+        mIconPrescription = findViewById(R.id.cVIiconPrescription);
+        mLyPrescriptionValue =findViewById(R.id.cVIlyPrescriptionValue);
+        mInputPrescription =findViewById(R.id.cVIinputPrescription);
+
+        cVIlySystomComplainExa=findViewById(R.id.cVIlySystomComplainExa);
+        cVIlySystomComplainExa.setOnClickListener(this);
+        cVIiconSysComp=findViewById(R.id.cVIiconSysComp);
+        cVIlySysCompValue=findViewById(R.id.cVIlySysCompValue);
     }
+
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.lyGenPhysicalEx) {
+        if (view.getId() == R.id.cVIlyGenPhysicalEx) {
             if(mClickOne)
             {
                 mShowHideLayouts(0);
@@ -254,7 +259,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickOne=true;
             }
         }
-        if (view.getId() == R.id.lySysExa) {
+        if (view.getId() == R.id.cVIlySysExa) {
             if(mClickTwo)
             {
                 mShowHideLayouts(1);
@@ -264,7 +269,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickTwo=true;
             }
         }
-        if (view.getId() == R.id.lyMandatoryInvest) {
+        if (view.getId() == R.id.cVIlyMandatoryInvest) {
             if(mClickThree)
             {
                 mShowHideLayouts(2);
@@ -274,7 +279,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickThree=true;
             }
         }
-        if (view.getId() == R.id.lyDiagnosis) {
+        if (view.getId() == R.id.cVIlyDiagnosis) {
             if(mClickFour)
             {
                 mShowHideLayouts(3);
@@ -284,7 +289,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickFour=true;
             }
         }
-        if (view.getId() == R.id.lyPrescription) {
+        if (view.getId() == R.id.cVIlyPrescription) {
             if(mClickFive)
             {
                 mShowHideLayouts(4);
@@ -294,12 +299,25 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickFive=true;
             }
         }
+        if (view.getId() == R.id.cVIlySystomComplainExa) {
+            if(mClickFive)
+            {
+                mShowHideLayouts(5);
+                mClickSix=false;
+            }else {
+                mShowHideLayoutsAll();
+                mClickSix=true;
+            }
+        }
+
+
     }
 
     private void mShowHideLayouts(int clicked)
     {
         if(clicked==0)
         {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -311,8 +329,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
+            cVIlySysCompValue.setVisibility(View.GONE);
+
         }else if(clicked==1)
         {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
             mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -324,9 +345,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
+            cVIlySysCompValue.setVisibility(View.GONE);
         }
         else if(clicked==2)
         {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
@@ -338,9 +361,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             mLyMandatoryInvestValue.setVisibility(View.VISIBLE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
+            cVIlySysCompValue.setVisibility(View.GONE);
         }
         else if(clicked==3)
         {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -352,9 +377,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.VISIBLE);
             mLyPrescriptionValue.setVisibility(View.GONE);
+            cVIlySysCompValue.setVisibility(View.GONE);
         }
         else if(clicked==4)
         {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -366,12 +393,30 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.VISIBLE);
+            cVIlySysCompValue.setVisibility(View.GONE);
+        }
+        else if(clicked==5)
+        {
+            cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
+            mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
+            mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
+            mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
+            mIconDiagnosis.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
+            mIconPrescription.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
+
+            mLyGenPhysicalxValue.setVisibility(View.GONE);
+            mLySysExaValue.setVisibility(View.GONE);
+            mLyMandatoryInvestValue.setVisibility(View.GONE);
+            mLyDiagnosisValue.setVisibility(View.GONE);
+            mLyPrescriptionValue.setVisibility(View.GONE);
+            cVIlySysCompValue.setVisibility(View.VISIBLE);
         }
 
     }
 
     private void mShowHideLayoutsAll()
     {
+        cVIiconSysComp.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
         mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
         mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
         mIconMandatoryInvest.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -382,6 +427,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
         mLyMandatoryInvestValue.setVisibility(View.GONE);
         mLyDiagnosisValue.setVisibility(View.GONE);
         mLyPrescriptionValue.setVisibility(View.GONE);
+        cVIlySysCompValue.setVisibility(View.GONE);
 
     }
 }

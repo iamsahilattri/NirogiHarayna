@@ -5,16 +5,12 @@
     android:layout_height="match_parent">
     <include layout="@layout/tool_bar_back"/>
 
-
-
-
-
     <RelativeLayout
-        android:id="@+id/relMain"
+        android:id="@+id/cIVrelMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeDown"
+            android:id="@+id/cIVswipeDown"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_marginBottom="50dp"
@@ -29,7 +25,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:id="@+id/infoLy"
+                        android:id="@+id/cIVinfoLy"
                         android:layout_width="match_parent"
                         android:padding="5dp"
                         android:orientation="vertical"
@@ -56,7 +52,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientPPPID"
+                                    android:id="@+id/cIVtxtPatientPPPID"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:fontFamily="@font/dosis_medium"
@@ -85,7 +81,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientName"
+                                    android:id="@+id/cIVtxtPatientName"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:fontFamily="@font/dosis_medium"
@@ -119,7 +115,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientGenderAge"
+                                    android:id="@+id/cIVtxtPatientGenderAge"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -148,7 +144,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientMobile"
+                                    android:id="@+id/cIVtxtPatientMobile"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -185,7 +181,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientAddress"
+                                    android:id="@+id/cIVtxtPatientAddress"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -215,7 +211,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtPatientDistrict"
+                                    android:id="@+id/cIVtxtPatientDistrict"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -253,7 +249,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtFacilityName"
+                                    android:id="@+id/cIVtxtFacilityName"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -283,7 +279,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtFacilityIncharge"
+                                    android:id="@+id/cIVtxtFacilityIncharge"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -320,7 +316,7 @@
                                 </androidx.appcompat.widget.AppCompatTextView>
 
                                 <androidx.appcompat.widget.AppCompatTextView
-                                    android:id="@+id/txtDate"
+                                    android:id="@+id/cIVtxtDate"
                                     android:layout_width="match_parent"
                                     android:text="---"
                                     android:layout_marginStart="5dp"
@@ -334,14 +330,14 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/lyInput"
+                        android:id="@+id/cIVlyInput"
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:layout_margin="10dp"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
-                            android:id="@+id/lyGenPhysicalEx"
+                            android:id="@+id/cIVlyGenPhysicalEx"
                             android:background="@drawable/outline_entry_view"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
@@ -365,14 +361,14 @@
                                     android:layout_height="wrap_content"/>
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/iconGenPhy"
+                                    android:id="@+id/cIViconGenPhy"
                                     android:layout_width="wrap_content"
                                     android:background="@drawable/baseline_keyboard_arrow_down"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/lyGenPhysicalxValue"
+                                android:id="@+id/cIVlyGenPhysicalxValue"
                                 android:layout_width="match_parent"
                                 android:orientation="vertical"
                                 android:layout_marginStart="1dp"
@@ -404,7 +400,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputWeightGenPhy"
+                                            android:id="@+id/cIVinputWeightGenPhy"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -438,7 +434,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputHeightGenPhy"
+                                            android:id="@+id/cIVinputHeightGenPhy"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -478,7 +474,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputBMIGenPhy"
+                                            android:id="@+id/cIVinputBMIGenPhy"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -512,7 +508,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputPulseGenPhy"
+                                            android:id="@+id/cIVinputPulseGenPhy"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -552,7 +548,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputBPGenPhy"
+                                            android:id="@+id/cIVinputBPGenPhy"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -593,7 +589,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropPallorGenPhy"
+                                                android:id="@+id/cIVdropPallorGenPhy"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -633,7 +629,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropJaundiceGenPhy"
+                                                android:id="@+id/cIVdropJaundiceGenPhy"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -667,7 +663,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropClubbingGenPhy"
+                                                android:id="@+id/cIVdropClubbingGenPhy"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -707,7 +703,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropLymphadenopathyGenPhy"
+                                                android:id="@+id/cIVdropLymphadenopathyGenPhy"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -741,7 +737,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropPOedemaGenPhy"
+                                                android:id="@+id/cIVdropPOedemaGenPhy"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -757,7 +753,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/lySysExa"
+                            android:id="@+id/cIVlySysExa"
                             android:background="@drawable/outline_entry_view"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
@@ -782,14 +778,14 @@
                                     android:layout_height="wrap_content"/>
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/iconSysExa"
+                                    android:id="@+id/cIViconSysExa"
                                     android:layout_width="wrap_content"
                                     android:background="@drawable/baseline_keyboard_arrow_down"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/lySysExaValue"
+                                android:id="@+id/cIVlySysExaValue"
                                 android:layout_width="match_parent"
                                 android:orientation="vertical"
                                 android:layout_marginStart="1dp"
@@ -827,7 +823,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropChestSysExa"
+                                                android:id="@+id/cIVdropChestSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -860,7 +856,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropCVSSysExa"
+                                                android:id="@+id/cIVdropCVSSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -900,7 +896,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropPAbdomenSysExa"
+                                                android:id="@+id/cIVdropPAbdomenSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -934,7 +930,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropCNSSysExa"
+                                                android:id="@+id/cIVdropCNSSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -974,7 +970,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropHearingSysExa"
+                                                android:id="@+id/cIVdropHearingSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -1026,7 +1022,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputRightEyeSysExa"
+                                            android:id="@+id/cIVinputRightEyeSysExa"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1059,7 +1055,7 @@
                                         </androidx.appcompat.widget.AppCompatTextView>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputLeftEyeSysExa"
+                                            android:id="@+id/cIVinputLeftEyeSysExa"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1098,7 +1094,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropColourBlindnesSysExa"
+                                                android:id="@+id/cIVdropColourBlindnesSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -1139,7 +1135,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropDentalSysExa"
+                                                android:id="@+id/cIVdropDentalSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -1173,7 +1169,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropGenitalSysExa"
+                                                android:id="@+id/cIVdropGenitalSysExa"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -1207,7 +1203,7 @@
 
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputBreastSysExa"
+                                            android:id="@+id/cIVinputBreastSysExa"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1228,7 +1224,7 @@
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/lyMandatoryInvest"
+                            android:id="@+id/cIVlyMandatoryInvest"
                             android:background="@drawable/outline_entry_view"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
@@ -1253,14 +1249,14 @@
                                     android:layout_height="wrap_content"/>
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/iconMandatoryInvest"
+                                    android:id="@+id/cIViconMandatoryInvest"
                                     android:layout_width="wrap_content"
                                     android:background="@drawable/baseline_keyboard_arrow_down"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/lyMandatoryInvestValue"
+                                android:id="@+id/cIVlyMandatoryInvestValue"
                                 android:layout_width="match_parent"
                                 android:orientation="vertical"
                                 android:layout_marginStart="1dp"
@@ -1284,7 +1280,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkHBMandatoryInvest"
+                                            android:id="@+id/cIVchkHBMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_1_hb_in_g_dl"
                                             android:layout_marginStart="5dp"
@@ -1295,7 +1291,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputHBMandatoryInvest"
+                                            android:id="@+id/cIVinputHBMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1316,7 +1312,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkTLCMandatoryInvest"
+                                            android:id="@+id/cIVchkTLCMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_2_tlc_cumn"
                                             android:layout_marginStart="5dp"
@@ -1327,7 +1323,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputTLCMandatoryInvest"
+                                            android:id="@+id/cIVinputTLCMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1355,7 +1351,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkDLCMandatoryInvest"
+                                            android:id="@+id/cIVchkDLCMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_3_dlc"
                                             android:layout_marginStart="5dp"
@@ -1387,7 +1383,7 @@
 
 
                                                 <androidx.appcompat.widget.AppCompatEditText
-                                                    android:id="@+id/inputDLCNeutrophilsMandatoryInvest"
+                                                    android:id="@+id/cIVinputDLCNeutrophilsMandatoryInvest"
                                                     android:layout_width="match_parent"
                                                     android:padding="8dp"
                                                     android:layout_marginTop="5dp"
@@ -1417,7 +1413,7 @@
 
 
                                                 <androidx.appcompat.widget.AppCompatEditText
-                                                    android:id="@+id/inputLymphocytesMandatoryInvest"
+                                                    android:id="@+id/cIVinputLymphocytesMandatoryInvest"
                                                     android:layout_width="match_parent"
                                                     android:padding="8dp"
                                                     android:layout_marginTop="5dp"
@@ -1447,7 +1443,7 @@
 
 
                                                 <androidx.appcompat.widget.AppCompatEditText
-                                                    android:id="@+id/inputDLCMonocytesMandatoryInvest"
+                                                    android:id="@+id/cIVinputDLCMonocytesMandatoryInvest"
                                                     android:layout_width="match_parent"
                                                     android:padding="8dp"
                                                     android:layout_marginTop="5dp"
@@ -1484,7 +1480,7 @@
 
 
                                                 <androidx.appcompat.widget.AppCompatEditText
-                                                    android:id="@+id/inputDLCEosinophilsMandatoryInvest"
+                                                    android:id="@+id/cIVinputDLCEosinophilsMandatoryInvest"
                                                     android:layout_width="match_parent"
                                                     android:padding="8dp"
                                                     android:layout_marginTop="5dp"
@@ -1514,7 +1510,7 @@
 
 
                                                 <androidx.appcompat.widget.AppCompatEditText
-                                                    android:id="@+id/inputDLCBasophilsMandatoryInvest"
+                                                    android:id="@+id/cIVinputDLCBasophilsMandatoryInvest"
                                                     android:layout_width="match_parent"
                                                     android:padding="8dp"
                                                     android:layout_marginTop="5dp"
@@ -1546,7 +1542,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkPackedCellMandatoryInvest"
+                                            android:id="@+id/cIVchkPackedCellMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_4_packed_cell_volume_in_l_l"
                                             android:layout_marginStart="5dp"
@@ -1557,7 +1553,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputPackedCellMandatoryInvest"
+                                            android:id="@+id/cIVinputPackedCellMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1578,7 +1574,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkCorpuscularMandatoryInvest"
+                                            android:id="@+id/cIVchkCorpuscularMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_5_mean_corpuscular_volume_in_fl"
                                             android:layout_marginStart="5dp"
@@ -1589,7 +1585,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputCorpuscularMandatoryInvest"
+                                            android:id="@+id/cIVinputCorpuscularMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1616,7 +1612,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkCorpuscularHBMandatoryInvest"
+                                            android:id="@+id/cIVchkCorpuscularHBMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_6_mean_corpuscular_hemoglobin_in_pg"
                                             android:layout_marginStart="5dp"
@@ -1627,7 +1623,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputCorpuscularHBMandatoryInvest"
+                                            android:id="@+id/cIVinputCorpuscularHBMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1648,7 +1644,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkHBConcentrationMandatoryInvest"
+                                            android:id="@+id/cIVchkHBConcentrationMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_7_mean_corpuscular_hemoglobin_concentration_in_g_l"
                                             android:layout_marginStart="5dp"
@@ -1659,7 +1655,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputHBConcentrationMandatoryInvest"
+                                            android:id="@+id/cIVinputHBConcentrationMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1686,7 +1682,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkPlateletMandatoryInvest"
+                                            android:id="@+id/cIVchkPlateletMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_8_platelet_count_per_m"
                                             android:layout_marginStart="5dp"
@@ -1697,7 +1693,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputPlateletMandatoryInvest"
+                                            android:id="@+id/cIVinputPlateletMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1718,7 +1714,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkRDWMandatoryInvest"
+                                            android:id="@+id/cIVchkRDWMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_9_rdw_cv_in"
                                             android:layout_marginStart="5dp"
@@ -1729,7 +1725,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputRDWMandatoryInvest"
+                                            android:id="@+id/cIVinputRDWMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1756,7 +1752,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkRDWSDMandatoryInvest"
+                                            android:id="@+id/cIVchkRDWSDMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_10_rdw_sd_in"
                                             android:layout_marginStart="5dp"
@@ -1767,7 +1763,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputRDWSDMandatoryInvest"
+                                            android:id="@+id/cIVinputRDWSDMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1788,7 +1784,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkRbcCountMandatoryInvest"
+                                            android:id="@+id/cIVchkRbcCountMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_11_rbc_count_in_ul"
                                             android:layout_marginStart="5dp"
@@ -1799,7 +1795,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputRbcCountMandatoryInvest"
+                                            android:id="@+id/cIVinputRbcCountMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1826,7 +1822,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkRBSMandatoryInvest"
+                                            android:id="@+id/cIVchkRBSMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_12_rbs_in_mg_dl"
                                             android:layout_marginStart="5dp"
@@ -1837,7 +1833,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputRBSMandatoryInvest"
+                                            android:id="@+id/cIVinputRBSMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1858,7 +1854,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkCholesterolMandatoryInvest"
+                                            android:id="@+id/cIVchkCholesterolMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_13_serum_cholesterol_in_mg_dl"
                                             android:layout_marginStart="5dp"
@@ -1869,7 +1865,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputCholesterolMandatoryInvest"
+                                            android:id="@+id/cIVinputCholesterolMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1896,7 +1892,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkBloodUreaMandatoryInvest"
+                                            android:id="@+id/cIVchkBloodUreaMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_14_blood_urea_in_mg_dl"
                                             android:layout_marginStart="5dp"
@@ -1907,7 +1903,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputBloodUreaMandatoryInvest"
+                                            android:id="@+id/cIVinputBloodUreaMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1928,7 +1924,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkCreatinineMandatoryInvest"
+                                            android:id="@+id/cIVchkCreatinineMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_15_serum_creatinine_in_mg_dl"
                                             android:layout_marginStart="5dp"
@@ -1939,7 +1935,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputCreatinineMandatoryInvest"
+                                            android:id="@+id/cIVinputCreatinineMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1966,7 +1962,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkUrineMandatoryInvest"
+                                            android:id="@+id/cIVchkUrineMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_16_urine_routine_examination"
                                             android:layout_marginStart="5dp"
@@ -1977,7 +1973,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputUrineMandatoryInvest"
+                                            android:id="@+id/cIVinputUrineMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -1998,7 +1994,7 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkAdvisedMandatoryInvest"
+                                            android:id="@+id/cIVchkAdvisedMandatoryInvest"
                                             android:layout_width="wrap_content"
                                             android:text="@string/_17_relevant_investigation_if_advised_by_specialist"
                                             android:layout_marginStart="5dp"
@@ -2009,7 +2005,7 @@
                                         </androidx.appcompat.widget.AppCompatCheckBox>
 
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputAdvisedMandatoryInvest"
+                                            android:id="@+id/cIVinputAdvisedMandatoryInvest"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -2028,7 +2024,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/lyDiagnosis"
+                            android:id="@+id/cIVlyDiagnosis"
                             android:background="@drawable/outline_entry_view"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
@@ -2053,14 +2049,14 @@
                                     android:layout_height="wrap_content"/>
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/iconDiagnosis"
+                                    android:id="@+id/cIViconDiagnosis"
                                     android:layout_width="wrap_content"
                                     android:background="@drawable/baseline_keyboard_arrow_down"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/lyDiagnosisValue"
+                                android:id="@+id/cIVlyDiagnosisValue"
                                 android:layout_width="match_parent"
                                 android:orientation="vertical"
                                 android:layout_marginStart="1dp"
@@ -2100,7 +2096,7 @@
                                             android:background="@drawable/gray_rect"
                                             android:layout_height="wrap_content">
                                             <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/dropDiagnosis"
+                                                android:id="@+id/cIVdropDiagnosis"
                                                 android:layout_width="match_parent"
                                                 android:padding="6dp"
                                                 android:theme="@style/SpinnerTheme"
@@ -2118,7 +2114,7 @@
                                         android:visibility="visible"
                                         android:layout_height="wrap_content">
                                         <androidx.appcompat.widget.AppCompatCheckBox
-                                            android:id="@+id/chkDAlreadyKnown"
+                                            android:id="@+id/cIVchkDAlreadyKnown"
                                             android:layout_width="wrap_content"
                                             android:text="Already Known"
                                             android:layout_marginStart="5dp"
@@ -2140,7 +2136,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/lyPrescription"
+                            android:id="@+id/cIVlyPrescription"
                             android:background="@drawable/outline_entry_view"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
@@ -2165,14 +2161,14 @@
                                     android:layout_height="wrap_content"/>
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/iconPrescription"
+                                    android:id="@+id/cIViconPrescription"
                                     android:layout_width="wrap_content"
                                     android:background="@drawable/baseline_keyboard_arrow_down"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/lyPrescriptionValue"
+                                android:id="@+id/cIVlyPrescriptionValue"
                                 android:layout_width="match_parent"
                                 android:orientation="vertical"
                                 android:layout_marginStart="1dp"
@@ -2205,7 +2201,7 @@
 
                                         </androidx.appcompat.widget.AppCompatTextView>
                                         <androidx.appcompat.widget.AppCompatEditText
-                                            android:id="@+id/inputPrescription"
+                                            android:id="@+id/cIVinputPrescription"
                                             android:layout_width="match_parent"
                                             android:padding="8dp"
                                             android:layout_marginTop="5dp"
@@ -2245,7 +2241,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/backPatientInput"
+                android:id="@+id/cIVbackPatientInput"
                 android:layout_width="100dp"
                 android:background="@drawable/btn_back"
                 android:orientation="horizontal"
@@ -2269,7 +2265,7 @@
                     android:textSize="15sp" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/submitPatientInput"
+                android:id="@+id/cIVsubmitPatientInput"
                 android:layout_width="100dp"
                 android:background="@drawable/btn_disable"
                 android:orientation="horizontal"
