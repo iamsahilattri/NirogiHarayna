@@ -15,8 +15,18 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.model.request.PostDataForCategoryIRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
+import com.nirogi.harayna.network.APIInterface;
+import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.NIROGI;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CategoryIPatientEntryActivity extends BaseActivity implements View.OnClickListener {
 
@@ -206,7 +216,19 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 mClickSix=true;
             }
         }
+        if (view.getId() == R.id.cIsubmitPatientInput) {
+            if(validateDataToPost())
+            {
+                postDataForCatagories();
+            }
 
+        }
+
+
+    }
+    private boolean validateDataToPost()
+    {
+        return false;
     }
 
     private void mShowHideLayouts(int clicked)
@@ -323,6 +345,57 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         mLyDiagnosisValue.setVisibility(View.GONE);
         mLyPrescriptionValue.setVisibility(View.GONE);
         lyHistoryExValue.setVisibility(View.GONE);
+
+    }
+
+
+    public void postDataForCatagories()
+    {
+        try {
+            createProgressBar(R.id.relMain);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+            PostDataForCategoryIRequest request= new PostDataForCategoryIRequest();
+
+            Call<ArrayList<PatientListModelResponse>> call = apiInterface.submitDataForSurvey(request);
+            call.enqueue(new Callback<ArrayList<PatientListModelResponse>>() {
+                @Override
+                public void onResponse(Call<ArrayList<PatientListModelResponse>> call, Response<ArrayList<PatientListModelResponse>> response) {
+                    try {
+                        if (response.isSuccessful()) {
+
+                            if(response.body().size()>0)
+                            {
+                                disableProgressBar();
+                            }else
+                            {
+                                disableProgressBar();
+                            }
+
+                        }else{
+                            disableProgressBar();
+
+                        }
+                    }catch (Exception e)
+                    {
+                        Log.e(" Exception ",""+e.getMessage());
+                        disableProgressBar();
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<PatientListModelResponse>> call, Throwable t) {
+                    mShowToast(getString(R.string.api_failure));
+                    disableProgressBar();
+                }
+            });
+
+
+        }catch (Exception ee)
+        {
+            Log.e(" Exception ",""+ee.getMessage());
+        }
 
     }
 }

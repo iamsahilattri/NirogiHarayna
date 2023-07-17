@@ -1,11 +1,9 @@
 package com.nirogi.harayna.activity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -15,15 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
-import com.nirogi.harayna.activity.category.CategoryIIIPatientEntryActivity;
-import com.nirogi.harayna.activity.category.CategoryIIPatientEntryActivity;
-import com.nirogi.harayna.activity.category.CategoryIPatientEntryActivity;
-import com.nirogi.harayna.activity.category.CategoryIVPatientEntryActivity;
-import com.nirogi.harayna.activity.category.CategoryVIPatientEntryActivity;
-import com.nirogi.harayna.activity.category.CategoryVPatientEntryActivity;
-import com.nirogi.harayna.adapter.PatientListAdapter;
-import com.nirogi.harayna.model.request.SearchPPPIDRequest;
-import com.nirogi.harayna.model.response.PatientListModelResponse;
+import com.nirogi.harayna.adapter.PatientDetailRefrenceIdAdapter;
+import com.nirogi.harayna.model.request.SearchReferenceIDRRequest;
+import com.nirogi.harayna.model.response.ReferenceIdResponse;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
@@ -36,30 +28,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchedPPPIDDetails extends BaseActivity {
+public class SearchedReferenceIdDetails extends BaseActivity {
+
+    private String referenceId;
 
     private RecyclerView recyclerPatientList;
     private SharedPreferences preferences;
     private SwipeRefreshLayout swipeDown;
     private TextView noDataLy;
-    private String PPPID;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searched_pppid);
-        preferences= NIROGI.getInstance().getPreferences();
-        mSetBackToolbar("Patient List",false,"");
+
+        mSetBackToolbar("Patient",false,"");
         initViews();
         setRecyclerFromIntentData();
+
     }
+
 
     private void setRecyclerFromIntentData()
     {
         if(getIntent()!=null)
         {
-            PPPID=getIntent().getStringExtra("PPPID");
-            ArrayList<PatientListModelResponse> intentDataList =(ArrayList<PatientListModelResponse>)getIntent().getSerializableExtra("mData");
+            referenceId=getIntent().getStringExtra("referenceId");
+            ArrayList<ReferenceIdResponse> intentDataList =(ArrayList<ReferenceIdResponse>)getIntent().getSerializableExtra("mData");
             Log.e(" mDataList Size ",""+intentDataList.size());
             mSetRecyclerData(intentDataList);
         }
@@ -75,7 +69,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
             public void onRefresh() {
                 if(isNetworkAvailable())
                 {
-                    getPatientList();
+                    getPatientListWithRefID(referenceId);
                 }
                 swipeDown.setRefreshing(false);
 
@@ -91,36 +85,31 @@ public class SearchedPPPIDDetails extends BaseActivity {
 
     }
 
-
-    public void getPatientList()
+    public void getPatientListWithRefID(String inputTextPPP)
     {
         try {
             createProgressBar(R.id.relMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
-            SearchPPPIDRequest request= new SearchPPPIDRequest();
-            request.setPppId(PPPID);
-            Call<ArrayList<PatientListModelResponse>> call = apiInterface.getSearchedPPPIDPatients(request);
-            call.enqueue(new Callback<ArrayList<PatientListModelResponse>>() {
+            SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
+            request.setReferenceId(inputTextPPP);
+            Call<ArrayList<ReferenceIdResponse>> call = apiInterface.getSearchedRefIDPatients(request);
+            call.enqueue(new Callback<ArrayList<ReferenceIdResponse>>() {
                 @Override
-                public void onResponse(Call<ArrayList<PatientListModelResponse>> call, Response<ArrayList<PatientListModelResponse>> response) {
+                public void onResponse(Call<ArrayList<ReferenceIdResponse>> call, Response<ArrayList<ReferenceIdResponse>> response) {
                     try {
                         if (response.isSuccessful()) {
 
                             if(response.body().size()>0)
                             {
-                                ArrayList<PatientListModelResponse> mDataList= new ArrayList<>(response.body());
-                                mSetRecyclerData(mDataList);
+                                
                                 disableProgressBar();
                             }else
                             {
-                                noDataLy.setVisibility(View.VISIBLE);
-                                recyclerPatientList.setVisibility(View.GONE);
                                 disableProgressBar();
                             }
 
                         }else{
                             disableProgressBar();
-
                         }
                     }catch (Exception e)
                     {
@@ -132,7 +121,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ArrayList<PatientListModelResponse>> call, Throwable t) {
+                public void onFailure(Call<ArrayList<ReferenceIdResponse>> call, Throwable t) {
                     mShowToast(getString(R.string.api_failure));
                     disableProgressBar();
                 }
@@ -146,11 +135,11 @@ public class SearchedPPPIDDetails extends BaseActivity {
 
     }
 
-    private void mSetRecyclerData(ArrayList<PatientListModelResponse> populateData)
+    private void mSetRecyclerData(ArrayList<ReferenceIdResponse> populateData)
     {
         noDataLy.setVisibility(View.GONE);
         recyclerPatientList.setVisibility(View.VISIBLE);
-        PatientListAdapter mAdapter = new PatientListAdapter(SearchedPPPIDDetails.this, populateData);
+        PatientDetailRefrenceIdAdapter mAdapter = new PatientDetailRefrenceIdAdapter(SearchedReferenceIdDetails.this, populateData);
         LinearLayoutManager layoutManager= new LinearLayoutManager(getApplicationContext());
         recyclerPatientList.setLayoutManager(layoutManager);
         recyclerPatientList.setItemAnimator(new DefaultItemAnimator());
@@ -159,40 +148,40 @@ public class SearchedPPPIDDetails extends BaseActivity {
         recyclerPatientList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerPatientList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.e("AGE GROUP",""+populateData.get(position).getAge());
-                int ageValue=Integer.parseInt(populateData.get(position).getAge());
-                if(ageValue == 0)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue >=1 && ageValue <5)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>=5 && ageValue<=18)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }
-                else if(ageValue>18 && ageValue<=40)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIVPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>40 && ageValue<=60)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>60)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }
+//                Log.e("AGE GROUP",""+populateData.get(position).getAge());
+//                int ageValue=Integer.parseInt(populateData.get(position).getAge());
+//                if(ageValue == 0)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }else if(ageValue >=1 && ageValue <5)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIIPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }else if(ageValue>=5 && ageValue<=18)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIIIPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }
+//                else if(ageValue>18 && ageValue<=40)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIVPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }else if(ageValue>40 && ageValue<=60)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryVPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }else if(ageValue>60)
+//                {
+//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryVIPatientEntryActivity.class);
+//                    mIntent.putExtra("memberData",populateData.get(position));
+//                    startActivity(mIntent);
+//                }
 
             }
 
@@ -203,9 +192,5 @@ public class SearchedPPPIDDetails extends BaseActivity {
         }));
 
     }
-
-
-
-
 
 }

@@ -52,7 +52,7 @@
             android:name=".activity.SearchedPPPIDDetails"
             android:exported="false"/>
         <activity
-            android:name=".activity.SearchedReferenceIDDetails"
+            android:name=".activity.SearchedReferenceIdDetails"
             android:exported="false"/>
         <activity
             android:name=".activity.category.CategoryIPatientEntryActivity"

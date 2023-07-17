@@ -290,6 +290,135 @@
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/lyOtherInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/dosis_regular"
+                            android:text="District*"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/gray_rect"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/spinOtherInfoDistrict"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#00000000"
+                                style="@style/SpinnerTheme"
+                                android:entries="@array/spinner_district" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                      android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="wrap_content">
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="10dp"
+                          android:fontFamily="@font/dosis_regular"
+                          android:text="Mobile Number*"
+                          android:textColor="@color/colorBlack"
+                          android:textSize="14sp" />
+
+                      <androidx.cardview.widget.CardView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="10dp"
+                          app:cardCornerRadius="5dp">
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:padding="10dp">
+
+
+                              <androidx.appcompat.widget.AppCompatEditText
+                                  android:id="@+id/enOtherMobileNo"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginStart="5dp"
+                                  android:background="#00000000"
+                                  android:fontFamily="@font/dosis_light"
+                                  android:hint="@string/enter_reference_id"
+                                  android:lines="1"
+                                  android:maxEms="12"
+                                  android:padding="5dp"
+                                  android:inputType="number"
+                                  android:text="9050221136"
+                                  android:textColor="@color/colorBlack"
+                                  android:textColorHint="@color/colorGray"
+                                  android:textSize="14sp" />
+                          </LinearLayout>
+                      </androidx.cardview.widget.CardView>
+                  </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/dosis_regular"
+                            android:text="First Name*"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/enOtherName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:background="#00000000"
+                                    android:fontFamily="@font/dosis_light"
+                                    android:hint="@string/enter_reference_id"
+                                    android:lines="1"
+                                    android:inputType="textPersonName"
+                                    android:padding="5dp"
+                                    android:text="Sargun"
+                                    android:textColor="@color/colorBlack"
+                                    android:textColorHint="@color/colorGray"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
