@@ -46,7 +46,7 @@
     <string name="test_refrence_id">Jh-PH-716634</string>
     <string name="enter_pppid">Enter PPPID</string>
 <!--    <string name="test_ppid">7HJC0068</string>-->
-    <string name="test_ppid">1TSG7151</string>
+    <string name="test_ppid">6PKC3231</string>
 
     <string name="age_gender"><![CDATA[Age & Gender]]></string>
     <string name="general_physical_examination">General Physical Examination</string>
@@ -112,6 +112,9 @@
     <string name="_12_congenital_anomalies">12. Congenital anomalies</string>
     <string name="history_symptoms_complaints">History/symptoms/complaints</string>
     <string name="_9_capillary_refill_time_3_sec"><![CDATA[9. Capillary Refill Time (< 3 sec*]]></string>
+    <string name="reference_id_">Reference Id</string>
+    <string name="dummy_line">---</string>
+    <string name="facility">Facility</string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>
@@ -126,9 +129,31 @@
         <item> Yes </item>
         <item> No</item>
     </string-array>
+    <string-array name="arr_diagnosis_cat_1">
+        <item> none </item>
+        <item> Anemia</item>
+        <item> Malnourishment</item>
+        <item> Low Birth Weight</item>
+        <item> Tuberculosis</item>
+        <item> Carcinoma</item>
+        <item> Diabetes mellitus</item>
+        <item> Hypertension</item>
+        <item> Cardiac Disease</item>
+        <item> Stroke</item>
+        <item> Others</item>
+    </string-array>
     <string-array name="arr_diagnosis">
-        <item> Yes </item>
-        <item> No</item>
+        <item> none </item>
+        <item> Anemia</item>
+        <item> Malnourishment</item>
+        <item> Low Birth Weight</item>
+        <item> Tuberculosis</item>
+        <item> Carcinoma</item>
+        <item> Diabetes mellitus</item>
+        <item> Hypertension</item>
+        <item> Cardiac Disease</item>
+        <item> Stroke</item>
+        <item> Others</item>
     </string-array>
 
     <string-array name="arr_chest">

@@ -29,25 +29,17 @@ public class PatientDetailRefrenceIdAdapter extends RecyclerView.Adapter<Patient
     @NonNull
     @Override
     public PPPViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_patient_list, parent, false);
-        PPPViewHolder viewHolder = new PPPViewHolder(view);
-
-        return viewHolder;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_patient_list_ref_id, parent, false);
+        return new PPPViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull PPPViewHolder viewHolder, int position) {
         ReferenceIdResponse bean = dataList.get(position);
-//        viewHolder.patientPPPID.setText(bean.getPppid());
-//        viewHolder.patientName.setText(bean.getFirstname() + " " + bean.getLastname());
-//        viewHolder.patientHusFather.setText(bean.getFatherhusbandfirstname() + " " + bean.getFatherhusbandlastname());
-//        viewHolder.patientAge.setText(bean.getAge()+"");
-//        viewHolder.patientGender.setText(bean.getGender());
-//        viewHolder.patientMobile.setText(bean.getMobileno()+"");
-//        viewHolder.patientAddress.setText(bean.getAddress());
-//        viewHolder.patientDistrict.setText(bean.getDistrict());
-//        viewHolder.patientIncome.setText(bean.getIncome()+"");
+        viewHolder.patientRefID.setText(bean.getReferenceid());
+        viewHolder.patientDistrict.setText(bean.getDistrict());
+        viewHolder.patientFacility.setText(bean.getFacility()+"");
 
 
     }
@@ -61,28 +53,17 @@ public class PatientDetailRefrenceIdAdapter extends RecyclerView.Adapter<Patient
 
     public static class PPPViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout mainLy;
-        private final AppCompatTextView patientPPPID;
-        private final AppCompatTextView patientName;
-        private final AppCompatTextView patientHusFather;
-        private final AppCompatTextView patientGender;
-        private final AppCompatTextView patientAge;
-        private final AppCompatTextView patientMobile;
-        private final AppCompatTextView patientAddress;
+        private final AppCompatTextView patientRefID;
         private final AppCompatTextView patientDistrict;
-        private final AppCompatTextView patientIncome;
+        private final AppCompatTextView patientFacility;
 
         public PPPViewHolder(View itemView) {
             super(itemView);
             mainLy = itemView.findViewById(R.id.mainLy);
-            patientPPPID =itemView.findViewById(R.id.patientPPPID);
-            patientName =itemView.findViewById(R.id.patientName);
-            patientHusFather =itemView.findViewById(R.id.patientHusFather);
-            patientGender =itemView.findViewById(R.id.patientGender);
-            patientAge =itemView.findViewById(R.id.patientAge);
-            patientMobile =itemView.findViewById(R.id.patientMobile);
-            patientAddress =itemView.findViewById(R.id.patientAddress);
+            patientRefID =itemView.findViewById(R.id.patientRefID);
             patientDistrict =itemView.findViewById(R.id.patientDistrict);
-            patientIncome =itemView.findViewById(R.id.patientIncome);
+            patientFacility =itemView.findViewById(R.id.patientFacility);
+
         }
     }
 

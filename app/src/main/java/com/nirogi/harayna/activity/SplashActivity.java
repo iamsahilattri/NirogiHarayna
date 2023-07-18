@@ -27,14 +27,13 @@ public class SplashActivity extends BaseActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(TextUtils.isEmpty(preferences.getString(SharedParams.USERNAME,"")))
+                if(TextUtils.isEmpty(preferences.getString(SharedParams.FNAME,"")))
                 {
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 }else
                 {
                     startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                 }
-
             }
         }, SPLASH_TIME_OUT);
 

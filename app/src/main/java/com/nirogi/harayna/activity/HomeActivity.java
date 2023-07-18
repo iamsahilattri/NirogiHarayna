@@ -1,6 +1,7 @@
 package com.nirogi.harayna.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
 import com.nirogi.harayna.utils.NIROGI;
+import com.nirogi.harayna.utils.SharedParams;
 
 import org.honorato.multistatetogglebutton.MultiStateToggleButton;
 import org.honorato.multistatetogglebutton.ToggleButton;
@@ -50,15 +52,25 @@ public class HomeActivity extends BaseActivity {
     private boolean mCheckType;
     String selDistrict,selOtherDistrict;
     private ArrayList<String> mDistrictList, mDistrictListNames;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        sharedPreferences=NIROGI.getInstance().getPreferences();
         initView();
+        initDataToView();
         initListeners();
         getDistricts();
+
+    }
+
+
+    private void initDataToView()
+    {
+        homeUserName.setText(sharedPreferences.getString(SharedParams.FNAME,"")+" "+sharedPreferences.getString(SharedParams.LNAME,""));;
     }
 
     private void initView() {
@@ -126,6 +138,19 @@ public class HomeActivity extends BaseActivity {
 
                         }
                     }
+            }
+        });
+
+        findViewById(R.id.lyLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences preferences =NIROGI.getInstance().getPreferences();
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent freshIntent= new Intent(HomeActivity.this,LoginActivity.class);
+                freshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(freshIntent);
             }
         });
     }

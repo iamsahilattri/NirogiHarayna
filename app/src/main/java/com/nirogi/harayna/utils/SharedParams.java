@@ -6,5 +6,14 @@ public interface SharedParams {
     String PREFERENCE ="com.pmjay.chiru";
 
 
-    String USERNAME = "USERNAME";
+    String FNAME = "Firstname";
+    String LNAME = "Lastname";
+    String DISTRICT = "District";
+    String FACTYPE = "FacilityType";
+    String FACILITY = "Facility";
+    String ROLE = "Role";
+    String ALG = "alg";
+    String SUB = "sub";
+    String IAT = "iat";
+    String EXP="exp";
 }

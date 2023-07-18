@@ -54,7 +54,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientPPPID"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:fontFamily="@font/dosis_medium"
                                     android:textColor="@color/valueTextColor"
                                     android:layout_marginStart="5dp"
@@ -83,7 +83,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientName"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:fontFamily="@font/dosis_medium"
                                     android:textColor="@color/valueTextColor"                                android:layout_marginStart="5dp"
                                     android:textSize="14sp"
@@ -117,7 +117,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientGenderAge"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -146,7 +146,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientMobile"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -183,7 +183,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientAddress"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -213,7 +213,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtPatientDistrict"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -251,7 +251,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtFacilityName"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -281,7 +281,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtFacilityIncharge"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"
@@ -318,7 +318,7 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/cVtxtDate"
                                     android:layout_width="match_parent"
-                                    android:text="---"
+                                   android:text="@string/dummy_line"
                                     android:layout_marginStart="5dp"
                                     android:textSize="14sp"
                                     android:fontFamily="@font/dosis_medium"

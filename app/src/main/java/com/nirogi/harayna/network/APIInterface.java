@@ -11,6 +11,7 @@ import com.nirogi.harayna.model.response.DistrictModel;
 import com.nirogi.harayna.model.response.LoginModelResponse;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferenceIdResponse;
+import com.nirogi.harayna.model.response.SubmitPatientData;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public interface APIInterface
        Call<ArrayList<PatientListModelResponse>> getSearchedPatientsFromData(@Body SearchPatientFromDataRequest modelRequest);
 
        @POST("api/v1/submitCatag2")
-       Call<ArrayList<PatientListModelResponse>> submitDataForSurvey(@Body PostDataForCategoryIRequest modelRequest);
+       Call<SubmitPatientData> submitDataForSurvey(@Body PostDataForCategoryIRequest modelRequest);
 
 
 }
