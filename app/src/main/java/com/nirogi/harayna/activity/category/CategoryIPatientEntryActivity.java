@@ -38,9 +38,6 @@ import retrofit2.Response;
 
 public class CategoryIPatientEntryActivity extends BaseActivity implements View.OnClickListener {
 
-    private RelativeLayout mRelMain;
-    private SwipeRefreshLayout mSwipeDown;
-    private LinearLayout mInfoLy;
     private AppCompatTextView mTxtPatientPPPID;
     private AppCompatTextView mTxtPatientName;
     private AppCompatTextView mTxtPatientGenderAge;
@@ -50,7 +47,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private AppCompatTextView mTxtFacilityName;
     private AppCompatTextView mTxtFacilityIncharge;
     private AppCompatTextView mTxtDate;
-    private LinearLayout mLyInput;
     private LinearLayout mLyGenPhysicalEx;
     private AppCompatImageView mIconGenPhy;
     private LinearLayout mLyGenPhysicalxValue;
@@ -118,7 +114,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private LinearLayout mCIsubmitPatientInput;
     private MultiSpinner multiSpinner;
     private String selectedDiagnosis;
-
     private String doctorName;
 
     @Override
@@ -160,9 +155,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     }
 
     private void initView() {
-        mRelMain = findViewById(R.id.cIrelMain);
-        mSwipeDown = findViewById(R.id.cIswipeDown);
-        mInfoLy = findViewById(R.id.cIinfoLy);
+
         mTxtPatientPPPID = findViewById(R.id.cItxtPatientPPPID);
         mTxtPatientName = findViewById(R.id.cItxtPatientName);
         mTxtPatientGenderAge = findViewById(R.id.cItxtPatientGenderAge);
@@ -172,7 +165,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         mTxtFacilityName = findViewById(R.id.cItxtFacilityName);
         mTxtFacilityIncharge = findViewById(R.id.cItxtFacilityIncharge);
         mTxtDate = findViewById(R.id.cItxtDate);
-        mLyInput = findViewById(R.id.cIlyInput);
         mLyGenPhysicalEx = findViewById(R.id.cIlyGenPhysicalEx);
         mLyGenPhysicalEx.setOnClickListener(this);
         mIconGenPhy = findViewById(R.id.cIiconGenPhy);
@@ -204,46 +196,45 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         iconHistory = findViewById(R.id.cIiconHistory);
         lyHistoryExValue = findViewById(R.id.cIlyHistoryExValue);
 
-        mCIdropModeDelHistory = (AppCompatSpinner) findViewById(R.id.cIdropModeDelHistory);
-        mCIdropCryBirthHistory = (AppCompatSpinner) findViewById(R.id.cIdropCryBirthHistory);
-        mCIdropPhysIllHistory = (AppCompatSpinner) findViewById(R.id.cIdropPhysIllHistory);
-        mCIdropSignHistory = (AppCompatSpinner) findViewById(R.id.cIdropSignHistory);
-        mCIdropImmunizationHistory = (AppCompatSpinner) findViewById(R.id.cIdropImmunizationHistory);
-        mCIdropFeedingHistory = (AppCompatSpinner) findViewById(R.id.cIdropFeedingHistory);
-        mCIdropTbPatientHistory = (AppCompatSpinner) findViewById(R.id.cIdropTbPatientHistory);
-        mCIdropSocialSmileHistory = (AppCompatSpinner) findViewById(R.id.cIdropSocialSmileHistory);
-        mCIdropNeckHoldingHistory = (AppCompatSpinner) findViewById(R.id.cIdropNeckHoldingHistory);
-        mCIdropSittingSupportHistory = (AppCompatSpinner) findViewById(R.id.cIdropSittingSupportHistory);
-        mCIinputWeightGenPhy = (AppCompatEditText) findViewById(R.id.cIinputWeightGenPhy);
-        mCIinputHeightGenPhy = (AppCompatEditText) findViewById(R.id.cIinputHeightGenPhy);
-        mCIinputHeadCRF = (AppCompatEditText) findViewById(R.id.cIinputHeadCRF);
-        mCIdropPallorGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropPallorGenPhy);
-        mCIdropJaundiceGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropJaundiceGenPhy);
-        mCIdropCyanosisGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropCyanosisGenPhy);
-        mCIinputHRGenPhy = (AppCompatEditText) findViewById(R.id.cIinputHRGenPhy);
-        mCIinputRRGenPhy = (AppCompatEditText) findViewById(R.id.cIinputRRGenPhy);
-        mCIinputCapRefilGenPhy = (AppCompatEditText) findViewById(R.id.cIinputCapRefilGenPhy);
-        mCIinputOxySatGenPhy = (AppCompatEditText) findViewById(R.id.cIinputOxySatGenPhy);
-        mCIdropCongAnGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropCongAnGenPhy);
-        mCIdropAnterFontGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropAnterFontGenPhy);
-        mCIdropSkinLesGenPhy = (AppCompatSpinner) findViewById(R.id.cIdropSkinLesGenPhy);
-        mCIdropChestSysExa = (AppCompatSpinner) findViewById(R.id.cIdropChestSysExa);
-        mCIdropCVSSysExa = (AppCompatSpinner) findViewById(R.id.cIdropCVSSysExa);
-        mCIdropPAbdomenSysExa = (AppCompatSpinner) findViewById(R.id.cIdropPAbdomenSysExa);
-        mCIdropCNSSysExa = (AppCompatSpinner) findViewById(R.id.cIdropCNSSysExa);
-        mCIdropHearingSysExa = (AppCompatSpinner) findViewById(R.id.cIdropHearingSysExa);
-        mCIdropEyeCongenitalSysExa = (AppCompatSpinner) findViewById(R.id.cIdropEyeCongenitalSysExa);
-        mCIdropColourBlindnesSysExa = (AppCompatSpinner) findViewById(R.id.cIdropColourBlindnesSysExa);
-        mCIinputHBMandatoryInvest = (AppCompatEditText) findViewById(R.id.cIinputHBMandatoryInvest);
-        mCIinputTLCMandatoryInvest = (AppCompatEditText) findViewById(R.id.cIinputTLCMandatoryInvest);
+        mCIdropModeDelHistory = findViewById(R.id.cIdropModeDelHistory);
+        mCIdropCryBirthHistory = findViewById(R.id.cIdropCryBirthHistory);
+        mCIdropPhysIllHistory = findViewById(R.id.cIdropPhysIllHistory);
+        mCIdropSignHistory = findViewById(R.id.cIdropSignHistory);
+        mCIdropImmunizationHistory = findViewById(R.id.cIdropImmunizationHistory);
+        mCIdropFeedingHistory = findViewById(R.id.cIdropFeedingHistory);
+        mCIdropTbPatientHistory = findViewById(R.id.cIdropTbPatientHistory);
+        mCIdropSocialSmileHistory = findViewById(R.id.cIdropSocialSmileHistory);
+        mCIdropNeckHoldingHistory = findViewById(R.id.cIdropNeckHoldingHistory);
+        mCIdropSittingSupportHistory = findViewById(R.id.cIdropSittingSupportHistory);
+        mCIinputWeightGenPhy =findViewById(R.id.cIinputWeightGenPhy);
+        mCIinputHeightGenPhy =findViewById(R.id.cIinputHeightGenPhy);
+        mCIinputHeadCRF =findViewById(R.id.cIinputHeadCRF);
+        mCIdropPallorGenPhy = findViewById(R.id.cIdropPallorGenPhy);
+        mCIdropJaundiceGenPhy = findViewById(R.id.cIdropJaundiceGenPhy);
+        mCIdropCyanosisGenPhy = findViewById(R.id.cIdropCyanosisGenPhy);
+        mCIinputHRGenPhy =findViewById(R.id.cIinputHRGenPhy);
+        mCIinputRRGenPhy =findViewById(R.id.cIinputRRGenPhy);
+        mCIinputCapRefilGenPhy =findViewById(R.id.cIinputCapRefilGenPhy);
+        mCIinputOxySatGenPhy =findViewById(R.id.cIinputOxySatGenPhy);
+        mCIdropCongAnGenPhy = findViewById(R.id.cIdropCongAnGenPhy);
+        mCIdropAnterFontGenPhy = findViewById(R.id.cIdropAnterFontGenPhy);
+        mCIdropSkinLesGenPhy = findViewById(R.id.cIdropSkinLesGenPhy);
+        mCIdropChestSysExa = findViewById(R.id.cIdropChestSysExa);
+        mCIdropCVSSysExa = findViewById(R.id.cIdropCVSSysExa);
+        mCIdropPAbdomenSysExa = findViewById(R.id.cIdropPAbdomenSysExa);
+        mCIdropCNSSysExa = findViewById(R.id.cIdropCNSSysExa);
+        mCIdropHearingSysExa = findViewById(R.id.cIdropHearingSysExa);
+        mCIdropEyeCongenitalSysExa = findViewById(R.id.cIdropEyeCongenitalSysExa);
+        mCIdropColourBlindnesSysExa = findViewById(R.id.cIdropColourBlindnesSysExa);
+        mCIinputHBMandatoryInvest =findViewById(R.id.cIinputHBMandatoryInvest);
+        mCIinputTLCMandatoryInvest =findViewById(R.id.cIinputTLCMandatoryInvest);
         multiSpinner = findViewById(R.id.cIdropDiagnosis);
         mSetSpinnerData(Arrays.asList(getResources().getStringArray(R.array.arr_diagnosis_cat_1)));
 
 
-        mCIchkDAlreadyKnown = (AppCompatCheckBox) findViewById(R.id.cIchkDAlreadyKnown);
-        mCIinputPrescription = (AppCompatEditText) findViewById(R.id.cIinputPrescription);
-        mCIbackPatientInput = (LinearLayout) findViewById(R.id.cIbackPatientInput);
-        mCIsubmitPatientInput = (LinearLayout) findViewById(R.id.cIsubmitPatientInput);
+        mCIchkDAlreadyKnown = findViewById(R.id.cIchkDAlreadyKnown);
+        mCIinputPrescription =findViewById(R.id.cIinputPrescription);
+        mCIsubmitPatientInput =findViewById(R.id.cIsubmitPatientInput);
         mCIsubmitPatientInput.setOnClickListener(this);
     }
 
@@ -455,94 +446,97 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     public void postDataForCategories() {
         try {
-            createProgressBar(R.id.cIrelMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
-            PostDataForCategoryIRequest request = new PostDataForCategoryIRequest();
-            request.setCreatedBy(doctorName);
-            request.setPatientId(memberData.getMemberid());
-            request.setDistrict(preferences.getString(SharedParams.DISTRICT,null));
-            request.setFacility(sharedPreferences.getString(SharedParams.FACTYPE, "")+"/"+sharedPreferences.getString(SharedParams.FACILITY, ""));
-            request.setCategory("1");
-            request.setUserId(preferences.getString(SharedParams.SUB,null));
-            request.setDeliveryType(mCIdropModeDelHistory.getSelectedItem()+"");
-            request.setCryAfterBirth(mCIdropCryBirthHistory.getSelectedItem()+"");
-            request.setHistroyAdmIllness(mCIdropPhysIllHistory.getSelectedItem()+"");
-            request.setHistoryFamily(mCIdropSignHistory.getSelectedItem()+"");
-            request.setFamilyHistoryIfYes("");
-            request.setImmunStatus(mCIdropImmunizationHistory.getSelectedItem()+"");
-            request.setHistoryFeeding(mCIdropFeedingHistory.getSelectedItem()+"");
-            request.setContactWithTB(mCIdropTbPatientHistory.getSelectedItem()+"");
-            request.setHistoryDeworming("");
-            request.setNeckHolding(mCIdropNeckHoldingHistory.getSelectedItem()+"");
-            request.setSocialSmile(mCIdropSocialSmileHistory.getSelectedItem()+"");
-            request.setSittingWithSupport(mCIdropSittingSupportHistory.getSelectedItem()+"");
+            if(isNetworkAvailable()) {
+                createProgressBar(R.id.cIrelMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                PostDataForCategoryIRequest request = new PostDataForCategoryIRequest();
+                request.setCreatedBy(doctorName);
+                request.setCreatedDate(getDateToSend());
+                request.setPatientId(memberData.getMemberid());
+                request.setDistrict(preferences.getString(SharedParams.DISTRICT, null));
+                request.setFacility(sharedPreferences.getString(SharedParams.FACTYPE, "") + "/" + sharedPreferences.getString(SharedParams.FACILITY, ""));
+                request.setCategory("1");
+                request.setUserId(preferences.getString(SharedParams.SUB, null));
+                request.setDeliveryType(mCIdropModeDelHistory.getSelectedItem() + "");
+                request.setCryAfterBirth(mCIdropCryBirthHistory.getSelectedItem() + "");
+                request.setHistroyAdmIllness(mCIdropPhysIllHistory.getSelectedItem() + "");
+                request.setHistoryFamily(mCIdropSignHistory.getSelectedItem() + "");
+                request.setFamilyHistoryIfYes("");
+                request.setImmunStatus(mCIdropImmunizationHistory.getSelectedItem() + "");
+                request.setHistoryFeeding(mCIdropFeedingHistory.getSelectedItem() + "");
+                request.setContactWithTB(mCIdropTbPatientHistory.getSelectedItem() + "");
+                request.setHistoryDeworming("");
+                request.setNeckHolding(mCIdropNeckHoldingHistory.getSelectedItem() + "");
+                request.setSocialSmile(mCIdropSocialSmileHistory.getSelectedItem() + "");
+                request.setSittingWithSupport(mCIdropSittingSupportHistory.getSelectedItem() + "");
 
-            // Step 2
-            request.setWeight(mCIinputWeightGenPhy.getText().toString());
-            request.setHeight(mCIinputHeightGenPhy.getText().toString());
-            request.setHeadCircum(mCIinputHeadCRF.getText().toString());
-            request.setOxygenSaturation(mCIinputOxySatGenPhy.getText().toString());
-            request.setPallor(mCIdropPallorGenPhy.getSelectedItem()+"");
-            request.setJaundice(mCIdropJaundiceGenPhy.getSelectedItem()+"");
-            request.setCyanosis(mCIdropCyanosisGenPhy.getSelectedItem()+"");
-            request.setHeartRate(mCIinputHRGenPhy.getText().toString());
-            request.setRespiratoryRate(mCIinputRRGenPhy.getText().toString());
-            request.setCappillaryRefillTime(mCIinputCapRefilGenPhy.getText().toString());
-            request.setCongenitalAnomalies(mCIdropCongAnGenPhy.getSelectedItem()+"");
-            request.setAnteriorFontanelle(mCIdropAnterFontGenPhy.getSelectedItem()+"");
-            request.setSkinLesions(mCIdropSkinLesGenPhy.getSelectedItem()+"");
+                // Step 2
+                request.setWeight(mCIinputWeightGenPhy.getText().toString());
+                request.setHeight(mCIinputHeightGenPhy.getText().toString());
+                request.setHeadCircum(mCIinputHeadCRF.getText().toString());
+                request.setOxygenSaturation(mCIinputOxySatGenPhy.getText().toString());
+                request.setPallor(mCIdropPallorGenPhy.getSelectedItem() + "");
+                request.setJaundice(mCIdropJaundiceGenPhy.getSelectedItem() + "");
+                request.setCyanosis(mCIdropCyanosisGenPhy.getSelectedItem() + "");
+                request.setHeartRate(mCIinputHRGenPhy.getText().toString());
+                request.setRespiratoryRate(mCIinputRRGenPhy.getText().toString());
+                request.setCappillaryRefillTime(mCIinputCapRefilGenPhy.getText().toString());
+                request.setCongenitalAnomalies(mCIdropCongAnGenPhy.getSelectedItem() + "");
+                request.setAnteriorFontanelle(mCIdropAnterFontGenPhy.getSelectedItem() + "");
+                request.setSkinLesions(mCIdropSkinLesGenPhy.getSelectedItem() + "");
 
-            // Step 3
-            request.setChest(mCIdropChestSysExa.getSelectedItem()+"");
-            request.setCvs(mCIdropCVSSysExa.getSelectedItem()+"");
-            request.setPerAbdomen(mCIdropPAbdomenSysExa.getSelectedItem()+"");
-            request.setCns(mCIdropCNSSysExa.getSelectedItem()+"");
-            request.setHearing(mCIdropHearingSysExa.getSelectedItem()+"");
-            request.setEyeCongenital(mCIdropEyeCongenitalSysExa.getSelectedItem()+"");
-            request.setMovementOfEyeBallWithLight(mCIdropColourBlindnesSysExa.getSelectedItem()+"");
+                // Step 3
+                request.setChest(mCIdropChestSysExa.getSelectedItem() + "");
+                request.setCvs(mCIdropCVSSysExa.getSelectedItem() + "");
+                request.setPerAbdomen(mCIdropPAbdomenSysExa.getSelectedItem() + "");
+                request.setCns(mCIdropCNSSysExa.getSelectedItem() + "");
+                request.setHearing(mCIdropHearingSysExa.getSelectedItem() + "");
+                request.setEyeCongenital(mCIdropEyeCongenitalSysExa.getSelectedItem() + "");
+                request.setMovementOfEyeBallWithLight(mCIdropColourBlindnesSysExa.getSelectedItem() + "");
 
-            // step 4
-            request.sethB(mCIinputHBMandatoryInvest.getText().toString());
-            request.setRelevantInvestigation(mCIinputTLCMandatoryInvest.getText().toString());
+                // step 4
+                request.sethB(mCIinputHBMandatoryInvest.getText().toString());
+                request.setRelevantInvestigation(mCIinputTLCMandatoryInvest.getText().toString());
 
-            //step 5
-            request.setDiagnosed(selectedDiagnosis);
-            if(mCIchkDAlreadyKnown.isChecked())
-            {
-                request.setAlreadyKnown("yes");
-            }else {
-                request.setAlreadyKnown("no");
-            }
-            request.setPrescription(mCIinputPrescription.getText().toString());
-            Log.e(" request ",""+request.toString());
-            Call<SubmitPatientData> call = apiInterface.submitDataForSurvey(request);
-            call.enqueue(new Callback<SubmitPatientData>() {
-                @Override
-                public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
-                    try {
-                        if (response.isSuccessful()) {
-                            mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                //step 5
+                request.setDiagnosed(selectedDiagnosis);
+                if (mCIchkDAlreadyKnown.isChecked()) {
+                    request.setAlreadyKnown("yes");
+                } else {
+                    request.setAlreadyKnown("no");
+                }
+                request.setPrescription(mCIinputPrescription.getText().toString());
+                Log.e(" request ", "" + request.toString());
+                Call<SubmitPatientData> call = apiInterface.submitDataForSurveyCatI(request);
+                call.enqueue(new Callback<SubmitPatientData>() {
+                    @Override
+                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
+                                disableProgressBar();
+                            } else {
+                                disableProgressBar();
+                                mShowToast(" Error : " + response.errorBody().string());
+
+                            }
+                        } catch (Exception e) {
+                            Log.e(" Exception ", "" + e.getMessage());
                             disableProgressBar();
-                        } else {
-                            disableProgressBar();
-                            mShowToast(" Error : "+response.errorBody().string());
-
                         }
-                    } catch (Exception e) {
-                        Log.e(" Exception ", "" + e.getMessage());
-                        disableProgressBar();
+
+
                     }
 
-
-                }
-
-                @Override
-                public void onFailure(Call<SubmitPatientData> call, Throwable t) {
-                    mShowToast(getString(R.string.api_failure));
-                    disableProgressBar();
-                }
-            });
-
+                    @Override
+                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }else {
+                mShowToast(getString(R.string.no_internet));
+            }
 
         } catch (Exception ee) {
             Log.e(" Exception ", "" + ee.getMessage());

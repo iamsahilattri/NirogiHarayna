@@ -2,7 +2,10 @@ package com.nirogi.harayna.utils;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -20,7 +23,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.activity.HomeActivity;
+import com.nirogi.harayna.activity.LoginActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +43,34 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         preferences = NIROGI.getInstance().getPreferences();
 
+    }
+
+    public void performLogout(Activity mContext)
+    {
+        AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle("Logout "+getString(R.string.app_name));
+        builder.setMessage("Are you sure you want to logout?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences preferences =NIROGI.getInstance().getPreferences();
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        Intent freshIntent= new Intent(mContext, LoginActivity.class);
+                        freshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        mContext.startActivity(freshIntent);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
     }
 
     public void mSetBackToolbar(String mValue,boolean mCheck,String desText)
@@ -152,6 +188,19 @@ public class BaseActivity extends AppCompatActivity {
         {
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    public String getDateToSend()
+    {
+        // Get the current date and time
+        Date currentDate = new Date();
+
+        // Create the SimpleDateFormat object with the desired format and set the timezone to UTC
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        // Format the current date and time in the desired format
+        return sdf.format(currentDate);
     }
 
 

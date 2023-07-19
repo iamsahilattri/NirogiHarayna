@@ -29,6 +29,7 @@ import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.RecyclerItemClickListener;
+import com.nirogi.harayna.utils.SharedParams;
 
 import java.util.ArrayList;
 
@@ -96,7 +97,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
     {
         try {
             createProgressBar(R.id.relMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchPPPIDRequest request= new SearchPPPIDRequest();
             request.setPppId(PPPID);
             Call<ArrayList<PatientListModelResponse>> call = apiInterface.getSearchedPPPIDPatients(request);
@@ -159,40 +160,49 @@ public class SearchedPPPIDDetails extends BaseActivity {
         recyclerPatientList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerPatientList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Log.e("AGE GROUP",""+populateData.get(position).getAge());
-                int ageValue=Integer.parseInt(populateData.get(position).getAge());
-                if(ageValue == 0)
+                if(populateData.get(position).getFlagcheck()==null)
                 {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue >=1 && ageValue <5)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>=5 && ageValue<=18)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
+                    int ageValue=Integer.parseInt(populateData.get(position).getAge());
+                    if(ageValue == 0)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                    else if(ageValue >=1 && ageValue <5)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                    else if(ageValue>=5 && ageValue<=18)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                    else if(ageValue>18 && ageValue<=40)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIVPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                    else if(ageValue>40 && ageValue<=60)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                    else if(ageValue>60)
+                    {
+                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVIPatientEntryActivity.class);
+                        mIntent.putExtra("memberData",populateData.get(position));
+                        startActivity(mIntent);
+                    }
+                }else {
+                    mShowToast("Already Submitted !");
                 }
-                else if(ageValue>18 && ageValue<=40)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIVPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>40 && ageValue<=60)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }else if(ageValue>60)
-                {
-                    Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVIPatientEntryActivity.class);
-                    mIntent.putExtra("memberData",populateData.get(position));
-                    startActivity(mIntent);
-                }
+
 
             }
 

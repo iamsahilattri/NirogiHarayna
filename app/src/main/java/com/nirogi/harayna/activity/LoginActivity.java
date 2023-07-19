@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         try {
                             if (response.isSuccessful()) {
                                 ArrayList<JSONObject> returnedObject=JWTUtils.parseJWT(response.body().getToken());
-                                mSetDataToShared(returnedObject);
+                                mSetDataToShared(returnedObject,response.body().getToken());
 
                             }else {
                                 mShowToast(""+response.errorBody().string());
@@ -132,12 +132,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    private void mSetDataToShared(ArrayList<JSONObject> returnedObjectList)
+    private void mSetDataToShared(ArrayList<JSONObject> returnedObjectList,String authToken)
     {
         try {
             JSONObject decodedHeaderJson=returnedObjectList.get(0);
             JSONObject decodedPayloadJson=returnedObjectList.get(1);
             SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(SharedParams.AUTH_TOKEN,authToken);
             editor.putString(SharedParams.FNAME,decodedHeaderJson.getString(SharedParams.FNAME));
             if(decodedHeaderJson.getString(SharedParams.LNAME)!=null || !decodedHeaderJson.getString(SharedParams.LNAME).equalsIgnoreCase("null"))
             {

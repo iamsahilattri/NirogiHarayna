@@ -7,6 +7,7 @@ public interface SharedParams {
 
 
     String FNAME = "Firstname";
+    String AUTH_TOKEN = "AUTH_TOKEN";
     String LNAME = "Lastname";
     String DISTRICT = "District";
     String FACTYPE = "FacilityType";

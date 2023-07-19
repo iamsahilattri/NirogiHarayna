@@ -21,6 +21,7 @@ import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.RecyclerItemClickListener;
+import com.nirogi.harayna.utils.SharedParams;
 
 import java.util.ArrayList;
 
@@ -89,7 +90,7 @@ public class SearchedReferenceIdDetails extends BaseActivity {
     {
         try {
             createProgressBar(R.id.relMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
             request.setReferenceId(inputTextPPP);
             Call<ArrayList<ReferenceIdResponse>> call = apiInterface.getSearchedRefIDPatients(request);

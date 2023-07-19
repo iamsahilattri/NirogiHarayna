@@ -34,6 +34,7 @@ public class SplashActivity extends BaseActivity {
                 {
                     startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                 }
+                finish();
             }
         }, SPLASH_TIME_OUT);
 

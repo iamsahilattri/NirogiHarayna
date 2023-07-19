@@ -1,5 +1,7 @@
 package com.nirogi.harayna.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -144,13 +146,9 @@ public class HomeActivity extends BaseActivity {
         findViewById(R.id.lyLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences preferences =NIROGI.getInstance().getPreferences();
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.apply();
-                Intent freshIntent= new Intent(HomeActivity.this,LoginActivity.class);
-                freshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(freshIntent);
+                performLogout(HomeActivity.this);
+
+
             }
         });
     }
@@ -180,7 +178,7 @@ public class HomeActivity extends BaseActivity {
         {
             try {
                 createProgressBar(R.id.relMain);
-                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 Call<ArrayList<DistrictModel>> call = apiInterface.getDistList();
                 call.enqueue(new Callback<ArrayList<DistrictModel>>() {
                     @Override
@@ -267,7 +265,7 @@ public class HomeActivity extends BaseActivity {
     {
         try {
             createProgressBar(R.id.relMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             Call<ArrayList<PatientListModelResponse>> call = null;
             if(type==0)
             {
@@ -333,7 +331,7 @@ public class HomeActivity extends BaseActivity {
     {
         try {
             createProgressBar(R.id.relMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(NIROGI.token).create(APIInterface.class);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
             request.setReferenceId(inputTextPPP);
             Call<ArrayList<ReferenceIdResponse>> call = apiInterface.getSearchedRefIDPatients(request);

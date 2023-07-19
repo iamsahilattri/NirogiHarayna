@@ -55,6 +55,7 @@
     <string name="_3_bmi_kg">3. BMI (kg / ㎡)</string>
     <string name="_4_pulse_per_min">4. Pulse (per min)*</string>
     <string name="_6_pallor">6. Pallor</string>
+    <string name="_4_pallor">4. Pallor</string>
     <string name="name">Name :</string>
     <string name="_5_bp_mmhg">5. BP (mmHg)*</string>
     <string name="_6_bp_mmhg">6. BP (mmHg)*</string>
@@ -63,6 +64,7 @@
     <string name="_9_lymphadenopathy">9.Lymphadenopathy</string>
     <string name="_10_pedal_oedema">10. Pedal oedema</string>
     <string name="systemic_examination">Systemic Examination</string>
+    <string name="systemic_investigation">Systemic Investigation</string>
     <string name="_3_per_abdomen">3. Per abdomen</string>
     <string name="_4_cns">4. CNS</string>
     <string name="_5_hearing">5. Hearing</string>
@@ -91,8 +93,10 @@
     <string name="_14_blood_urea_in_mg_dl">14. Blood urea (in mg/ dL)</string>
     <string name="_15_serum_creatinine_in_mg_dl">15. Serum creatinine (in mg/ dL)</string>
     <string name="_16_urine_routine_examination">16. Urine routine examination</string>
+    <string name="_13_urine_routine_examination">13. Urine routine examination</string>
     <string name="_18_urine_routine_examination">18. Urine routine examination</string>
     <string name="_17_relevant_investigation_if_advised_by_specialist">17. Relevant investigation if advised by specialist</string>
+    <string name="_14_relevant_investigation_if_advised_by_specialist">14. Relevant investigation if advised by specialist</string>
     <string name="_20_relevant_investigation_if_advised_by_specialist">20. Relevant investigation if advised by specialist</string>
     <string name="_3_dlc">3. DLC</string>
     <string name="neutrophils_in">Neutrophils (in %)</string>
@@ -126,8 +130,25 @@
         <item> Other Details</item>
     </string-array>
     <string-array name="arr_yes_no">
+        <item> No </item>
         <item> Yes </item>
-        <item> No</item>
+    </string-array>
+
+    <string-array name="arr_vitmin_def">
+        <item> No </item>
+        <item> Night Blindness</item>
+        <item> Bitot Spots</item>
+        <item> Dryness</item>
+    </string-array>
+
+    <string-array name="arr_congestion_an">
+        <item> None </item>
+        <item> Cleft lip/Palate</item>
+        <item> Clubfoot </item>
+        <item> Ear Anomaly</item>
+        <item> Digital Anomaly </item>
+        <item> Spine Anomaly </item>
+        <item> Any Other </item>
     </string-array>
     <string-array name="arr_diagnosis_cat_1">
         <item> none </item>
@@ -241,5 +262,19 @@
     <string-array name="arr_skin">
         <item> Smooth </item>
         <item> Rough </item>
+    </string-array>
+
+    <string-array name="arr_speech">
+        <item> Normal </item>
+        <item> Stammering </item>
+    </string-array>
+    <string-array name="arr_iq">
+        <item> Normal </item>
+        <item> Decline in academic performance </item>
+        <item> Increased agitation/ Increased Sleep </item>
+        <item> Decreased eye to eye contact of child </item>
+        <item> Inability to sit in one place </item>
+        <item> Decreased interaction with friends </item>
+        <item> Inability to wait for own turn </item>
     </string-array>
 </resources>
