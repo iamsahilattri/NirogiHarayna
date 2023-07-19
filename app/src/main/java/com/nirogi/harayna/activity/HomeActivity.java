@@ -1,7 +1,5 @@
 package com.nirogi.harayna.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -146,8 +144,7 @@ public class HomeActivity extends BaseActivity {
         findViewById(R.id.lyLogout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                performLogout(HomeActivity.this);
-
+                performLogout(HomeActivity.this,true);
 
             }
         });
@@ -185,8 +182,8 @@ public class HomeActivity extends BaseActivity {
                     public void onResponse(@NonNull Call<ArrayList<DistrictModel>> call, @NonNull Response<ArrayList<DistrictModel>> response) {
                         try {
                             try {
-                                if (response.isSuccessful()) {
-
+                                if (response.isSuccessful())
+                                {
                                     mDistrictList = new ArrayList<>();
                                     mDistrictListNames = new ArrayList<>();
                                     mDistrictList.add(getString(R.string.sel_district));
@@ -233,6 +230,11 @@ public class HomeActivity extends BaseActivity {
                                             }
                                         });
                                     }
+                                }
+                                else
+                                {
+                                    mHandleApiErrorCode(response.code(),response.errorBody().string(),HomeActivity.this);
+                                    disableProgressBar();
                                 }
                             }catch (Exception e)
                             {
@@ -294,14 +296,12 @@ public class HomeActivity extends BaseActivity {
                                 mIntent.putExtra("inputValue","");
                                 mIntent.putExtra("inputData","");
                                 startActivity(mIntent);
-                                disableProgressBar();
-                            }else
-                            {
-                                disableProgressBar();
                             }
-
+                            disableProgressBar();
                         }else{
                             disableProgressBar();
+                            mHandleApiErrorCode(response.code(),response.errorBody().string(),HomeActivity.this);
+
                         }
                     }catch (Exception e)
                     {
@@ -348,13 +348,12 @@ public class HomeActivity extends BaseActivity {
                                 mIntent.putExtra("mData",mDataList);
                                 mIntent.putExtra("referenceId",inputTextPPP);
                                 startActivity(mIntent);
-                                disableProgressBar();
-                            }else
-                            {
-                                disableProgressBar();
                             }
+                           disableProgressBar();
+
 
                         }else{
+                            mHandleApiErrorCode(response.code(),response.errorBody().string(),HomeActivity.this);
                             disableProgressBar();
                         }
                     }catch (Exception e)

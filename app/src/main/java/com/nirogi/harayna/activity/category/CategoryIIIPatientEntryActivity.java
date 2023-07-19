@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.activity.HomeActivity;
 import com.nirogi.harayna.model.request.PostDataForCategoryIIIRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
@@ -158,7 +159,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
         mTxtFacilityIncharge.setText("Dr . " + doctorName);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = dateFormat.format(Calendar.getInstance().getTime());
         mTxtDate.setText(formattedDate);
     }
@@ -592,12 +593,10 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                         try {
                             if (response.isSuccessful()) {
                                 mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
-                                disableProgressBar();
                             } else {
-                                disableProgressBar();
-                                mShowToast(" Error : " + response.errorBody().string());
-
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIIIPatientEntryActivity.this);
                             }
+                            disableProgressBar();
                         } catch (Exception e) {
                             Log.e(" Exception ", "" + e.getMessage());
                             disableProgressBar();

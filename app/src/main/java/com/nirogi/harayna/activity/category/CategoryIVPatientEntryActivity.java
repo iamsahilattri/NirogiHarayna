@@ -2,6 +2,8 @@ package com.nirogi.harayna.activity.category;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -147,7 +149,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
         mTxtFacilityIncharge.setText("Dr . " + doctorName);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = dateFormat.format(Calendar.getInstance().getTime());
         mTxtDate.setText(formattedDate);
     }
@@ -268,6 +270,29 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         mSetSpinnerData(Arrays.asList(getResources().getStringArray(R.array.arr_diagnosis_cat_1)));
         mCIVchkDAlreadyKnown =findViewById(R.id.cIVchkDAlreadyKnown);
         mCIVinputPrescription =findViewById(R.id.cIVinputPrescription);
+    }
+
+    private void mSetValidationListners()
+    {
+        mCIVinputWeightGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=mCIVinputWeightGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(input >= 5 && input <= 120)
+                    {
+                        mCIVinputWeightGenPhy.setError("*should be between 5-120");
+                    }
+                }
+            }
+        });
     }
 
     private void mSetSpinnerData(List<String> mList) {
@@ -520,13 +545,12 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
-                                disableProgressBar();
+                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
-                                disableProgressBar();
-                                mShowToast(" Error : " + response.errorBody().string());
-
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIVPatientEntryActivity.this);
                             }
+                            disableProgressBar();
+
                         } catch (Exception e) {
                             Log.e(" Exception ", "" + e.getMessage());
                             disableProgressBar();

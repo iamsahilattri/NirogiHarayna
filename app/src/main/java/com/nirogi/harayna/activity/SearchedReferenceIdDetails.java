@@ -111,6 +111,7 @@ public class SearchedReferenceIdDetails extends BaseActivity {
 
                         }else{
                             disableProgressBar();
+                            mHandleApiErrorCode(response.code(),response.errorBody().string(), SearchedReferenceIdDetails.this);
                         }
                     }catch (Exception e)
                     {

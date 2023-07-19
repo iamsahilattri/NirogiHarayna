@@ -21,12 +21,10 @@
             android:orientation="vertical"
             android:layout_height="0dp">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="160dp"
                 android:background="@drawable/nirogi_haryana"
-                android:layout_height="160dp">
-
-            </ImageView>
+                android:layout_height="160dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
@@ -36,9 +34,8 @@
                 android:textStyle="bold"
                 android:text="@string/app_name"
                 android:visibility="gone"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-            </TextView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
@@ -48,11 +45,8 @@
                 android:fontFamily="sans-serif-medium"
                 android:visibility="visible"
                 android:textAllCaps="true"
-
                 android:text="@string/app_name"
-                android:layout_height="wrap_content">
-
-            </TextView>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

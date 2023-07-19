@@ -111,17 +111,15 @@ public class SearchedPPPIDDetails extends BaseActivity {
                             {
                                 ArrayList<PatientListModelResponse> mDataList= new ArrayList<>(response.body());
                                 mSetRecyclerData(mDataList);
-                                disableProgressBar();
                             }else
                             {
                                 noDataLy.setVisibility(View.VISIBLE);
                                 recyclerPatientList.setVisibility(View.GONE);
-                                disableProgressBar();
                             }
-
-                        }else{
                             disableProgressBar();
-
+                        }else{
+                            mHandleApiErrorCode(response.code(),response.errorBody().string(), SearchedPPPIDDetails.this);
+                            disableProgressBar();
                         }
                     }catch (Exception e)
                     {

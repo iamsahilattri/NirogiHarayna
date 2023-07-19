@@ -152,7 +152,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
         mTxtFacilityIncharge.setText("Dr . " + doctorName);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = dateFormat.format(Calendar.getInstance().getTime());
         mTxtDate.setText(formattedDate);
     }
@@ -537,13 +537,12 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
-                                disableProgressBar();
+                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
-                                disableProgressBar();
-                                mShowToast(" Error : " + response.errorBody().string());
-
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryVPatientEntryActivity.this);
                             }
+                            disableProgressBar();
+
                         } catch (Exception e) {
                             Log.e(" Exception ", "" + e.getMessage());
                             disableProgressBar();

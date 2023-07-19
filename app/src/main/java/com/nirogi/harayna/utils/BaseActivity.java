@@ -13,6 +13,7 @@ import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -23,7 +24,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nirogi.harayna.R;
-import com.nirogi.harayna.activity.HomeActivity;
 import com.nirogi.harayna.activity.LoginActivity;
 
 import java.text.SimpleDateFormat;
@@ -45,32 +45,44 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    public void performLogout(Activity mContext)
+    public void performLogout(Activity mContext,boolean checkAlert)
     {
-        AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.setTitle("Logout "+getString(R.string.app_name));
-        builder.setMessage("Are you sure you want to logout?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        SharedPreferences preferences =NIROGI.getInstance().getPreferences();
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.clear();
-                        editor.apply();
-                        Intent freshIntent= new Intent(mContext, LoginActivity.class);
-                        freshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        mContext.startActivity(freshIntent);
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .show();
+        if(checkAlert)
+        {
+            AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setTitle("Logout "+getString(R.string.app_name));
+            builder.setMessage("Are you sure you want to logout?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            logoutCode(mContext);
+                            dialogInterface.dismiss();
+
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .show();
+        }else {
+            logoutCode(mContext);
+        }
+
+    }
+
+    private void logoutCode(Activity mContext)
+    {
+        SharedPreferences preferences =NIROGI.getInstance().getPreferences();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        Intent freshIntent= new Intent(mContext, LoginActivity.class);
+        freshIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(freshIntent);
     }
 
     public void mSetBackToolbar(String mValue,boolean mCheck,String desText)
@@ -203,6 +215,16 @@ public class BaseActivity extends AppCompatActivity {
         return sdf.format(currentDate);
     }
 
+    public void mHandleApiErrorCode(int errorCode,String errorMessage,Activity mContext)
+    {
+        Log.e(" mHandleApiErrorCode "," mHandleApiErrorCode" +errorCode +" "+errorMessage);
+        if(errorCode==401)
+        {
+            performLogout(mContext,false);
+        }else {
+            mShowToast(errorMessage);
+        }
+    }
 
 
 

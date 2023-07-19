@@ -119,6 +119,7 @@
     <string name="reference_id_">Reference Id</string>
     <string name="dummy_line">---</string>
     <string name="facility">Facility</string>
+    <string name="diagnosis">Diagnosis</string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>

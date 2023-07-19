@@ -41,9 +41,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientPPPID"
@@ -53,9 +51,7 @@
                                 android:textColor="@color/valueTextColor"
                                 android:layout_marginStart="5dp"
                                 android:textSize="14sp"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
@@ -70,9 +66,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientName"
@@ -81,9 +75,7 @@
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"                                android:layout_marginStart="5dp"
                                 android:textSize="14sp"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -104,9 +96,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientGenderAge"
@@ -116,9 +106,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -133,9 +121,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientMobile"
@@ -145,9 +131,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -170,9 +154,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:text="@string/address_"
-                                android:textColor="@color/headingTextColor">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:textColor="@color/headingTextColor"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientAddress"
@@ -182,9 +164,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -200,9 +180,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtPatientDistrict"
@@ -212,9 +190,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -238,9 +214,7 @@
                                 android:fontFamily="@font/dosis_regular"
                                 android:layout_marginStart="5dp"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtFacilityName"
@@ -250,9 +224,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -268,9 +240,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtFacilityIncharge"
@@ -280,9 +250,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -305,9 +273,7 @@
                                 android:layout_marginStart="5dp"
                                 android:fontFamily="@font/dosis_regular"
                                 android:textColor="@color/headingTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/cIVtxtDate"
@@ -317,9 +283,7 @@
                                 android:textSize="14sp"
                                 android:fontFamily="@font/dosis_medium"
                                 android:textColor="@color/valueTextColor"
-                                android:layout_height="wrap_content">
-
-                            </androidx.appcompat.widget.AppCompatTextView>
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -348,6 +312,7 @@
                                 android:layout_marginStart="5dp"
                                 android:layout_gravity="center"
                                 android:textAllCaps="true"
+
                                 android:textSize="16sp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/dosis_medium"
@@ -402,12 +367,12 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="3"
                                         android:hint="5-120 in KG"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -422,9 +387,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputHeightGenPhy"
@@ -432,6 +396,7 @@
                                         android:padding="8dp"
                                         android:layout_marginTop="5dp"
                                         android:background="@drawable/gray_rect"
+                                        android:maxLength="3"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
@@ -439,9 +404,8 @@
                                         android:hint="90-215 in cm"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                             </LinearLayout>
                             <LinearLayout
@@ -462,9 +426,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputBMIGenPhy"
@@ -479,9 +442,8 @@
                                         android:hint="12 - 40"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -496,9 +458,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputPulseGenPhy"
@@ -513,9 +474,8 @@
                                         android:hint="30 - 250 "
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                             </LinearLayout>
                             <LinearLayout
@@ -536,9 +496,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputBPGenPhy"
@@ -553,9 +512,8 @@
                                         android:hint="40 - 300"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -570,9 +528,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -611,9 +568,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -644,9 +600,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -685,9 +640,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -718,9 +672,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -878,9 +831,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -911,9 +863,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -952,9 +903,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -1010,9 +960,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputRightEyeSysExa"
@@ -1026,9 +975,8 @@
                                         android:textSize="14sp"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -1043,9 +991,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputLeftEyeSysExa"
@@ -1059,9 +1006,8 @@
                                         android:textSize="14sp"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -1117,9 +1063,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -1150,9 +1095,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -1279,9 +1223,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputHBMandatoryInvest"
@@ -1311,9 +1254,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputTLCMandatoryInvest"
@@ -1350,9 +1292,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -1541,9 +1482,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputPackedCellMandatoryInvest"
@@ -1573,9 +1513,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputCorpuscularMandatoryInvest"
@@ -1612,9 +1551,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputCorpuscularHBMandatoryInvest"
@@ -1644,9 +1582,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputHBConcentrationMandatoryInvest"
@@ -1682,9 +1619,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputPlateletMandatoryInvest"
@@ -1714,9 +1650,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputRDWMandatoryInvest"
@@ -1752,9 +1687,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputRDWSDMandatoryInvest"
@@ -1784,9 +1718,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputRbcCountMandatoryInvest"
@@ -1822,9 +1755,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputRBSMandatoryInvest"
@@ -1854,9 +1786,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputCholesterolMandatoryInvest"
@@ -1892,9 +1823,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputBloodUreaMandatoryInvest"
@@ -1924,9 +1854,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputCreatinineMandatoryInvest"
@@ -1962,9 +1891,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputUrineMandatoryInvest"
@@ -1994,9 +1922,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputAdvisedMandatoryInvest"
@@ -2032,7 +1959,7 @@
                             android:layout_height="wrap_content">
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
-                                android:text="@string/systemic_examination"
+                                android:text="@string/diagnosis"
                                 android:layout_marginStart="5dp"
                                 android:textSize="16sp"
                                 android:textAllCaps="true"
@@ -2079,9 +2006,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_marginEnd="10dp"
@@ -2114,9 +2040,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
 
 
@@ -2191,9 +2116,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatTextView>
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIVinputPrescription"
                                         android:layout_width="match_parent"
@@ -2236,7 +2160,7 @@
                 android:background="@drawable/btn_disable"
                 android:orientation="horizontal"
                 android:padding="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_height="wrap_content">

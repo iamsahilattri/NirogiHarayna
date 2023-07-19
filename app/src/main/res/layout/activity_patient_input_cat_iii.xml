@@ -611,9 +611,8 @@
                                         android:hint="5-120 in KG"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -644,9 +643,8 @@
                                         android:hint="90-215 in cm"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                             </LinearLayout>
                             <LinearLayout
@@ -683,9 +681,8 @@
                                         android:hint="12 - 40"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -829,9 +826,8 @@
                                         android:hint="30 - 250 "
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -862,9 +858,8 @@
                                         android:hint="40 - 300"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -903,9 +898,8 @@
                                         android:hint="40 - 300 "
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -1105,9 +1099,8 @@
                                     android:layout_marginStart="5dp"
                                     android:fontFamily="@font/dosis_regular"
                                     android:textColor="@color/valueTextColor"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"/>
 
-                                </androidx.appcompat.widget.AppCompatTextView>
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_marginEnd="10dp"
@@ -1138,9 +1131,8 @@
                                     android:layout_marginStart="5dp"
                                     android:fontFamily="@font/dosis_regular"
                                     android:textColor="@color/valueTextColor"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"/>
 
-                                </androidx.appcompat.widget.AppCompatTextView>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1563,9 +1555,8 @@
                                         android:textSize="14sp"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -1595,9 +1586,8 @@
                                         android:textSize="14sp"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatEditText>
                                 </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="0dp"
@@ -1775,9 +1765,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputHBMandatoryInvest"
@@ -1845,9 +1834,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -2036,9 +2024,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputPackedCellMandatoryInvest"
@@ -2068,9 +2055,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputCorpuscularMandatoryInvest"
@@ -2106,9 +2092,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputCorpuscularHBMandatoryInvest"
@@ -2138,9 +2123,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputHBConcentrationMandatoryInvest"
@@ -2176,9 +2160,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputPlateletMandatoryInvest"
@@ -2208,9 +2191,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputRDWMandatoryInvest"
@@ -2246,9 +2228,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputRDWSDMandatoryInvest"
@@ -2278,9 +2259,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputRbcCountMandatoryInvest"
@@ -2316,9 +2296,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputRBSMandatoryInvest"
@@ -2348,9 +2327,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputUrineMandatoryInvest"
@@ -2388,9 +2366,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/cIIIinputAdvisedMandatoryInvest"
@@ -2426,7 +2403,7 @@
                             android:layout_height="wrap_content">
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
-                                android:text="Diagnosis"
+                                android:text="@string/diagnosis"
                                 android:layout_marginStart="5dp"
                                 android:textSize="16sp"
                                 android:textAllCaps="true"
@@ -2507,9 +2484,8 @@
                                         android:layout_marginStart="5dp"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"/>
 
-                                    </androidx.appcompat.widget.AppCompatCheckBox>
 
 
 
@@ -2627,6 +2603,7 @@
                 android:background="@drawable/btn_disable"
                 android:orientation="horizontal"
                 android:padding="10dp"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_height="wrap_content">
