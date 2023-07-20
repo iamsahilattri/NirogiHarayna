@@ -47,26 +47,20 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private AppCompatTextView mTxtFacilityName;
     private AppCompatTextView mTxtFacilityIncharge;
     private AppCompatTextView mTxtDate;
-    private LinearLayout mLyGenPhysicalEx;
     private AppCompatImageView mIconGenPhy;
     private LinearLayout mLyGenPhysicalxValue;
 
-    private LinearLayout mLySysExa;
     private AppCompatImageView mIconSysExa;
     private LinearLayout mLySysExaValue;
 
-    private LinearLayout mLyMandatoryInvest;
     private AppCompatImageView mIconMandatoryInvest;
     private LinearLayout mLyMandatoryInvestValue;
 
-    private LinearLayout mLyDiagnosis;
     private AppCompatImageView mIconDiagnosis;
     private LinearLayout mLyDiagnosisValue;
 
-    private LinearLayout mLyPrescription;
     private AppCompatImageView mIconPrescription;
     private LinearLayout mLyPrescriptionValue;
-    private LinearLayout lyHistoryEx;
     private AppCompatImageView iconHistory;
     private LinearLayout lyHistoryExValue;
 
@@ -111,7 +105,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private AppCompatCheckBox mCIchkDAlreadyKnown;
     private AppCompatEditText mCIinputPrescription;
     private LinearLayout mCIbackPatientInput;
-    private LinearLayout mCIsubmitPatientInput;
     private MultiSpinner multiSpinner;
     private String selectedDiagnosis;
     private String doctorName;
@@ -165,33 +158,33 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         mTxtFacilityName = findViewById(R.id.cItxtFacilityName);
         mTxtFacilityIncharge = findViewById(R.id.cItxtFacilityIncharge);
         mTxtDate = findViewById(R.id.cItxtDate);
-        mLyGenPhysicalEx = findViewById(R.id.cIlyGenPhysicalEx);
+        LinearLayout mLyGenPhysicalEx = findViewById(R.id.cIlyGenPhysicalEx);
         mLyGenPhysicalEx.setOnClickListener(this);
         mIconGenPhy = findViewById(R.id.cIiconGenPhy);
         mLyGenPhysicalxValue = findViewById(R.id.cIlyGenPhysicalxValue);
 
-        mLySysExa = findViewById(R.id.cIlySysExa);
+        LinearLayout mLySysExa = findViewById(R.id.cIlySysExa);
         mLySysExa.setOnClickListener(this);
         mIconSysExa = findViewById(R.id.cIiconSysExa);
         mLySysExaValue = findViewById(R.id.cIlySysExaValue);
 
-        mLyMandatoryInvest = findViewById(R.id.cIlyMandatoryInvest);
+        LinearLayout mLyMandatoryInvest = findViewById(R.id.cIlyMandatoryInvest);
         mLyMandatoryInvest.setOnClickListener(this);
         mIconMandatoryInvest = findViewById(R.id.cIiconMandatoryInvest);
         mLyMandatoryInvestValue = findViewById(R.id.cIlyMandatoryInvestValue);
 
-        mLyDiagnosis = findViewById(R.id.cIlyDiagnosis);
+        LinearLayout mLyDiagnosis = findViewById(R.id.cIlyDiagnosis);
         mLyDiagnosis.setOnClickListener(this);
         mIconDiagnosis = findViewById(R.id.cIiconDiagnosis);
         mLyDiagnosisValue = findViewById(R.id.cIlyDiagnosisValue);
 
-        mLyPrescription = findViewById(R.id.cIlyPrescription);
+        LinearLayout mLyPrescription = findViewById(R.id.cIlyPrescription);
         mLyPrescription.setOnClickListener(this);
         mIconPrescription = findViewById(R.id.cIiconPrescription);
         mLyPrescriptionValue = findViewById(R.id.cIlyPrescriptionValue);
 
 
-        lyHistoryEx = findViewById(R.id.cIlyHistoryEx);
+        LinearLayout lyHistoryEx = findViewById(R.id.cIlyHistoryEx);
         lyHistoryEx.setOnClickListener(this);
         iconHistory = findViewById(R.id.cIiconHistory);
         lyHistoryExValue = findViewById(R.id.cIlyHistoryExValue);
@@ -234,7 +227,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
         mCIchkDAlreadyKnown = findViewById(R.id.cIchkDAlreadyKnown);
         mCIinputPrescription =findViewById(R.id.cIinputPrescription);
-        mCIsubmitPatientInput =findViewById(R.id.cIsubmitPatientInput);
+        LinearLayout mCIsubmitPatientInput = findViewById(R.id.cIsubmitPatientInput);
         mCIsubmitPatientInput.setOnClickListener(this);
     }
 
@@ -340,6 +333,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     private void mShowHideLayouts(int clicked) {
         if (clicked == 0) {
+            mClickOne = false;
+            mClickTwo = true;
+            mClickThree = true;
+            mClickFour = true;
+            mClickFive = true;
+            mClickSix = true;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -354,6 +353,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
         } else if (clicked == 1) {
+            mClickOne = true;
+            mClickTwo = false;
+            mClickThree = true;
+            mClickFour = true;
+            mClickFive = true;
+            mClickSix = true;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
@@ -368,6 +373,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
         } else if (clicked == 2) {
+            mClickOne = true;
+            mClickTwo = true;
+            mClickThree = false;
+            mClickFour = true;
+            mClickFive = true;
+            mClickSix = true;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -382,6 +393,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
         } else if (clicked == 3) {
+            mClickOne = true;
+            mClickTwo = true;
+            mClickThree = true;
+            mClickFour = false;
+            mClickFive = true;
+            mClickSix = true;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -396,6 +413,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             mLyDiagnosisValue.setVisibility(View.VISIBLE);
             mLyPrescriptionValue.setVisibility(View.GONE);
         } else if (clicked == 4) {
+            mClickOne = true;
+            mClickTwo = true;
+            mClickThree = true;
+            mClickFour = true;
+            mClickFive = false;
+            mClickSix = true;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -410,6 +433,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.VISIBLE);
         } else if (clicked == 5) {
+            mClickOne = true;
+            mClickTwo = true;
+            mClickThree = true;
+            mClickFour = true;
+            mClickFive = true;
+            mClickSix = false;
             iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_up));
             mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
             mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
@@ -428,6 +457,14 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     }
 
     private void mShowHideLayoutsAll() {
+
+        mClickOne = true;
+        mClickTwo = true;
+        mClickThree = true;
+        mClickFour = true;
+        mClickFive = true;
+        mClickSix = true;
+
         iconHistory.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
         mIconGenPhy.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));
         mIconSysExa.setBackgroundDrawable(getResources().getDrawable(R.drawable.baseline_keyboard_arrow_down));

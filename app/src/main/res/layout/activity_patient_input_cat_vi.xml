@@ -388,6 +388,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:inputType="number"
+                                        android:maxLength="3"
                                         android:hint="5-120 in KG"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -419,6 +421,8 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
+                                        android:inputType="number"
+                                        android:maxLength="3"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="90-215 in cm"
@@ -457,6 +461,8 @@
                                         android:layout_marginTop="5dp"
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
+                                        android:inputType="number"
+                                        android:maxLength="8"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
@@ -533,6 +539,8 @@
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="5 - 30"
+                                        android:inputType="number"
+                                        android:maxLength="2"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content"/>
@@ -564,6 +572,8 @@
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
+                                        android:inputType="number"
+                                        android:maxLength="3"
                                         android:textSize="14sp"
                                         android:hint="40 - 300"
                                         android:layout_marginEnd="10dp"
@@ -857,7 +867,7 @@
                             android:layout_marginStart="1dp"
                             android:layout_marginEnd="1dp"
                             android:padding="5dp"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             android:layout_marginBottom="3dp"
                             android:background="@color/colorWhite"
                             android:layout_height="wrap_content">
@@ -998,7 +1008,7 @@
                                             android:layout_width="match_parent"
                                             android:padding="6dp"
                                             android:theme="@style/SpinnerTheme"
-                                            android:entries="@array/arr_cns"
+                                            android:entries="@array/arr_cns_vi"
                                             android:layout_height="wrap_content"/>
                                     </LinearLayout>
 
@@ -1092,6 +1102,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="8"
+                                        android:inputType="numberDecimal"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content">
@@ -1124,6 +1136,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="8"
+                                        android:inputType="numberDecimal"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content">
@@ -1408,7 +1422,14 @@
                             android:layout_marginBottom="3dp"
                             android:background="@color/colorWhite"
                             android:layout_height="wrap_content">
-
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/cVIchkSelectAllandatoryInvest"
+                                android:layout_width="wrap_content"
+                                android:text="@string/select_all"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/dosis_regular"
+                                android:textColor="@color/valueTextColor"
+                                android:layout_height="wrap_content"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:orientation="horizontal"
@@ -2334,7 +2355,7 @@
                                         android:layout_marginStart="5dp"
                                         android:background="@drawable/gray_rect"
                                         android:layout_height="wrap_content">
-                                        <androidx.appcompat.widget.AppCompatSpinner
+                                        <com.nirogi.harayna.utils.MultiSpinner
                                             android:id="@+id/cVIdropDiagnosis"
                                             android:layout_width="match_parent"
                                             android:padding="6dp"

@@ -380,11 +380,12 @@
                                         android:padding="8dp"
                                         android:layout_marginTop="5dp"
                                         android:background="@drawable/gray_rect"
-                                        android:maxLength="3"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="3"
+                                        android:inputType="number"
                                         android:hint="5-120 in KG"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -416,7 +417,7 @@
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
                                         android:maxLength="3"
-                                        android:layout_marginStart="5dp"
+                                        android:inputType="number"                                        android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="90-215 in cm"
                                         android:layout_marginEnd="10dp"
@@ -456,6 +457,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="8"
+                                        android:inputType="numberDecimal"
                                         android:hint="12 - 40"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -486,7 +489,8 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:layout_marginStart="5dp"
+                                        android:maxLength="3"
+                                        android:inputType="number"         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="30 - 250 "
                                         android:layout_marginEnd="10dp"
@@ -524,6 +528,8 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
+                                        android:digits="1234567890./"
+                                        android:maxLength="8"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="40 - 300"
@@ -823,7 +829,7 @@
                                             android:layout_width="match_parent"
                                             android:padding="6dp"
                                             android:theme="@style/SpinnerTheme"
-                                            android:entries="@array/arr_cvs"
+                                            android:entries="@array/arr_cns_vi"
                                             android:layout_height="wrap_content"/>
                                     </LinearLayout>
 
@@ -988,6 +994,8 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="10"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:layout_marginEnd="10dp"
@@ -1021,6 +1029,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:inputType="numberDecimal"
+                                        android:maxLength="10"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content"/>
@@ -1304,7 +1314,14 @@
                             android:layout_marginBottom="3dp"
                             android:background="@color/colorWhite"
                             android:layout_height="wrap_content">
-
+                            <androidx.appcompat.widget.AppCompatCheckBox
+                                android:id="@+id/cVchkAll"
+                                android:layout_width="wrap_content"
+                                android:text="Check All"
+                                android:layout_marginStart="5dp"
+                                android:fontFamily="@font/dosis_regular"
+                                android:textColor="@color/valueTextColor"
+                                android:layout_height="wrap_content"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:orientation="horizontal"
@@ -2360,36 +2377,39 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:gravity="center"
             android:orientation="horizontal">
 
 
             <LinearLayout
                 android:id="@+id/cVsubmitPatientInput"
                 android:layout_width="match_parent"
-                android:background="@drawable/btn_disable"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_disable"
                 android:gravity="center"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="30dp"
-                    android:background="@drawable/baseline_save_24"
-                    android:layout_height="30dp"/>
+                    android:layout_height="30dp"
+                    android:background="@drawable/baseline_save_24" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/dosis_medium"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="Save"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp" />

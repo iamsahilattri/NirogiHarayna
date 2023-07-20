@@ -46,7 +46,9 @@
     <string name="test_refrence_id">Jh-PH-716634</string>
     <string name="enter_pppid">Enter PPPID</string>
 <!--    <string name="test_ppid">7HJC0068</string>-->
-    <string name="test_ppid">6PKC3231</string>
+    <string name="test_ppid">4WZD6269</string>
+
+<!--    <string name="test_ppid">6PKC3231</string>-->
 
     <string name="age_gender"><![CDATA[Age & Gender]]></string>
     <string name="general_physical_examination">General Physical Examination</string>
@@ -120,6 +122,7 @@
     <string name="dummy_line">---</string>
     <string name="facility">Facility</string>
     <string name="diagnosis">Diagnosis</string>
+    <string name="select_all">Select All</string>
 
     <string-array name="spinner_district">
          <item>Please select district</item>
@@ -209,6 +212,12 @@
         <item> Abnormal movements </item>
         <item> Power in all 4 limbs </item>
         <item> Sensation in all 4 limbs </item>
+    </string-array>
+    <string-array name="arr_cns_vi">
+        <item> Normal </item>
+        <item> Conscious </item>
+        <item> Altered sensorium </item>
+        <item> Abnormal movements </item>
     </string-array>
     <string-array name="arr_dental">
         <item> Normal </item>

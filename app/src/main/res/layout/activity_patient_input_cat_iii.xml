@@ -25,7 +25,7 @@
                     android:id="@+id/cIIIinfoLy"
                     android:layout_width="match_parent"
                     android:padding="5dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
                     <LinearLayout
