@@ -2,6 +2,9 @@ package com.nirogi.harayna.activity.category;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -106,7 +109,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private AppCompatEditText mCIinputPrescription;
     private LinearLayout mCIbackPatientInput;
     private MultiSpinner multiSpinner;
-    private String selectedDiagnosis;
+    private String selectedDiagnosis="";
     private String doctorName;
 
     @Override
@@ -117,6 +120,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         initView();
         mSetValuesToViews();
         initDataToView();
+        mSetValidationListeners();
     }
 
     private void initDataToView() {
@@ -261,6 +265,217 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     }
 
+    private void mSetValidationListeners()
+    {
+          mCIinputWeightGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() > 0)
+                {
+                    String inputString=  mCIinputWeightGenPhy.getText().toString();
+
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 5 && input <= 120))
+                    {
+                          mCIinputWeightGenPhy.setError("*should be between 5-120");
+                    }
+                }
+            }
+        });
+          mCIinputHeightGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() > 0)
+                {
+                    String inputString=  mCIinputHeightGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 50 && input <= 130))
+                    {
+                          mCIinputHeightGenPhy.setError("*should be between 50-130");
+                    }
+                }
+            }
+        });
+          mCIinputHeadCRF.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=  mCIinputHeadCRF.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 30 && input <= 60))
+                    {
+                          mCIinputHeadCRF.setError("*should be between 30-60");
+                    }
+                }
+            }
+        });
+
+          mCIinputHRGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=  mCIinputHRGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 50 && input <= 200))
+                    {
+                          mCIinputHRGenPhy.setError("*should be between 50-200");
+                    }
+
+                }
+            }
+        });
+          mCIinputRRGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=  mCIinputRRGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 20 && input <= 30))
+                    {
+                          mCIinputRRGenPhy.setError("*should be between 20-30");
+                    }
+
+                }
+            }
+        });
+          mCIinputOxySatGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=  mCIinputOxySatGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 70 && input <= 100))
+                    {
+                          mCIinputOxySatGenPhy.setError("*should be between 70% -100%");
+                    }
+
+                }
+            }
+        });
+    }
+
+    private boolean validateDataToPost() {
+
+        if (TextUtils.isEmpty(  mCIinputWeightGenPhy.getText())) {
+            mShowToast("Please enter Weight ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputWeightGenPhy.getText())) {
+            String inputString =   mCIinputWeightGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 5 && input <= 120)) {
+                mShowToast("Weight should be between 5-120");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(  mCIinputHeightGenPhy.getText())) {
+            mShowToast("Please enter Height ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputHeightGenPhy.getText())) {
+            String inputString =   mCIinputHeightGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 50 && input <= 130)) {
+                mShowToast("Height should be between 90-215");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(  mCIinputHeadCRF.getText())) {
+            mShowToast("Please enter Head circumference (in cm) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputHeadCRF.getText())) {
+            String inputString =   mCIinputHeadCRF.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 30 && input <= 60)) {
+                mShowToast("Head circumference (in cm) should be between 30-60");
+                return false;
+            }
+        }
+
+
+
+
+        if (TextUtils.isEmpty(  mCIinputHRGenPhy.getText())) {
+            mShowToast("Please enter Heart rate (per min) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputHRGenPhy.getText())) {
+            String inputString =   mCIinputHRGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 50 && input <= 200)) {
+                mShowToast("Heart rate (per min) should be between 50-200");
+                return false;
+            }
+        }
+
+        if (TextUtils.isEmpty(  mCIinputRRGenPhy.getText())) {
+            mShowToast("Please enter Respiratory rate (per min) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputRRGenPhy.getText())) {
+            String inputString =   mCIinputRRGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 20 && input <= 30)) {
+                mShowToast("Respiratory rate (per min) should be between 20-30");
+                return false;
+            }
+        }
+
+        if (TextUtils.isEmpty(  mCIinputOxySatGenPhy.getText())) {
+            mShowToast("Please enter Oxygen Saturation(> 93 per) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputOxySatGenPhy.getText())) {
+            String inputString =   mCIinputOxySatGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 70 && input <= 100)) {
+                mShowToast("Oxygen Saturation(> 93 per) should be between 70%-100%");
+                return false;
+            }
+        }
+
+
+        if (selectedDiagnosis.length()==0) {
+            mShowToast("Please select an option for Diagnosis");
+            return false;
+        }
+        return true;
+    }
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.cIlyGenPhysicalEx) {
@@ -327,9 +542,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     }
 
-    private boolean validateDataToPost() {
-        return true;
-    }
 
     private void mShowHideLayouts(int clicked) {
         if (clicked == 0) {

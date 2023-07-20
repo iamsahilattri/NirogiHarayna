@@ -46,7 +46,8 @@
     <string name="test_refrence_id">Jh-PH-716634</string>
     <string name="enter_pppid">Enter PPPID</string>
 <!--    <string name="test_ppid">7HJC0068</string>-->
-    <string name="test_ppid">4WZD6269</string>
+<!--    <string name="test_ppid">4WZD6269</string>-->
+    <string name="test_ppid">5OPB2773</string>
 
 <!--    <string name="test_ppid">6PKC3231</string>-->
 
@@ -136,6 +137,10 @@
     <string-array name="arr_yes_no">
         <item> No </item>
         <item> Yes </item>
+    </string-array>
+    <string-array name="arr_y_n">
+        <item> Yes </item>
+        <item> No </item>
     </string-array>
 
     <string-array name="arr_vitmin_def">

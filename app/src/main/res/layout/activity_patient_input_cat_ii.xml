@@ -461,7 +461,7 @@
                                             android:layout_width="match_parent"
                                             android:padding="6dp"
                                             android:theme="@style/SpinnerTheme"
-                                            android:entries="@array/arr_mode_del"
+                                            android:entries="@array/arr_yes_no"
                                             android:layout_height="wrap_content"/>
                                     </LinearLayout>
 
@@ -534,7 +534,7 @@
                                             android:layout_width="match_parent"
                                             android:padding="6dp"
                                             android:theme="@style/SpinnerTheme"
-                                            android:entries="@array/arr_mode_del"
+                                            android:entries="@array/arr_yes_no"
                                             android:layout_height="wrap_content"/>
                                     </LinearLayout>
 
@@ -617,6 +617,7 @@
                                     android:layout_marginStart="5dp"
                                     android:visibility="visible"
                                     android:layout_weight="1"
+                                    android:layout_gravity="bottom"
                                     android:layout_height="wrap_content">
                                     <androidx.appcompat.widget.AppCompatTextView
                                         android:layout_width="wrap_content"
@@ -660,16 +661,19 @@
                                         android:layout_width="wrap_content"
                                         android:text="9. Milestones"
                                         android:layout_marginStart="5dp"
-                                        android:fontFamily="@font/dosis_regular"
+                                        android:textSize="16sp"
+                                        android:fontFamily="@font/dosis_medium"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_height="wrap_content"/>
 
                                     <androidx.appcompat.widget.AppCompatTextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:text=" 6 Months to 1 year"
-                                        android:layout_marginStart="5dp"
-                                        android:layout_marginTop="5dp"
-                                        android:fontFamily="@font/dosis_regular"
+
+                                        android:layout_marginTop="10dp"
+                                        android:padding="5dp"
+                                        android:background="@color/gray"
+                                        android:fontFamily="@font/dosis_medium"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_height="wrap_content"/>
                                     <LinearLayout
@@ -701,7 +705,7 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_yes_no"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -730,7 +734,7 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_yes_no"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -759,7 +763,7 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_yes_no"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -794,7 +798,7 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_yes_no"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -824,7 +828,7 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_mode_del"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -853,7 +857,248 @@
                                                     android:layout_width="match_parent"
                                                     android:padding="6dp"
                                                     android:theme="@style/SpinnerTheme"
-                                                    android:entries="@array/arr_yes_no"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:text="  1 to 2 years"
+                                        android:layout_marginTop="10dp"
+                                        android:padding="5dp"
+                                        android:background="@color/gray"
+                                        android:fontFamily="@font/dosis_medium"
+                                        android:textColor="@color/valueTextColor"
+                                        android:layout_height="wrap_content"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_height="wrap_content">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Walking without Support"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropWalkSupportHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_gravity="bottom"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_height="wrap_content">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Speak 5 to 10 words"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropSpeakHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_height="wrap_content">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Follow simple directions"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropFDirectHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:text=" 2 to 5 years"
+                                        android:layout_marginTop="10dp"
+                                        android:padding="5dp"
+                                        android:background="@color/gray"
+                                        android:fontFamily="@font/dosis_medium"
+                                        android:textColor="@color/valueTextColor"
+                                        android:layout_height="wrap_content"/>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_marginTop="5dp"
+                                            android:gravity="bottom"
+                                            android:layout_height="match_parent">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Walk up &amp; down stairs with Support"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropWalkUPDownHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_marginTop="5dp"
+                                            android:gravity="bottom"
+                                            android:layout_height="match_parent">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Jump with both feet"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropJumpHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_height="wrap_content">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Scrabbling"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropScrabblingHistory"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
+                                                    android:layout_height="wrap_content"/>
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_height="wrap_content">
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:text="Speak at least 50 words"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:textColor="@color/valueTextColor"
+                                                android:layout_height="wrap_content"/>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_marginEnd="10dp"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginStart="5dp"
+                                                android:background="@drawable/gray_rect"
+                                                android:layout_height="wrap_content">
+                                                <androidx.appcompat.widget.AppCompatSpinner
+                                                    android:id="@+id/cIIdropSpeak50History"
+                                                    android:layout_width="match_parent"
+                                                    android:padding="6dp"
+                                                    android:theme="@style/SpinnerTheme"
+                                                    android:entries="@array/arr_y_n"
                                                     android:layout_height="wrap_content"/>
                                             </LinearLayout>
                                         </LinearLayout>
@@ -940,6 +1185,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:inputType="number"
+                                        android:maxLength="2"
                                         android:hint="05-25 in KG"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -970,6 +1217,8 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
+                                        android:inputType="number"
+                                        android:maxLength="3"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
                                         android:hint="50-130 in cm"
@@ -1007,6 +1256,8 @@
                                         android:padding="8dp"
                                         android:layout_marginTop="5dp"
                                         android:background="@drawable/gray_rect"
+                                        android:inputType="number"
+                                        android:maxLength="2"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
@@ -1041,9 +1292,11 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
+                                        android:inputType="number"
+                                        android:maxLength="2"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
-                                        android:hint="30-60 in cm"
+                                        android:hint="5-20 in cm"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content"/>
@@ -1198,6 +1451,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="4"
+                                        android:inputType="numberDecimal"
                                         android:hint="50-200 (per min)"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -1308,6 +1563,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:maxLength="5"
+                                        android:inputType="numberDecimal"
                                         android:hint="70% -100%"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -1587,7 +1844,7 @@
                             android:layout_marginStart="1dp"
                             android:layout_marginEnd="1dp"
                             android:padding="5dp"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             android:layout_marginBottom="3dp"
                             android:background="@color/colorWhite"
                             android:layout_height="wrap_content">
@@ -1823,13 +2080,22 @@
                                                 android:fontFamily="@font/dosis_regular"
                                                 android:textColor="@color/valueTextColor"
                                                 android:layout_height="wrap_content"/>
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/inputRightEyeSysExa"
+                                            <androidx.appcompat.widget.AppCompatEditText
+                                                android:id="@+id/cIIinputRightEyeSysExa"
                                                 android:layout_marginTop="5dp"
                                                 android:layout_width="match_parent"
-                                                android:padding="6dp"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:inputType="number"
+                                                android:textColorHint="@color/hintColorText"
+                                                android:layout_marginEnd="10dp"
+                                                android:textSize="14sp"
+                                                android:padding="8dp"
+                                                android:maxLength="7"
+                                                android:textColor="@color/valueTextColor"
                                                 android:background="@drawable/gray_rect"
                                                 android:layout_height="wrap_content"/>
+
                                         </LinearLayout>
                                         <LinearLayout
                                             android:layout_width="0dp"
@@ -1844,11 +2110,19 @@
                                                 android:fontFamily="@font/dosis_regular"
                                                 android:textColor="@color/valueTextColor"
                                                 android:layout_height="wrap_content"/>
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/inputLeftEyeSysExa"
-                                                android:layout_width="match_parent"
-                                                android:padding="6dp"
+                                            <androidx.appcompat.widget.AppCompatEditText
+                                                android:id="@+id/cIIinputLeftEyeSysExa"
                                                 android:layout_marginTop="5dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_marginStart="5dp"
+                                                android:fontFamily="@font/dosis_regular"
+                                                android:inputType="number"
+                                                android:textColorHint="@color/hintColorText"
+                                                android:layout_marginEnd="10dp"
+                                                android:textSize="14sp"
+                                                android:padding="8dp"
+                                                android:maxLength="7"
+                                                android:textColor="@color/valueTextColor"
                                                 android:background="@drawable/gray_rect"
                                                 android:layout_height="wrap_content"/>
                                         </LinearLayout>
@@ -2019,6 +2293,8 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
+                                        android:inputType="number"
+                                        android:maxLength="3"
                                         android:hint="14 to 24g/dL"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
@@ -2267,38 +2543,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite"
+            android:gravity="center"
             android:orientation="horizontal">
+
             <LinearLayout
-            android:id="@+id/cIIsubmitPatientInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_disable"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/baseline_save_24" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/cIIsubmitPatientInput"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/dosis_medium"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_disable"
                 android:gravity="center"
-                android:text="Save"
-                android:textColor="@color/colorWhite"
-                android:textSize="15sp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/baseline_save_24" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/dosis_medium"
+                    android:gravity="center"
+                    android:text="Save"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp" />
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

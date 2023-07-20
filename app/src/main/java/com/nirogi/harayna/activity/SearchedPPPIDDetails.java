@@ -197,7 +197,8 @@ public class SearchedPPPIDDetails extends BaseActivity {
                         mIntent.putExtra("memberData",populateData.get(position));
                         startActivity(mIntent);
                     }
-                }else {
+                }
+                else {
                     mShowToast("Already Submitted !");
                 }
 

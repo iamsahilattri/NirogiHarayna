@@ -145,6 +145,8 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
+        checkMandatoryAll();
+
     }
 
     private void initDataToView() {
@@ -275,7 +277,6 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         cIVchkSelectAllandatoryInvest=findViewById(R.id.cIVchkSelectAllandatoryInvest);
         LinearLayout cIVsubmitPatientInput = findViewById(R.id.cIVsubmitPatientInput);
         cIVsubmitPatientInput.setOnClickListener(this);
-        checkMandatoryAll();
     }
 
     private void checkMandatoryAll()
