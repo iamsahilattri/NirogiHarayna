@@ -78,14 +78,14 @@ public class HomeActivity extends BaseActivity {
         spinDistrict = findViewById(R.id.spinDistrict);
         spinOtherInfoDistrict= findViewById(R.id.spinOtherInfoDistrict);
         mstbSearchType = findViewById(R.id.mstbSearchType);
-        lyPPPID =  findViewById(R.id.lyPPPID);
+        lyPPPID = findViewById(R.id.lyPPPID);
         enPPPID = findViewById(R.id.enPPPID);
-        lyRefID =  findViewById(R.id.lyRefID);
+        lyRefID = findViewById(R.id.lyRefID);
         enRefID = findViewById(R.id.enRefID);
         submitSearch = findViewById(R.id.submitSearch);
         mstbSearchType.setValue(0);
         lyPPPID.setVisibility(View.VISIBLE);
-        lyOtherInfo=findViewById(R.id.lyOtherInfo);
+        lyOtherInfo= findViewById(R.id.lyOtherInfo);
         enOtherMobileNo = findViewById(R.id.enOtherMobileNo);
         enOtherName = findViewById(R.id.enOtherName);
 
@@ -206,7 +206,6 @@ public class HomeActivity extends BaseActivity {
                                                 {
                                                     selDistrict=mDistrictList.get(position);
                                                 }
-
                                             }
 
                                             @Override

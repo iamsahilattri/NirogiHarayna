@@ -66,11 +66,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    private void mSendIntent()
-    {
-        Intent mIntent = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(mIntent);
-    }
 
     private void loginCheck() {
         if (isNetworkAvailable()) {
@@ -88,8 +83,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             if (response.isSuccessful()) {
                                 ArrayList<JSONObject> returnedObject=JWTUtils.parseJWT(response.body().getToken());
                                 mSetDataToShared(returnedObject,response.body().getToken());
-
-                            }else {
+                            }
+                            else
+                            {
                                 mShowToast(""+response.errorBody().string());
                             }
                             disableProgressBar();
@@ -121,7 +117,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
     private void initView() {
-
 
         relMain = findViewById(R.id.relMain);
         enEmailUser = findViewById(R.id.enEmailUser);

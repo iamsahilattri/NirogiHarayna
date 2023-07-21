@@ -2,8 +2,13 @@ package com.nirogi.harayna.activity.category;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
@@ -64,7 +69,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
     private boolean mClickOne = true, mClickTwo = true, mClickThree = true, mClickFour = true, mClickFive = true, mClickSix = true;
 
     private MultiSpinner multiSpinner;
-    private String selectedDiagnosis;
+    private String selectedDiagnosis="";
     private String doctorName;
     private SharedPreferences sharedPreferences;
     private AppCompatEditText mInputWeightGenPhy;
@@ -139,6 +144,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
     private AppCompatSpinner mCIIIdropEarDisGenPhy;
     private AppCompatSpinner mCIIIdropSpeechGenPhy;
     private AppCompatSpinner mCIIIdropIQGenPhy,cIIIdropCynosGenPhy;
+    private CheckBox cIIIchkAllMandatoryInvest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -148,6 +154,8 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         initView();
         mSetValuesToViews();
         initDataToView();
+        mSetValidationListeners();
+        checkMandatoryAll();
     }
 
     private void initDataToView() {
@@ -191,28 +199,22 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mTxtFacilityIncharge = findViewById(R.id.cIIItxtFacilityIncharge);
         mTxtDate = findViewById(R.id.cIIItxtDate);
         mLyInput = findViewById(R.id.cIIIlyInput);
-        LinearLayout mLyGenPhysicalEx = findViewById(R.id.cIIIlyGenPhysicalEx);
-        mLyGenPhysicalEx.setOnClickListener(this);
         mIconGenPhy = findViewById(R.id.cIIIiconGenPhy);
         mLyGenPhysicalxValue = findViewById(R.id.cIIIlyGenPhysicalxValue);
-
-        LinearLayout mLySysExa = findViewById(R.id.cIIIlySysExa);
-        mLySysExa.setOnClickListener(this);
         mIconSysExa = findViewById(R.id.cIIIiconSysExa);
         mLySysExaValue = findViewById(R.id.cIIIlySysExaValue);
 
-        LinearLayout mLyMandatoryInvest = findViewById(R.id.cIIIlyMandatoryInvest);
-        mLyMandatoryInvest.setOnClickListener(this);
         mIconMandatoryInvest = findViewById(R.id.cIIIiconMandatoryInvest);
         mLyMandatoryInvestValue = findViewById(R.id.cIIIlyMandatoryInvestValue);
+        findViewById(R.id.cIIIlyGenPhysicalEx).setOnClickListener(this);
+        findViewById(R.id.cIIIlySysExa).setOnClickListener(this);
+        findViewById(R.id.cIIIlyDiagnosis).setOnClickListener(this);
+        findViewById(R.id.cIIIlyMandatoryInvest).setOnClickListener(this);
+        findViewById(R.id.cIIIlyPrescription).setOnClickListener(this);
 
-        LinearLayout mLyDiagnosis = findViewById(R.id.cIIIlyDiagnosis);
-        mLyDiagnosis.setOnClickListener(this);
         mIconDiagnosis = findViewById(R.id.cIIIiconDiagnosis);
         mLyDiagnosisValue = findViewById(R.id.cIIIlyDiagnosisValue);
 
-        LinearLayout mLyPrescription = findViewById(R.id.cIIIlyPrescription);
-        mLyPrescription.setOnClickListener(this);
         mIconPrescription = findViewById(R.id.cIIIiconPrescription);
         mLyPrescriptionValue = findViewById(R.id.cIIIlyPrescriptionValue);
         mInputWeightGenPhy = findViewById(R.id.cIIIinputWeightGenPhy);
@@ -267,19 +269,19 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mInputUrineMandatoryInvest = findViewById(R.id.cIIIinputUrineMandatoryInvest);
         mChkAdvisedMandatoryInvest = findViewById(R.id.cIIIchkAdvisedMandatoryInvest);
         mInputAdvisedMandatoryInvest = findViewById(R.id.cIIIinputAdvisedMandatoryInvest);
-        multiSpinner = (MultiSpinner) findViewById(R.id.cIIIdropDiagnosis);
+        multiSpinner =  findViewById(R.id.cIIIdropDiagnosis);
         mSetSpinnerData(Arrays.asList(getResources().getStringArray(R.array.arr_diagnosis_cat_1)));
 
         mChkDAlreadyKnown = findViewById(R.id.cIIIchkDAlreadyKnown);
         mInputPrescription = findViewById(R.id.cIIIinputPrescription);
-        mCIIlyHistoryEx =findViewById(R.id.cIIlyHistoryEx);
-        iconHistory =findViewById(R.id.cIIiconHistory);
-        lyHistoryExValue =findViewById(R.id.cIIlyHistoryExValue);
-        mCIIdropHosAdminHistory =findViewById(R.id.cIIdropHosAdminHistory);
-        mCIIdropFamilyHistory =findViewById(R.id.cIIdropFamilyHistory);
-        mCIIdropImmunizationHistory =findViewById(R.id.cIIdropImmunizationHistory);
-        mCIIdropTbPatientHistory =findViewById(R.id.cIIdropTbPatientHistory);
-        mCIIdropDewormingPatientHistory =findViewById(R.id.cIIdropDewormingPatientHistory);
+        findViewById(R.id.cIIIlyHistoryEx).setOnClickListener(this);
+        iconHistory =findViewById(R.id.cIIIiconHistory);
+        lyHistoryExValue =findViewById(R.id.cIIIlyHistoryExValue);
+        mCIIdropHosAdminHistory =findViewById(R.id.cIIIdropHosAdminHistory);
+        mCIIdropFamilyHistory =findViewById(R.id.cIIIdropFamilyHistory);
+        mCIIdropImmunizationHistory =findViewById(R.id.cIIIdropImmunizationHistory);
+        mCIIdropTbPatientHistory =findViewById(R.id.cIIIdropTbPatientHistory);
+        mCIIdropDewormingPatientHistory =findViewById(R.id.cIIIdropDewormingPatientHistory);
         mCIIIdropConjectionAnGenPhy =findViewById(R.id.cIIIdropConjectionAnGenPhy);
         mCIIIdropSkinTugaGenPhy =findViewById(R.id.cIIIdropSkinTugaGenPhy);
         mCIIIdropSkinLeGenPhy =findViewById(R.id.cIIIdropSkinLeGenPhy);
@@ -291,6 +293,8 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         mCIIIdropIQGenPhy =findViewById(R.id.cIIIdropIQGenPhy);
         cIIIdropCynosGenPhy=findViewById(R.id.cIIIdropCynosGenPhy);
         cIIIinputRRGenPhy=findViewById(R.id.cIIIinputRRGenPhy);
+        cIIIchkAllMandatoryInvest=findViewById(R.id.cIIIchkAllMandatoryInvest);
+        findViewById(R.id.cIIIsubmitPatientInput).setOnClickListener(this);
     }
 
     private void mSetSpinnerData(List<String> mList) {
@@ -370,7 +374,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 mClickFive = true;
             }
         }
-        if (view.getId() == R.id.cIIlyHistoryEx) {
+        if (view.getId() == R.id.cIIIlyHistoryEx) {
             if (mClickSix) {
                 mShowHideLayouts(5);
                 mClickSix = false;
@@ -381,18 +385,291 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         }
         if (view.getId() == R.id.cIIIsubmitPatientInput) {
             if (validateDataToPost()) {
-                postDataForCategories();
+//                postDataForCategories();
+                mShowToast("POST");
             }
 
         }
     }
 
+    private void checkMandatoryAll()
+    {
+        cIIIchkAllMandatoryInvest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked)
+                {
+                    mChkHBMandatoryInvest.setChecked(true);
+                    mChkTLCMandatoryInvest.setChecked(true);
+                    mChkDLCMandatoryInvest.setChecked(true);
+                    mChkPackedCellMandatoryInvest.setChecked(true);
+                    mChkCorpuscularMandatoryInvest.setChecked(true);
+                    mChkCorpuscularHBMandatoryInvest.setChecked(true);
+                    mChkHBConcentrationMandatoryInvest.setChecked(true);
+                    mChkPlateletMandatoryInvest.setChecked(true);
+                    mChkRDWMandatoryInvest.setChecked(true);
+                    mChkRDWSDMandatoryInvest.setChecked(true);
+                    mChkRbcCountMandatoryInvest.setChecked(true);
+                    mChkRBSMandatoryInvest.setChecked(true);
+                    mChkUrineMandatoryInvest.setChecked(true);
+                    mChkAdvisedMandatoryInvest.setChecked(true);
+                }else {
+                    mChkHBMandatoryInvest.setChecked(false);
+                    mChkTLCMandatoryInvest.setChecked(false);
+                    mChkDLCMandatoryInvest.setChecked(false);
+                    mChkPackedCellMandatoryInvest.setChecked(false);
+                    mChkCorpuscularMandatoryInvest.setChecked(false);
+                    mChkCorpuscularHBMandatoryInvest.setChecked(false);
+                    mChkHBConcentrationMandatoryInvest.setChecked(false);
+                    mChkPlateletMandatoryInvest.setChecked(false);
+                    mChkRDWMandatoryInvest.setChecked(false);
+                    mChkRDWSDMandatoryInvest.setChecked(false);
+                    mChkRbcCountMandatoryInvest.setChecked(false);
+                    mChkRBSMandatoryInvest.setChecked(false);
+                    mChkUrineMandatoryInvest.setChecked(false);
+                    mChkAdvisedMandatoryInvest.setChecked(false);
+                }
+            }
+        });
+    }
+
+    private void updateBMI()
+    {
+
+        if(!TextUtils.isEmpty(mInputWeightGenPhy.getText())&& !TextUtils.isEmpty(mInputHeightGenPhy.getText()))
+        {
+            double weight = Double.parseDouble(mInputWeightGenPhy.getText().toString());
+            double height = Double.parseDouble(mInputHeightGenPhy.getText().toString()) / 100.0;
+
+            // Calculating BMI
+            double calculatedBmi = weight / (height * height);
+            Log.e(" calculatedBmi ",""+calculatedBmi);
+            String formattedBmi = String.format("%.2f", calculatedBmi);
+            mInputBMIGenPhy.setText(formattedBmi);
+        }
+
+    }
+    private void mSetValidationListeners()
+    {
+        mInputWeightGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() > 0)
+                {
+                    String inputString=mInputWeightGenPhy.getText().toString();
+
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 5 && input <= 120))
+                    {
+                        mInputWeightGenPhy.setError("*should be between 5-120");
+                    }
+                    updateBMI();
+                }
+            }
+        });
+        mInputHeightGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() > 0)
+                {
+                    String inputString=mInputHeightGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 90 && input <= 215))
+                    {
+                        mInputHeightGenPhy.setError("*should be between 90-215");
+                    }
+
+
+                    updateBMI();
+                }
+            }
+        });
+        mInputPulseGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=mInputPulseGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 30 && input <= 250))
+                    {
+                        mInputPulseGenPhy.setError("*should be between 30-250");
+                    }
+                }
+            }
+        });
+        cIIIinputRRGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=cIIIinputRRGenPhy.getText().toString();
+                    int input=Integer.parseInt(inputString);
+                    if(!(input >= 5 && input <= 30))
+                    {
+                        mInputPulseGenPhy.setError("*should be between 5-30");
+                    }
+                }
+            }
+        });
+        mInputBPGenPhy.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                if(charSequence.length() != 0)
+                {
+                    String inputString=mInputBPGenPhy.getText().toString();
+                    if(inputString.contains("/"))
+                    {
+                        String[] inputValues=inputString.split("/");
+                        int inputOne=Integer.parseInt(inputValues[0]);
+                        if(!(inputOne >= 40 && inputOne <= 300))
+                        {
+                            mInputBPGenPhy.setError("*should be like 40-300");
+                        }
+                        if(inputValues.length>1 && inputValues[1]!=null)
+                        {
+                            int inputTwo=Integer.parseInt(inputValues[1]);
+                            if(!(inputTwo >= 40 && inputTwo <= 300))
+                            {
+                                mInputBPGenPhy.setError("*should be like 40-300");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int inputOne=Integer.parseInt(inputString);
+                        if(!(inputOne >= 40 && inputOne <= 300))
+                        {
+                            mInputBPGenPhy.setError("*should be like (34/33)");
+                        }
+                    }
+
+                }
+            }
+        });
+    }
+
     private boolean validateDataToPost() {
+
+        if (TextUtils.isEmpty(mInputWeightGenPhy.getText())) {
+
+            mShowToast("Please enter Weight ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(mInputWeightGenPhy.getText())) {
+            String inputString = mInputWeightGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 5 && input <= 120)) {
+                mShowToast("Weight should be between 5-120");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(cIIIinputRRGenPhy.getText())) {
+            mShowToast("Please enter Respiratory rate (per min) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(cIIIinputRRGenPhy.getText())) {
+            String inputString = cIIIinputRRGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 5 && input <= 30)) {
+                mShowToast("Respiratory rate (per min) should be between 5-30");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(mInputHeightGenPhy.getText())) {
+            mShowToast("Please enter Height ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(mInputHeightGenPhy.getText())) {
+            String inputString = mInputHeightGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 90 && input <= 215)) {
+                mShowToast("Height should be between 90-215");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(mInputPulseGenPhy.getText())) {
+            mShowToast("Please enter Pulse(per min) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(mInputPulseGenPhy.getText())) {
+            String inputString = mInputPulseGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 30 && input <= 250)) {
+                mShowToast("Pulse(per min) should be between 30-250");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(mInputBPGenPhy.getText())) {
+            mShowToast("Please enter BP (mmHg) ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(mInputBPGenPhy.getText())) {
+            String inputString = mInputBPGenPhy.getText().toString();
+            if (inputString.contains("/")) {
+                String[] inputValues = inputString.split("/");
+                int inputOne = Integer.parseInt(inputValues[0]);
+                if (!(inputOne >= 40 && inputOne <= 300)) {
+                    mShowToast("BP should be between 40-300");
+                    return false;
+                }
+                if (inputValues.length > 1 && inputValues[1] != null) {
+                    int inputTwo = Integer.parseInt(inputValues[1]);
+                    if (!(inputTwo >= 40 && inputTwo <= 300)) {
+                        mShowToast("BP should be between 40-300");
+                        return false;
+                    }
+                }
+            } else {
+                mShowToast("BP should be like (34/33)");
+            }
+
+        }
+        if (TextUtils.isEmpty(mInputRightEyeSysExa.getText())) {
+            mShowToast("Please enter Right eye - Refraction ");
+            return false;
+        }
+        if (TextUtils.isEmpty(mInputRightEyeSysExa.getText())) {
+            mShowToast("Please enter Left eye - Refraction ");
+            return false;
+        }
+        if (selectedDiagnosis.length()==0) {
+            mShowToast("Please select an option for Diagnosis");
+            return false;
+        }
         return true;
     }
 
+
+
     private void mShowHideLayouts(int clicked) {
-        if (clicked == 0) {
+        if (clicked == 0)
+        {
             mClickOne = false;
             mClickTwo = true;
             mClickThree = true;
@@ -412,7 +689,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
-        } else if (clicked == 1) {
+        }
+        else if (clicked == 1)
+        {
             mClickOne = true;
             mClickTwo = false;
             mClickThree = true;
@@ -432,7 +711,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
-        } else if (clicked == 2) {
+        }
+        else if (clicked == 2)
+        {
             mClickOne = true;
             mClickTwo = true;
             mClickThree = false;
@@ -452,7 +733,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             mLyMandatoryInvestValue.setVisibility(View.VISIBLE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.GONE);
-        } else if (clicked == 3) {
+        }
+        else if (clicked == 3)
+        {
             mClickOne = true;
             mClickTwo = true;
             mClickThree = true;
@@ -472,7 +755,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.VISIBLE);
             mLyPrescriptionValue.setVisibility(View.GONE);
-        } else if (clicked == 4) {
+        }
+        else if (clicked == 4)
+        {
             mClickOne = true;
             mClickTwo = true;
             mClickThree = true;
@@ -492,7 +777,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             mLyMandatoryInvestValue.setVisibility(View.GONE);
             mLyDiagnosisValue.setVisibility(View.GONE);
             mLyPrescriptionValue.setVisibility(View.VISIBLE);
-        } else if (clicked == 5) {
+        }
+        else if (clicked == 5)
+        {
             mClickOne = true;
             mClickTwo = true;
             mClickThree = true;

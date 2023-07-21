@@ -136,8 +136,6 @@ public class SearchedPPPIDDetails extends BaseActivity {
                     disableProgressBar();
                 }
             });
-
-
         }catch (Exception ee)
         {
             Log.e(" Exception ",""+ee.getMessage());

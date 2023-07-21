@@ -82,8 +82,6 @@ public class SearchedReferenceIdDetails extends BaseActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-
-
     }
 
     public void getPatientListWithRefID(String inputTextPPP)

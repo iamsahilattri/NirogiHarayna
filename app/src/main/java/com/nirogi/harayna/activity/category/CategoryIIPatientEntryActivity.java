@@ -65,11 +65,9 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private boolean mClickOne = true, mClickTwo = true, mClickThree = true, mClickFour = true, mClickFive = true, mClickSix = true;
 
     PatientListModelResponse memberData;
-
     private MultiSpinner multiSpinner;
     private String selectedDiagnosis="";
     private String doctorName;
-
     private SharedPreferences sharedPreferences;
     private AppCompatSpinner mCIIdropModeDelHistory;
     private AppCompatSpinner mCIIdropCryBirthHistory;
@@ -113,6 +111,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private AppCompatSpinner mCIIdropDentalExSysExa;
     private AppCompatEditText mCIIinputHBMandatoryInvest;
     private AppCompatEditText mCIIinputTLCMandatoryInvest;
+
     private MultiSpinner mCIIdropDiagnosis;
     private AppCompatCheckBox mCIIchkDAlreadyKnown;
     private AppCompatEditText mCIIinputPrescription;
@@ -165,6 +164,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     }
 
     private void initView() {
+
         mTxtPatientPPPID = findViewById(R.id.cIItxtPatientPPPID);
         mTxtPatientName = findViewById(R.id.cIItxtPatientName);
         mTxtPatientGenderAge = findViewById(R.id.cIItxtPatientGenderAge);
@@ -246,7 +246,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
         mCIIdropDentalExSysExa = findViewById(R.id.cIIdropDentalExSysExa);
         mCIIinputHBMandatoryInvest = findViewById(R.id.cIIinputHBMandatoryInvest);
         mCIIinputTLCMandatoryInvest = findViewById(R.id.cIIinputTLCMandatoryInvest);
-        multiSpinner = (MultiSpinner) findViewById(R.id.cIIdropDiagnosis);
+        multiSpinner = findViewById(R.id.cIIdropDiagnosis);
         mSetSpinnerData(Arrays.asList(getResources().getStringArray(R.array.arr_diagnosis_cat_1)));
 
         mCIIchkDAlreadyKnown = findViewById(R.id.cIIchkDAlreadyKnown);
@@ -286,8 +286,6 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     if (selectedDiagnosis.length() > 2)
                         selectedDiagnosis = selectedDiagnosis.substring(0, selectedDiagnosis.length() - 2);
                 }
-
-
             }
         });
 
@@ -350,14 +348,10 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
             }
         }
         if (view.getId() == R.id.cIIsubmitPatientInput) {
-
             if (validateDataToPost()) {
                 postDataForCategories();
             }
-
         }
-
-
     }
 
 
@@ -457,7 +451,6 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     {
                         mCIIinputHRGenPhy.setError("*should be between 50-200");
                     }
-
                 }
             }
         });
