@@ -295,6 +295,8 @@ public class HomeActivity extends BaseActivity {
                                 mIntent.putExtra("inputValue","");
                                 mIntent.putExtra("inputData","");
                                 startActivity(mIntent);
+                            }else {
+                                mShowToast("No Record Found !");
                             }
                             disableProgressBar();
                         }else{
@@ -347,6 +349,8 @@ public class HomeActivity extends BaseActivity {
                                 mIntent.putExtra("mData",mDataList);
                                 mIntent.putExtra("referenceId",inputTextPPP);
                                 startActivity(mIntent);
+                            }else {
+                                mShowToast("No Record Found !");
                             }
                            disableProgressBar();
 

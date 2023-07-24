@@ -36,9 +36,7 @@ import retrofit2.Response;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private RelativeLayout relMain;
     private AppCompatEditText enEmailUser;
-    private LinearLayout llPassword;
     private AppCompatEditText enPassword;
 
     @Override
@@ -118,9 +116,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void initView() {
 
-        relMain = findViewById(R.id.relMain);
         enEmailUser = findViewById(R.id.enEmailUser);
-        llPassword = findViewById(R.id.ll_password);
         enPassword = findViewById(R.id.enPassword);
         AppCompatButton btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);

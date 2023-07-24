@@ -45,6 +45,45 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void performBackPress(Activity mContext)
+    {
+        Log.e(" performBackPress "," performBackPress ");
+        AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle("Alert !");
+        builder.setMessage("Are you sure you want to go back?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mContext.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+    }
+
+    public void refrenceGenratedPopup(Activity mContext,String referenceId)
+    {
+        AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle("Submitted Successfully !");
+        builder.setMessage("Reference ID : "+referenceId);
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mContext.finish();
+                    }
+                })
+
+                .show();
+    }
+
     public void performLogout(Activity mContext,boolean checkAlert)
     {
         if(checkAlert)
@@ -85,7 +124,7 @@ public class BaseActivity extends AppCompatActivity {
         mContext.startActivity(freshIntent);
     }
 
-    public void mSetBackToolbar(String mValue,boolean mCheck,String desText)
+    public void mSetBackToolbar(Activity mContext,String mValue,boolean mCheck,String desText)
     {
         TextView title= findViewById(R.id.title);
         if(mCheck)
@@ -99,6 +138,10 @@ public class BaseActivity extends AppCompatActivity {
         findViewById(R.id.backBTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mCheck)
+                {
+                    performBackPress(mContext);
+                }
                 finish();
             }
         });

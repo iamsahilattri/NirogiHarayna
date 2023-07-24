@@ -158,6 +158,11 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         checkMandatoryAll();
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryIIIPatientEntryActivity.this);
+    }
+
     private void initDataToView() {
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
@@ -172,7 +177,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category III (5-18 Years)");
+                    mSetBackToolbar(CategoryIIIPatientEntryActivity.this,"Patient Details", true, "Category III (5-18 Years)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -385,8 +390,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         }
         if (view.getId() == R.id.cIIIsubmitPatientInput) {
             if (validateDataToPost()) {
-//                postDataForCategories();
-                mShowToast("POST");
+                postDataForCategories();
             }
 
         }
@@ -916,7 +920,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryIIIPatientEntryActivity.this,response.body().getRefernceId());
+
+//                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIIIPatientEntryActivity.this);
                             }

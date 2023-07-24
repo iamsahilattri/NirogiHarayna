@@ -149,6 +149,12 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
 
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryIVPatientEntryActivity.this);
+    }
+
+
     private void initDataToView() {
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
@@ -163,7 +169,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category IV (18-40 Years)");
+                    mSetBackToolbar(CategoryIVPatientEntryActivity.this,"Patient Details", true, "Category V (40-60 Years)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -767,7 +773,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                 request.setPallor(mCIVdropPallorGenPhy.getSelectedItem() + "");
                 request.setJaundiceCyanosis(mCIVdropJaundiceGenPhy.getSelectedItem() + "");
                 request.setClubbing(mCIVdropClubbingGenPhy.getSelectedItem() + "");
-                request.setLymphocytes(mCIVdropLymphadenopathyGenPhy.getSelectedItem() + "");
+                request.setLymphadenopathy(mCIVdropLymphadenopathyGenPhy.getSelectedItem() + "");
                 request.setPedalOedema(mCIVdropPOedemaGenPhy.getSelectedItem() + "");
 
                 // Step 2
@@ -823,7 +829,9 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryIVPatientEntryActivity.this,response.body().getRefernceId());
+
+//                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIVPatientEntryActivity.this);
                             }

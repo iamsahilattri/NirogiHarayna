@@ -50,7 +50,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searched_pppid);
         preferences= NIROGI.getInstance().getPreferences();
-        mSetBackToolbar("Patient List",false,"");
+        mSetBackToolbar(SearchedPPPIDDetails.this,"Patient List",false,"");
         initViews();
         setRecyclerFromIntentData();
     }

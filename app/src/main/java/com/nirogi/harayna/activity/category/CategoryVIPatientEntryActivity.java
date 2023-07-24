@@ -158,6 +158,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
         checkMandatoryAll();
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryVIPatientEntryActivity.this);
+    }
+
     private void initDataToView() {
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
@@ -173,7 +178,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category VI (Over 60 Years)");
+                    mSetBackToolbar(CategoryVIPatientEntryActivity.this,"Patient Details", true, "Category VI (Over 60 Years)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -671,7 +676,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 mClickSix = true;
             }
         }
-        if (view.getId() == R.id.cVsubmitPatientInput) {
+        if (view.getId() == R.id.cVIsubmitPatientInput) {
             if (validateDataToPost()) {
                 postDataForCategories();
             }
@@ -915,7 +920,9 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryVIPatientEntryActivity.this,response.body().getRefernceId());
+
+//                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryVIPatientEntryActivity.this);
                             }

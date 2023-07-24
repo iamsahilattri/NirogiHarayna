@@ -154,6 +154,11 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         checkMandatoryAll();
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryVPatientEntryActivity.this);
+    }
+
     private void initDataToView() {
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
@@ -168,7 +173,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category IV (18-40 Years)");
+                    mSetBackToolbar(CategoryVPatientEntryActivity.this,"Patient Details", true, "Category IV (18-40 Years)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -764,7 +769,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 request.setPallor(mCVdropPallorGenPhy.getSelectedItem() + "");
                 request.setJaundiceCyanosis(mCVdropJaundiceGenPhy.getSelectedItem() + "");
                 request.setClubbing(mCVdropClubbingGenPhy.getSelectedItem() + "");
-                request.setLymphocytes(mCVdropLymphadenopathyGenPhy.getSelectedItem() + "");
+                request.setLymphadenopathy(mCVdropLymphadenopathyGenPhy.getSelectedItem() + "");
                 request.setPedalOedema(mCVdropPOedemaGenPhy.getSelectedItem() + "");
 
                 // Step 2
@@ -825,7 +830,8 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryVPatientEntryActivity.this,response.body().getRefernceId());
+//                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryVPatientEntryActivity.this);
                             }

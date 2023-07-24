@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.core.widget.NestedScrollView
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -994,7 +995,7 @@
                                         android:background="@drawable/gray_rect"
                                         android:fontFamily="@font/dosis_regular"
                                         android:textColor="@color/valueTextColor"
-                                        android:inputType="numberDecimal"
+                                        android:inputType="text"
                                         android:maxLength="10"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
@@ -1029,7 +1030,7 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
-                                        android:inputType="numberDecimal"
+                                        android:inputType="text"
                                         android:maxLength="10"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"

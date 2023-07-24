@@ -45,7 +45,7 @@
     <string name="enter_reference_id">Enter Reference ID</string>
     <string name="test_refrence_id">Jh-PH-716634</string>
     <string name="enter_pppid">Enter PPPID</string>
-    <string name="test_ppid">5BBF2373</string>
+    <string name="test_ppid">6PKC3231</string>
 
     <string name="age_gender"><![CDATA[Age & Gender]]></string>
     <string name="general_physical_examination">General Physical Examination</string>
@@ -195,11 +195,31 @@
         <item> Palpitations </item>
         <item> Murmur </item>
     </string-array>
+    <string-array name="arr_cvs_">
+        <item> Normal </item>
+        <item> Abnormal Sound </item>
+    </string-array>
     <string-array name="arr_per_abdomen">
         <item> Normal </item>
         <item> Any distension </item>
         <item> Organomegaly </item>
         <item> Dilated veins </item>
+    </string-array>
+    <string-array name="arr_per_abdomen_">
+        <item> Normal </item>
+        <item> No abnormality </item>
+        <item> Any distension </item>
+        <item> Organomegaly </item>
+        <item> Dilated veins </item>
+        <item> Umbilicus </item>
+    </string-array>
+
+    <string-array name="arr_anterior_">
+        <item> Normal </item>
+        <item> Depressed </item>
+        <item> Just Depressed </item>
+        <item> Bulging </item>
+
     </string-array>
     <string-array name="arr_hearing">
         <item> Normal </item>
@@ -213,6 +233,11 @@
         <item> Abnormal movements </item>
         <item> Power in all 4 limbs </item>
         <item> Sensation in all 4 limbs </item>
+    </string-array>
+    <string-array name="arr_cns_cat_1">
+        <item> Conscious </item>
+        <item> Altered sensorium </item>
+        <item> Abnormal movements </item>
     </string-array>
     <string-array name="arr_cns_vi">
         <item> Normal </item>

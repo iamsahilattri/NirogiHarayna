@@ -230,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -264,7 +264,6 @@
                                 android:hint="@string/enter_pppid"
                                 android:lines="1"
                                 android:padding="5dp"
-                                android:text="@string/test_ppid"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="14sp" />
@@ -312,7 +311,6 @@
                                 android:hint="@string/enter_reference_id"
                                 android:lines="1"
                                 android:padding="5dp"
-                                android:text="@string/test_refrence_id"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="14sp" />
@@ -395,7 +393,6 @@
                                   android:maxEms="12"
                                   android:padding="5dp"
                                   android:inputType="number"
-                                  android:text="9050221136"
                                   android:textColor="@color/colorBlack"
                                   android:textColorHint="@color/colorGray"
                                   android:textSize="14sp" />
@@ -439,7 +436,6 @@
                                     android:lines="1"
                                     android:inputType="textPersonName"
                                     android:padding="5dp"
-                                    android:text="Sargun"
                                     android:textColor="@color/colorBlack"
                                     android:textColorHint="@color/colorGray"
                                     android:textSize="14sp" />

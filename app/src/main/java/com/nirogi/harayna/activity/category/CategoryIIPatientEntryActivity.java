@@ -135,6 +135,11 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
         mSetValidationListeners();
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryIIPatientEntryActivity.this);
+    }
+
     private void initDataToView() {
         doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
@@ -149,7 +154,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category I (0-6 Months)");
+                    mSetBackToolbar(CategoryIIPatientEntryActivity.this,"Patient Details", true, "Category II (07-59 Months)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -780,7 +785,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                 request.setPincerGrasp(mCIIdropPincerGraspHistory.getSelectedItem() + "");
                 request.setStrangerAnxiety(mCIIdropStrangerAnxietyHistory.getSelectedItem() + "");
                 request.setBisyllSpeech(mCIIdropSpeachHistory.getSelectedItem() + "");
-                request.setWalkStairsWithSupport(mCIIdropWalkSupportHistory.getSelectedItem() + "");
+                request.setWalkWithoutSupport(mCIIdropWalkSupportHistory.getSelectedItem() + "");
                 request.setSpeakFiveToTenWords(mCIIdropSpeakHistory.getSelectedItem() + "");
                 request.setFollowSimpleDirections(mCIIdropFDirectHistory.getSelectedItem() + "");
 //                request.set(mCIIdropWalkUPDownHistory.getSelectedItem() + "");
@@ -837,7 +842,8 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryIIPatientEntryActivity.this,response.body().getRefernceId());
+//                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(), response.errorBody().string(), CategoryIIPatientEntryActivity.this);
                             }

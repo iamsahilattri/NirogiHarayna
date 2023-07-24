@@ -1,5 +1,7 @@
 package com.nirogi.harayna.activity.category;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -107,7 +109,6 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
     private AppCompatSpinner mCIdropDiagnosis;
     private AppCompatCheckBox mCIchkDAlreadyKnown;
     private AppCompatEditText mCIinputPrescription;
-    private LinearLayout mCIbackPatientInput;
     private MultiSpinner multiSpinner;
     private String selectedDiagnosis="";
     private String doctorName;
@@ -137,7 +138,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
             if (getIntent() != null) {
                 memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
                 if (memberData != null) {
-                    mSetBackToolbar("Patient Details", true, "Category I (0-6 Months)");
+                    mSetBackToolbar(CategoryIPatientEntryActivity.this,"Patient Details", true, "Category I (0-6 Months)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
                     mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
                     mTxtPatientGenderAge.setText(memberData.getGender() + "");
@@ -280,13 +281,34 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     String inputString=  mCIinputWeightGenPhy.getText().toString();
 
                     int input=Integer.parseInt(inputString);
-                    if(!(input >= 5 && input <= 120))
+                    if(!(input >= 2 && input <= 10))
                     {
-                          mCIinputWeightGenPhy.setError("*should be between 5-120");
+                          mCIinputWeightGenPhy.setError("*should be between 2-10");
                     }
                 }
             }
         });
+
+            mCIinputCapRefilGenPhy.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {}
+                @Override
+                public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start,int before, int count) {
+                    if(charSequence.length() > 0)
+                    {
+                        String inputString=  mCIinputCapRefilGenPhy.getText().toString();
+
+                        int input=Integer.parseInt(inputString);
+                        if(!(input >= 1 && input <= 3))
+                        {
+                            mCIinputCapRefilGenPhy.setError("*should be between 1-3");
+                        }
+                    }
+                }
+            });
           mCIinputHeightGenPhy.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {}
@@ -299,9 +321,9 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 {
                     String inputString=  mCIinputHeightGenPhy.getText().toString();
                     int input=Integer.parseInt(inputString);
-                    if(!(input >= 50 && input <= 130))
+                    if(!(input >= 20 && input <= 80))
                     {
-                          mCIinputHeightGenPhy.setError("*should be between 50-130");
+                          mCIinputHeightGenPhy.setError("*should be between 20-80");
                     }
                 }
             }
@@ -318,9 +340,9 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 {
                     String inputString=  mCIinputHeadCRF.getText().toString();
                     int input=Integer.parseInt(inputString);
-                    if(!(input >= 30 && input <= 60))
+                    if(!(input >= 20 && input <= 50))
                     {
-                          mCIinputHeadCRF.setError("*should be between 30-60");
+                          mCIinputHeadCRF.setError("*should be between 20-50");
                     }
                 }
             }
@@ -397,7 +419,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         if (!TextUtils.isEmpty(  mCIinputWeightGenPhy.getText())) {
             String inputString =   mCIinputWeightGenPhy.getText().toString();
             int input = Integer.parseInt(inputString);
-            if (!(input >= 5 && input <= 120)) {
+            if (!(input >= 2 && input <= 10)) {
                 mShowToast("Weight should be between 5-120");
                 return false;
             }
@@ -409,8 +431,20 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         if (!TextUtils.isEmpty(  mCIinputHeightGenPhy.getText())) {
             String inputString =   mCIinputHeightGenPhy.getText().toString();
             int input = Integer.parseInt(inputString);
-            if (!(input >= 50 && input <= 130)) {
-                mShowToast("Height should be between 90-215");
+            if (!(input >= 20 && input <= 80)) {
+                mShowToast("Height should be between 20-80");
+                return false;
+            }
+        }
+        if (TextUtils.isEmpty(  mCIinputCapRefilGenPhy.getText())) {
+            mShowToast("Please enter Capillary Refill Time ");
+            return false;
+        }
+        if (!TextUtils.isEmpty(  mCIinputCapRefilGenPhy.getText())) {
+            String inputString =   mCIinputCapRefilGenPhy.getText().toString();
+            int input = Integer.parseInt(inputString);
+            if (!(input >= 1 && input <= 3)) {
+                mShowToast("Capillary Refill Time should be between 1-3");
                 return false;
             }
         }
@@ -421,8 +455,8 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         if (!TextUtils.isEmpty(  mCIinputHeadCRF.getText())) {
             String inputString =   mCIinputHeadCRF.getText().toString();
             int input = Integer.parseInt(inputString);
-            if (!(input >= 30 && input <= 60)) {
-                mShowToast("Head circumference (in cm) should be between 30-60");
+            if (!(input >= 20 && input <= 50)) {
+                mShowToast("Head circumference (in cm) should be between 20-50");
                 return false;
             }
         }
@@ -542,6 +576,10 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     }
 
+    @Override
+    public void onBackPressed() {
+        performBackPress(CategoryIPatientEntryActivity.this);
+    }
 
     private void mShowHideLayouts(int clicked) {
         if (clicked == 0) {
@@ -762,7 +800,8 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                                refrenceGenratedPopup(CategoryIPatientEntryActivity.this,response.body().getRefernceId());
+//                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIPatientEntryActivity.this);
                             }
