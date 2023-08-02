@@ -605,11 +605,17 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     if(dataEntity.getLeftEye()!=null)
                     {
                         mSetServerValuesToEditText(dataEntity.getLeftEye(),mInputLeftEyeSysExa);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mInputLeftEyeSysExa);
+
                     }
 
                     if(dataEntity.getRightEye()!=null)
                     {
                         mSetServerValuesToEditText(dataEntity.getRightEye(),mInputRightEyeSysExa);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mInputRightEyeSysExa);
+
                     }
 
                     if(dataEntity.getColorVision()!=null)
@@ -626,7 +632,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIIdropDentalExSysExa);
                     }
-                  
+
                 }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_MAN_INVEST))
                 {

@@ -7,8 +7,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
@@ -20,6 +23,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryVIRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
+import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
@@ -30,6 +34,7 @@ import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.SharedParams;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -131,7 +136,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     private AppCompatCheckBox mCVIchkBloodUreaMandatoryInvest;
     private AppCompatEditText mCVIinputBloodUreaMandatoryInvest;
     private AppCompatCheckBox mCVIchkCreatinineMandatoryInvest;
-    private AppCompatEditText mCVIinputCreatinineMandatoryInvest;
+    private AppCompatEditText mCVIinputCreatinineMandatoryInvest,cVIViewDiagnosis;
     private AppCompatCheckBox mCVIchkTSHMandatoryInvest;
     private AppCompatEditText mCVIinputTSHMandatoryInvest;
     private AppCompatCheckBox mCVIchkPSAMandatoryInvest;
@@ -146,6 +151,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     private AppCompatCheckBox mCVIchkDAlreadyKnown;
     private AppCompatEditText mCVIinputPrescription;
     private AppCompatCheckBox cVIchkSelectAllandatoryInvest;
+    private ReferredSurveyDataResponse intentRecorderRefData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -174,18 +180,25 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     }
 
 
+
+
     private void mSetValuesToViews() {
         try {
             if (getIntent() != null) {
-                memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
-                if (memberData != null) {
-                    mSetBackToolbar(CategoryVIPatientEntryActivity.this,"Patient Details", true, "Category VI (Over 60 Years)");
-                    mTxtPatientPPPID.setText(memberData.getPppid() + "");
-                    mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
-                    mTxtPatientGenderAge.setText(memberData.getGender() + "");
-                    mTxtPatientMobile.setText(memberData.getMobileno() + "");
-                    mTxtPatientAddress.setText(memberData.getAddress() + "");
-                    mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+                if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+                {
+                    memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
+                    if (memberData != null) {
+                        mTxtPatientPPPID.setText(memberData.getPppid() + "");
+                        mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
+                        mTxtPatientGenderAge.setText(memberData.getGender() + "");
+                        mTxtPatientMobile.setText(memberData.getMobileno() + "");
+                        mTxtPatientAddress.setText(memberData.getAddress() + "");
+                        mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+                    }
+                }else {
+                    intentRecorderRefData = (ReferredSurveyDataResponse) getIntent().getSerializableExtra(IntentParams.SCREENED_DATA);
+                    mSetScreenedDataToViews();
                 }
             }
         } catch (Exception e) {
@@ -193,7 +206,257 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
         }
     }
 
+    private void mSetServerValuesToSpinner(String serverValue, Spinner mSpinnerID, int staticArrayForSpinner)
+    {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, staticArrayForSpinner, R.layout.spinner_text);
+        mSpinnerID.setAdapter(adapter);
+        if (serverValue != null) {
+            int spinnerPosition = adapter.getPosition(serverValue);
+            mSpinnerID.setSelection(spinnerPosition);
+            mSpinnerID.setEnabled(false);
+        }
+    }
+    private void mSetServerValuesToSpinnerELSE(Spinner mSpinnerID)
+    {
+        mSpinnerID.setEnabled(false);
+    }
+    private void mSetServerValuesToEditText(String serverValue, TextView editTextID)
+    {
+        editTextID.setText(serverValue);
+        editTextID.setEnabled(false);
+    }
+
+    private void mSetServerValuesToEditTextELSE(TextView editTextID)
+    {
+        editTextID.setEnabled(false);
+    }
+
+    private void mSetScreenedDataToViews()
+    {
+        if(intentRecorderRefData!=null)
+        {
+            if(intentRecorderRefData.getPatient()!=null)
+            {
+                ArrayList<ReferredSurveyDataResponse.DataPatientEntity> memberDataList=intentRecorderRefData.getPatient();
+                ReferredSurveyDataResponse.DataPaitentEntity memberData=memberDataList.get(0).getData();
+                mTxtPatientPPPID.setText(memberData.getPppId() + "");
+                mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
+                mTxtPatientGenderAge.setText(memberData.getGender() + "");
+                mTxtPatientMobile.setText(memberData.getMobileNo() + "");
+                mTxtPatientAddress.setText(memberData.getAddress() + "");
+                mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+            }
+
+            ArrayList<ReferredSurveyDataResponse.DataOpenEntity> dataIndexEntity= intentRecorderRefData.getData();
+            for (ReferredSurveyDataResponse.DataOpenEntity dataModel:dataIndexEntity) {
+                ReferredSurveyDataResponse.DataEntity dataEntity=dataModel.getData();
+
+                //General Physical Examination - Done
+                if(dataModel.getTitle().equals(IntentParams.TITLE_GEN_EXAM))
+                {
+                    if(dataEntity.getWeight()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getWeight(),mCVIinputWeightGenPhy);
+                    }
+                    else {
+                        mSetServerValuesToEditTextELSE(mCVIinputWeightGenPhy);
+                    }
+                    if(dataEntity.getHeight()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getHeight(),mCVIinputHeightGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputHeightGenPhy);
+                    }
+                    if(dataEntity.getBmi()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getBmi(),mCVIinputBMIGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputBMIGenPhy);
+                    }
+                    if(dataEntity.getPulseRate()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getPulseRate(),mCVIinputPulseGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputPulseGenPhy);
+                    }
+                    if(dataEntity.getBloodPressure()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getBloodPressure(),mCVIinputBPGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputBPGenPhy);
+                    }
+                    if(dataEntity.getRespiratoryRate()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getRespiratoryRate(),mCVIinputRRPMGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputRRPMGenPhy);
+                    }
+
+
+
+
+                }
+
+                //Systemic Investigation - Done
+                if(dataModel.getTitle().equals(IntentParams.TITLE_SYS_EXAM))
+                {
+                    if(dataEntity.getChest()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getChest(),mCVIdropChestSysExa,R.array.arr_chest);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropChestSysExa);
+                    }
+                    if(dataEntity.getCvs()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCvs(),mCVIdropCVSSysExa,R.array.arr_cvs);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropCVSSysExa);
+                    }
+                    if(dataEntity.getPerAbdomen()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getPerAbdomen(),mCVIdropPAbdomenSysExa,R.array.arr_per_abdomen);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropPAbdomenSysExa);
+                    }
+
+                    if(dataEntity.getCns()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCns(),mCVIdropCNSSysExa,R.array.arr_cns);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropCNSSysExa);
+                    }
+
+                    if(dataEntity.getHearing()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHearing(),mCVIdropHearingSysExa,R.array.arr_hearing);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropHearingSysExa);
+                    }
+
+                    if(dataEntity.getLeftEye()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getLeftEye(),mCVIinputLeftEyeSysExa);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputLeftEyeSysExa);
+                    }
+
+                    if(dataEntity.getRightEye()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getRightEye(),mCVIinputRightEyeSysExa);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputRightEyeSysExa);
+                    }
+
+
+                    if(dataEntity.getColorVision()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getColorVision(),mCVIdropColourBlindnesSysExa,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropColourBlindnesSysExa);
+                    }
+
+
+                    if(dataEntity.getDentalExam()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getDentalExam(),mCVIdropDentalSysExa,R.array.arr_dental);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropDentalSysExa);
+                    }
+                    if(dataEntity.getGenitalExam()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getGenitalExam(),mCVIdropGenitalSysExa,R.array.arr_genital);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropGenitalSysExa);
+                    }
+                    if(dataEntity.getBreastExam()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getGenitalExam(),mCVIinputBreastSysExa);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCVIinputBreastSysExa);
+                    }
+
+                    if(dataEntity.getJointExam()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getJointExam(),mCVIdropJointExSysExa,R.array.arr_genital);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropJointExSysExa);
+                    }
+
+                    if(dataEntity.getOralExam()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getOralExam(),mCVIdropOralExmSysExa,R.array.arr_orl_exm);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCVIdropOralExmSysExa);
+                    }
+                }
+
+
+//                if(dataEntity.getPallor()!=null)
+//                {
+//                    mSetServerValuesToSpinner(dataEntity.getPallor(),mCVIdropPollerSysComp,R.array.arr_yes_no);
+//                }else {
+//                    mSetServerValuesToSpinnerELSE(mCVIdropPollerSysComp);
+//                }
+//
+//                if(dataEntity.getJaundice()!=null)
+//                {
+//                    mSetServerValuesToSpinner(dataEntity.getJaundice(),mCVIdropJaundiceSysComp,R.array.arr_yes_no);
+//                }else {
+//                    mSetServerValuesToSpinnerELSE(mCVIdropJaundiceSysComp);
+//                }
+//                if(dataEntity.getClubbing()!=null)
+//                {
+//                    mSetServerValuesToSpinner(dataEntity.getClubbing(),mCVIdropClubbingSysComp,R.array.arr_yes_no);
+//                }else {
+//                    mSetServerValuesToSpinnerELSE(mCVIdropClubbingSysComp);
+//                }
+//                if(dataEntity.getLymphadenopathy()!=null)
+//                {
+//                    mSetServerValuesToSpinner(dataEntity.getLymphadenopathy(),mCVIdropLymphadenopathySysComp,R.array.arr_yes_no);
+//                }else {
+//                    mSetServerValuesToSpinnerELSE(mCVIdropLymphadenopathySysComp);
+//                }
+//                if(dataEntity.getPedalOedema()!=null)
+//                {
+//                    mSetServerValuesToSpinner(dataEntity.getPedalOedema(),mCVIdropPedaloedemaSysExa,R.array.arr_yes_no);
+//                }else {
+//                    mSetServerValuesToSpinnerELSE(mCVIdropPedaloedemaSysExa);
+//                }
+
+
+                if(dataModel.getTitle().equals(IntentParams.TITLE_DIAGNOSIS))
+                {
+                    if(dataEntity.getAlreadyKnown()!=null)
+                    {
+                        mCVIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                    }
+                    mCVIchkDAlreadyKnown.setEnabled(false);
+                    if(dataEntity.getPrescription()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getPrescription(),mCVIinputPrescription);
+                    }
+
+                    if(dataEntity.getDiagnosed()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getDiagnosed(),cVIViewDiagnosis);
+                        cVIViewDiagnosis.setVisibility(View.VISIBLE);
+                        multiSpinner.setVisibility(View.GONE);
+                        multiSpinner.setEnabled(false);
+                    }else {
+                        multiSpinner.setVisibility(View.GONE);
+                        cVIViewDiagnosis.setVisibility(View.GONE);
+                        multiSpinner.setEnabled(false);
+                    }
+
+                }
+            }
+
+
+        }
+    }
+
     private void initView() {
+        cVIViewDiagnosis=findViewById(R.id.cVIViewDiagnosis);
 
         mTxtPatientPPPID = findViewById(R.id.cVItxtPatientPPPID);
         mTxtPatientName = findViewById(R.id.cVItxtPatientName);

@@ -2255,6 +2255,18 @@
                                             android:theme="@style/SpinnerTheme"
                                             android:entries="@array/arr_diagnosis"
                                             android:layout_height="wrap_content"/>
+                                        <androidx.appcompat.widget.AppCompatEditText
+                                            android:id="@+id/cVViewDiagnosis"
+                                            android:layout_width="match_parent"
+                                            android:padding="8dp"
+                                            android:background="@drawable/gray_rect"
+                                            android:fontFamily="@font/dosis_regular"
+                                            android:textColor="@color/valueTextColor"
+                                            android:textSize="14sp"
+                                            android:visibility="gone"
+                                            android:text="None"
+                                            android:textColorHint="@color/hintColorText"
+                                            android:layout_height="wrap_content"/>
                                     </LinearLayout>
 
                                 </LinearLayout>
