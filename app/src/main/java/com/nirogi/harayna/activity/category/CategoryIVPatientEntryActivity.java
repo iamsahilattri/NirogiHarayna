@@ -24,6 +24,7 @@ import com.nirogi.harayna.model.response.SubmitPatientData;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.IntentParams;
 import com.nirogi.harayna.utils.MultiSpinner;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.SharedParams;
@@ -167,7 +168,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
     private void mSetValuesToViews() {
         try {
             if (getIntent() != null) {
-                memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
+                memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
                 if (memberData != null) {
                     mSetBackToolbar(CategoryIVPatientEntryActivity.this,"Patient Details", true, "Category V (40-60 Years)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
@@ -851,9 +852,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                         disableProgressBar();
                     }
                 });
-            } else {
-                mShowToast(getString(R.string.no_internet));
-            }
+            } 
 
         } catch (Exception ee) {
             Log.e(" Exception ", "" + ee.getMessage());

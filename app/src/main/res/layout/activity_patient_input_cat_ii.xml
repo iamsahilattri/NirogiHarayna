@@ -1151,7 +1151,7 @@
                             android:layout_marginStart="1dp"
                             android:layout_marginEnd="1dp"
                             android:padding="5dp"
-                            android:visibility="visible"
+                            android:visibility="gone"
                             android:layout_marginBottom="3dp"
                             android:background="@color/colorWhite"
                             android:layout_height="wrap_content">
@@ -2416,6 +2416,19 @@
                                             android:padding="6dp"
                                             android:theme="@style/SpinnerTheme"
                                             android:entries="@array/arr_diagnosis_cat_1"
+                                            android:layout_height="wrap_content"/>
+
+                                        <androidx.appcompat.widget.AppCompatEditText
+                                            android:id="@+id/cIIViewDiagnosis"
+                                            android:layout_width="match_parent"
+                                            android:padding="8dp"
+                                            android:background="@drawable/gray_rect"
+                                            android:fontFamily="@font/dosis_regular"
+                                            android:textColor="@color/valueTextColor"
+                                            android:textSize="14sp"
+                                            android:visibility="gone"
+                                            android:text="None"
+                                            android:textColorHint="@color/hintColorText"
                                             android:layout_height="wrap_content"/>
                                     </LinearLayout>
 

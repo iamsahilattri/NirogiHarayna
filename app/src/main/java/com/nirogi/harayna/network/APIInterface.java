@@ -16,6 +16,7 @@ import com.nirogi.harayna.model.response.DistrictModel;
 import com.nirogi.harayna.model.response.LoginModelResponse;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferenceIdResponse;
+import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIInterface
 {
@@ -38,6 +40,10 @@ public interface APIInterface
 
        @POST("api/v1/historyRefDataSearch")
        Call<ArrayList<ReferenceIdResponse>> getSearchedRefIDPatients(@Body SearchReferenceIDRRequest modelRequest);
+
+       @GET("api/v1/getPatientScreenedData/{id}")
+       Call<ReferredSurveyDataResponse> getPatientScreenedData(@Path("id") String id);
+
 
        @POST("api/v1/getPatientData")
        Call<ArrayList<PatientListModelResponse>> getSearchedPatientsFromData(@Body SearchPatientFromDataRequest modelRequest);

@@ -7,7 +7,10 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
@@ -19,15 +22,18 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryIIRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
+import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.IntentParams;
 import com.nirogi.harayna.utils.MultiSpinner;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.SharedParams;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -90,7 +96,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private AppCompatSpinner mCIIdropPallorGenPhy;
     private AppCompatSpinner mCIIdropJaundiceGenPhy;
     private AppCompatSpinner mCIIdropCyanosisGenPhy;
-    private AppCompatEditText mCIIinputHRGenPhy;
+    private AppCompatEditText mCIIinputHRGenPhy,cIIViewDiagnosis;
     private AppCompatEditText mCIIinputRRGenPhy;
     private AppCompatSpinner mCIIdropPedalOeGenPhy;
     private AppCompatEditText mCIIinputOxySatGenPhy;
@@ -123,6 +129,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private AppCompatSpinner mCIIdropScrabblingHistory;
     private AppCompatSpinner mCIIdropSpeak50History;
 
+    private  ReferredSurveyDataResponse intentRecorderRefData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -152,7 +159,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private void mSetValuesToViews() {
         try {
             if (getIntent() != null) {
-                memberData = (PatientListModelResponse) getIntent().getSerializableExtra("memberData");
+                memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
                 if (memberData != null) {
                     mSetBackToolbar(CategoryIIPatientEntryActivity.this,"Patient Details", true, "Category II (07-59 Months)");
                     mTxtPatientPPPID.setText(memberData.getPppid() + "");
@@ -169,7 +176,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     }
 
     private void initView() {
-
+        cIIViewDiagnosis= findViewById(R.id.cIIViewDiagnosis);
         mTxtPatientPPPID = findViewById(R.id.cIItxtPatientPPPID);
         mTxtPatientName = findViewById(R.id.cIItxtPatientName);
         mTxtPatientGenderAge = findViewById(R.id.cIItxtPatientGenderAge);
@@ -268,6 +275,418 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
         mCIIdropSpeak50History = findViewById(R.id.cIIdropSpeak50History);
     }
 
+    private void mSetScreenedDataToViews()
+    {
+        if(intentRecorderRefData!=null)
+        {
+            if(intentRecorderRefData.getPatient()!=null)
+            {
+                ArrayList<ReferredSurveyDataResponse.DataPatientEntity> memberDataList=intentRecorderRefData.getPatient();
+                ReferredSurveyDataResponse.DataPaitentEntity memberData=memberDataList.get(0).getData();
+                mTxtPatientPPPID.setText(memberData.getPppId() + "");
+                mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
+                mTxtPatientGenderAge.setText(memberData.getGender() + "");
+                mTxtPatientMobile.setText(memberData.getMobileNo() + "");
+                mTxtPatientAddress.setText(memberData.getAddress() + "");
+                mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+            }
+
+            ArrayList<ReferredSurveyDataResponse.DataOpenEntity> dataIndexEntity= intentRecorderRefData.getData();
+            for (ReferredSurveyDataResponse.DataOpenEntity dataModel:dataIndexEntity) {
+                ReferredSurveyDataResponse.DataEntity dataEntity=dataModel.getData();
+                if(dataModel.getTitle().equals(IntentParams.TITLE_HISTORY))
+                {
+                    if(dataEntity.getDeliverytype()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getDeliverytype(),mCIIdropModeDelHistory,R.array.arr_mode_del);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropModeDelHistory);
+                    }
+                    if(dataEntity.getCryafterbirth()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCryafterbirth(),mCIIdropCryBirthHistory,R.array.arr_cry);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropCryBirthHistory);
+                    }
+                    if(dataEntity.getHistroyadmillness()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHistroyadmillness(),mCIIdropPhysIllHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPhysIllHistory);
+                    }
+                    if(dataEntity.getFamilyhistoryifyes()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getFamilyhistoryifyes(),mCIIdropSignHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSignHistory);
+                    }
+                    if(dataEntity.getImmunstatus()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getImmunstatus(),mCIIdropImmunizationHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropImmunizationHistory);
+                    }
+                    if(dataEntity.getHistoryfeeding()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHistoryfeeding(),mCIIdropFeedingHistory,R.array.arr_feeding);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropFeedingHistory);
+                    }
+
+                    if(dataEntity.getContactwithtb()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getContactwithtb(),mCIIdropTbPatientHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropTbPatientHistory);
+                    }
+
+                    if(dataEntity.getSittingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropSittingHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSittingHistory);
+                    }
+
+                    if(dataEntity.getStandingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStandingWithoutSupport(),mCIIdropSandHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSandHistory);
+                    }
+
+                    if(dataEntity.getStandingWithSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStandingWithSupport(),mCIIdropStandigingWithHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropStandigingWithHistory);
+                    }
+
+
+                    if(dataEntity.getPincerGrasp()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropPincerGraspHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPincerGraspHistory);
+                    }
+
+                    if(dataEntity.getStrangerAnxiety()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStrangerAnxiety(),mCIIdropStrangerAnxietyHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropStrangerAnxietyHistory);
+                    }
+
+                    if(dataEntity.getBisyllableSpeech()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getBisyllableSpeech(),mCIIdropSpeachHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeachHistory);
+                    }
+
+                    if(dataEntity.getWalkingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getWalkingWithoutSupport(),mCIIdropWalkSupportHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropWalkSupportHistory);
+                    }
+
+                    if(dataEntity.getSpeakFiveToTenWords()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSpeakFiveToTenWords(),mCIIdropSpeakHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeakHistory);
+                    }
+
+                    if(dataEntity.getFollowSimpleDirection()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getFollowSimpleDirection(),mCIIdropFDirectHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropFDirectHistory);
+                    }
+
+
+                    if(dataEntity.getWalkStairsWithSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getWalkStairsWithSupport(),mCIIdropWalkUPDownHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropWalkUPDownHistory);
+                    }
+
+
+                    if(dataEntity.getJumpWithBothFeet()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getJumpWithBothFeet(),mCIIdropJumpHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropFDirectHistory);
+                    }
+
+
+                    if(dataEntity.getScrabbling()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getScrabbling(),mCIIdropScrabblingHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropScrabblingHistory);
+                    }
+
+
+                    if(dataEntity.getSpeakAtleastFiftyWords()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSpeakAtleastFiftyWords(),mCIIdropSpeak50History,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeak50History);
+                    }
+
+
+
+
+
+
+                }
+
+                if(dataModel.getTitle().equals(IntentParams.TITLE_GEN_EXAM))
+                {
+                    if(dataEntity.getWeight()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getWeight(),mCIIinputWeightGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputWeightGenPhy);
+                    }
+                    if(dataEntity.getHeight()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getHeight(),mCIIinputHeightGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputHeightGenPhy);
+                    }
+                    if(dataEntity.getHeadCircum()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getHeadCircum(),mCIIinputHeadCRF);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputHeadCRF);
+                    }
+                    if(dataEntity.getMidArmCircum()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getMidArmCircum(),mCIIinputMidArm);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputMidArm);
+                    }
+                    if(dataEntity.getPallor()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getPallor(),mCIIdropPallorGenPhy,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPallorGenPhy);
+                    }
+
+                    if(dataEntity.getJaundice()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getJaundice(),mCIIdropJaundiceGenPhy,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropJaundiceGenPhy);
+                    }
+                    if(dataEntity.getCyanosis()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCyanosis(),mCIIdropCyanosisGenPhy,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropCyanosisGenPhy);
+                    }
+                    if(dataEntity.getHeartRate()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getHeartRate(),mCIIinputHRGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputHRGenPhy);
+                    }
+
+
+                    if(dataEntity.getRespiratoryRate()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getRespiratoryRate(),mCIIinputRRGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputRRGenPhy);
+                    }
+
+
+                    if(dataEntity.getPedalOedema()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getPedalOedema(),mCIIdropPedalOeGenPhy,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPedalOeGenPhy);
+                    }
+
+
+
+                    if(dataEntity.getOxygenSaturation()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getOxygenSaturation(),mCIIinputOxySatGenPhy);
+                    }else {
+                        mSetServerValuesToEditTextELSE(mCIIinputOxySatGenPhy);
+                    }
+
+                    if(dataEntity.getCongenitalAnomalies()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCongenitalAnomalies(),mCIIdropCongAnGenPhy,R.array.arr_congestion_an);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropCongAnGenPhy);
+                    }
+                    if(dataEntity.getAnteriorFontanelle()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getAnteriorFontanelle(),mCIIdropAnterFontGenPhy,R.array.arr_anterior);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropAnterFontGenPhy);
+                    }
+
+                    if(dataEntity.getHairTexture()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHairTexture(),mCIIdropHairTexGenPhy,R.array.arr_hair_tex);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropHairTexGenPhy);
+                    }
+                    if(dataEntity.getSkinTexture()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSkinTexture(),mCIIdropSkinTexGenPhy,R.array.arr_skin);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSkinTexGenPhy);
+                    }
+
+                    if(dataEntity.getSkinLesions()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSkinLesions(),mCIIdropSkinLeaionsGenPhy,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSkinLeaionsGenPhy);
+                    }
+
+                    if(dataEntity.getSkinTurgor()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSkinTurgor(),mCIIdropSkinTurGenPhy,R.array.arr_hearing);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSkinTurGenPhy);
+                    }
+
+
+
+                }
+                if(dataModel.getTitle().equals(IntentParams.TITLE_MILESTONE))
+                {
+
+                }
+                if(dataModel.getTitle().equals(IntentParams.TITLE_SYS_EXAM))
+                {
+                    if(dataEntity.getChest()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getChest(),mCIIdropChestSysExa,R.array.arr_chest);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropChestSysExa);
+                    }
+                    if(dataEntity.getCvs()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCvs(),mCIIdropCVSSysExa,R.array.arr_cvs);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropCVSSysExa);
+                    }
+                    if(dataEntity.getPerAbdomen()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getPerAbdomen(),mCIIdropPAbdomenSysExa,R.array.arr_per_abdomen);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPAbdomenSysExa);
+                    }
+
+                    if(dataEntity.getCns()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getCns(),mCIIdropCNSSysExa,R.array.arr_cns);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPAbdomenSysExa);
+                    }
+
+                    if(dataEntity.getHearing()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHearing(),mCIIdropHearingSysExa,R.array.arr_hearing);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropHearingSysExa);
+                    }
+
+                    if(dataEntity.getLeftEye()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getLeftEye(),mInputLeftEyeSysExa);
+                    }
+
+                    if(dataEntity.getRightEye()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getRightEye(),mInputRightEyeSysExa);
+                    }
+
+                    if(dataEntity.getColorVision()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getColorVision(),mCIIdropColorBlindSSysExa,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropColorBlindSSysExa);
+                    }
+
+
+                    if(dataEntity.getDentalExam()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getDentalExam(),mCIIdropDentalExSysExa,R.array.arr_dental_ex);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropDentalExSysExa);
+                    }
+                  
+                }
+                if(dataModel.getTitle().equals(IntentParams.TITLE_MAN_INVEST))
+                {
+
+                }
+                if(dataModel.getTitle().equals(IntentParams.TITLE_DIAGNOSIS))
+                {
+                    if(dataEntity.getAlreadyKnown()!=null)
+                    {
+                        mCIIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                    }
+                    mCIIchkDAlreadyKnown.setEnabled(false);
+                    if(dataEntity.getPrescription()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getPrescription(),mCIIinputPrescription);
+                    }
+
+                    if(dataEntity.getDiagnosed()!=null)
+                    {
+                        mSetServerValuesToEditText(dataEntity.getDiagnosed(),cIIViewDiagnosis);
+                        cIIViewDiagnosis.setVisibility(View.VISIBLE);
+                        multiSpinner.setVisibility(View.GONE);
+                        multiSpinner.setEnabled(false);
+                    }else {
+                        multiSpinner.setVisibility(View.GONE);
+                        cIIViewDiagnosis.setVisibility(View.GONE);
+                        multiSpinner.setEnabled(false);
+                    }
+
+                }
+            }
+
+
+        }
+    }
+
+    private void mSetServerValuesToSpinner(String serverValue, Spinner mSpinnerID, int staticArrayForSpinner)
+    {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, staticArrayForSpinner, R.layout.spinner_text);
+        mSpinnerID.setAdapter(adapter);
+        if (serverValue != null) {
+            int spinnerPosition = adapter.getPosition(serverValue);
+            mSpinnerID.setSelection(spinnerPosition);
+            mSpinnerID.setEnabled(false);
+        }
+    }
+    private void mSetServerValuesToSpinnerELSE(Spinner mSpinnerID)
+    {
+        mSpinnerID.setEnabled(false);
+    }
+    private void mSetServerValuesToEditText(String serverValue, TextView editTextID)
+    {
+        editTextID.setText(serverValue);
+        editTextID.setEnabled(false);
+    }
+    private void mSetServerValuesToEditTextELSE(TextView editTextID)
+    {
+        editTextID.setEnabled(false);
+    }
+
     private void mSetSpinnerData(List<String> mList) {
         multiSpinner.setItems(mList, "Select Diagnosis", new MultiSpinner.MultiSpinnerListener() {
             @Override
@@ -353,8 +772,13 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
             }
         }
         if (view.getId() == R.id.cIIsubmitPatientInput) {
-            if (validateDataToPost()) {
-                postDataForCategories();
+            if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+            {
+                if (validateDataToPost()) {
+                    postDataForCategories();
+                }
+            }else {
+                mShowToast("Update Mandatory Fields !");
             }
         }
     }
@@ -862,8 +1286,6 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                         disableProgressBar();
                     }
                 });
-            } else {
-                mShowToast(getString(R.string.no_internet));
             }
 
 

@@ -24,9 +24,11 @@ import com.nirogi.harayna.activity.category.CategoryVPatientEntryActivity;
 import com.nirogi.harayna.adapter.PatientListAdapter;
 import com.nirogi.harayna.model.request.SearchPPPIDRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
+import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.IntentParams;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.RecyclerItemClickListener;
 import com.nirogi.harayna.utils.SharedParams;
@@ -159,42 +161,40 @@ public class SearchedPPPIDDetails extends BaseActivity {
                 if(populateData.get(position).getFlagcheck()==null)
                 {
                     int ageValue=Integer.parseInt(populateData.get(position).getAge());
+                    Intent mIntent = null;
                     if(ageValue == 0)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIPatientEntryActivity.class);
+
                     }
                     else if(ageValue >=1 && ageValue <5)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIPatientEntryActivity.class);
+
                     }
                     else if(ageValue>=5 && ageValue<=18)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIIIPatientEntryActivity.class);
+
                     }
                     else if(ageValue>18 && ageValue<=40)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIVPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryIVPatientEntryActivity.class);
                     }
                     else if(ageValue>40 && ageValue<=60)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVPatientEntryActivity.class);
                     }
                     else if(ageValue>60)
                     {
-                        Intent mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVIPatientEntryActivity.class);
-                        mIntent.putExtra("memberData",populateData.get(position));
-                        startActivity(mIntent);
+                        mIntent= new Intent(SearchedPPPIDDetails.this, CategoryVIPatientEntryActivity.class);
                     }
+
+                    assert mIntent != null;
+                    mIntent.putExtra(IntentParams.MEMBER_DATA, populateData.get(position));
+                    mIntent.putExtra(IntentParams.RECORDER_DATA,new ReferredSurveyDataResponse());
+                    mIntent.putExtra(IntentParams.MEMBER_TYPE, "1");
+                    startActivity(mIntent);
                 }
                 else {
                     mShowToast("Already Submitted !");

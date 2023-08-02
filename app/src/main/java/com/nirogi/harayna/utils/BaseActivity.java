@@ -171,6 +171,7 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         }
+        Toast.makeText(getApplicationContext(),getString(R.string.no_internet),Toast.LENGTH_SHORT).show();
         return false;
     }
 

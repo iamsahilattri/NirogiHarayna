@@ -259,7 +259,7 @@ public class HomeActivity extends BaseActivity {
                 Log.e(" Exception", "" + exp.getMessage());
             }
         }
-        else mShowToast(getString(R.string.no_internet));
+
     }
 
     public void getPatientListWithInput(int type)

@@ -57,8 +57,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 } else {
                     mShowToast("Please enter valid Credentials !");
                 }
-            } else {
-                mShowToast(getString(R.string.no_internet));
             }
         }
 
@@ -108,7 +106,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
         }
-        else mShowToast(getString(R.string.no_internet));
+
     }
 
 

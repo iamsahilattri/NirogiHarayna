@@ -1,5 +1,6 @@
 package com.nirogi.harayna.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,16 +14,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
+import com.nirogi.harayna.activity.category.CategoryIIIPatientEntryActivity;
+import com.nirogi.harayna.activity.category.CategoryIIPatientEntryActivity;
+import com.nirogi.harayna.activity.category.CategoryIPatientEntryActivity;
+import com.nirogi.harayna.activity.category.CategoryIVPatientEntryActivity;
+import com.nirogi.harayna.activity.category.CategoryVIPatientEntryActivity;
+import com.nirogi.harayna.activity.category.CategoryVPatientEntryActivity;
 import com.nirogi.harayna.adapter.PatientDetailRefrenceIdAdapter;
 import com.nirogi.harayna.model.request.SearchReferenceIDRRequest;
+import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferenceIdResponse;
+import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.IntentParams;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.RecyclerItemClickListener;
 import com.nirogi.harayna.utils.SharedParams;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -37,6 +48,8 @@ public class SearchedReferenceIdDetails extends BaseActivity {
     private SharedPreferences preferences;
     private SwipeRefreshLayout swipeDown;
     private TextView noDataLy;
+//    private  ArrayList<ReferredSurveyDataResponse> recorderRefData;
+    private  ReferredSurveyDataResponse recorderRefData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +148,97 @@ public class SearchedReferenceIdDetails extends BaseActivity {
 
     }
 
+    public void getPatientDataWithRefID(String inputTextPPP)
+    {
+        try {
+            createProgressBar(R.id.relMain);
+            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+            SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
+            request.setReferenceId(inputTextPPP);
+            Call<ReferredSurveyDataResponse> call = apiInterface.getPatientScreenedData(inputTextPPP);
+            call.enqueue(new Callback<ReferredSurveyDataResponse>() {
+                @Override
+                public void onResponse(Call<ReferredSurveyDataResponse> call, Response<ReferredSurveyDataResponse> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            recorderRefData= response.body();
+
+                            String catValue=recorderRefData.getData().get(0).getData().getCategory();
+                            Log.e("catValue",""+catValue);
+                            Intent mIntent = null;
+                            switch (catValue) {
+                                case "1": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryIPatientEntryActivity.class);
+                                    break;
+                                }
+                                case "2": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryIIPatientEntryActivity.class);
+                                    break;
+                                }
+                                case "3": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryIIIPatientEntryActivity.class);
+                                    break;
+                                }
+                                case "4": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryIVPatientEntryActivity.class);
+                                    break;
+                                }
+                                case "5": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryVPatientEntryActivity.class);
+                                    break;
+                                }
+                                case "6": {
+                                    mIntent = new Intent(SearchedReferenceIdDetails.this, CategoryVIPatientEntryActivity.class);
+                                    break;
+                                }
+                            }
+
+                            assert mIntent != null;
+
+
+//                            Bundle args = new Bundle();
+//                            args.putSerializable(IntentParams.RECORDER_DATA,(Serializable) recorderRefData);
+//                            mIntent.putExtra(IntentParams.BUNDLE,args);
+                            mIntent.putExtra(IntentParams.SCREENED_DATA, recorderRefData);
+                            mIntent.putExtra(IntentParams.MEMBER_DATA, new PatientListModelResponse());
+                            mIntent.putExtra(IntentParams.MEMBER_TYPE, "2");
+                            startActivity(mIntent);
+//                            String catValue="";
+//                            for (ReferredSurveyDataResponse recorderRefDataV:recorderRefData) {
+//                                catValue=recorderRefDataV.getData().get(0).getData().getCategory();
+//                            }
+//                                String catValue=recorderRefData.get(0).getData().getCategory();
+
+
+                        }else{
+                            disableProgressBar();
+                            mHandleApiErrorCode(response.code(),response.errorBody().string(), SearchedReferenceIdDetails.this);
+                        }
+                    }catch (Exception e)
+                    {
+                        Log.e(" Exception ",""+e.getMessage());
+                        disableProgressBar();
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ReferredSurveyDataResponse> call, Throwable t) {
+                    Log.e(" Throwable ",""+t.getMessage());
+                    Log.e(" call ",""+call.toString());
+                    mShowToast(getString(R.string.api_failure));
+                    disableProgressBar();
+                }
+            });
+
+
+        }catch (Exception ee)
+        {
+            Log.e(" Exception ",""+ee.getMessage());
+        }
+
+    }
     private void mSetRecyclerData(ArrayList<ReferenceIdResponse> populateData)
     {
         noDataLy.setVisibility(View.GONE);
@@ -148,40 +252,14 @@ public class SearchedReferenceIdDetails extends BaseActivity {
         recyclerPatientList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerPatientList, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Log.e("AGE GROUP",""+populateData.get(position).getAge());
-//                int ageValue=Integer.parseInt(populateData.get(position).getAge());
-//                if(ageValue == 0)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }else if(ageValue >=1 && ageValue <5)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIIPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }else if(ageValue>=5 && ageValue<=18)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIIIPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }
-//                else if(ageValue>18 && ageValue<=40)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryIVPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }else if(ageValue>40 && ageValue<=60)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryVPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }else if(ageValue>60)
-//                {
-//                    Intent mIntent= new Intent(SearchedReferenceIdDetails.this, CategoryVIPatientEntryActivity.class);
-//                    mIntent.putExtra("memberData",populateData.get(position));
-//                    startActivity(mIntent);
-//                }
+
+                if (isNetworkAvailable())
+                {
+                    getPatientDataWithRefID(populateData.get(0).getPatientid());
+                }
+
+
+
 
             }
 
