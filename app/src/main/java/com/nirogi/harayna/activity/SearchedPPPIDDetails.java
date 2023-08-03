@@ -98,7 +98,7 @@ public class SearchedPPPIDDetails extends BaseActivity {
     public void getPatientList()
     {
         try {
-            createProgressBar(R.id.relMain);
+            createProgressBar(R.id.relSPMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchPPPIDRequest request= new SearchPPPIDRequest();
             request.setPppId(PPPID);

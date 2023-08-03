@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +23,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryIIIRequest;
+import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
@@ -39,9 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -149,7 +147,6 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
     private AppCompatSpinner mCIIIdropSpeechGenPhy;
     private AppCompatSpinner mCIIIdropIQGenPhy,cIIIdropCynosGenPhy;
     private CheckBox cIIIchkAllMandatoryInvest;
-//    private ArrayList<ReferredSurveyDataResponse> intentRecorderRefData;
     private ReferredSurveyDataResponse intentRecorderRefData;
 
     @Override
@@ -195,9 +192,6 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     }
                 }else {
                     intentRecorderRefData = (ReferredSurveyDataResponse) getIntent().getSerializableExtra(IntentParams.SCREENED_DATA);
-
-//                    Bundle args = getIntent().getBundleExtra(IntentParams.BUNDLE);
-//                    intentRecorderRefData = (ArrayList<ReferredSurveyDataResponse>) args.getSerializable(IntentParams.SCREENED_DATA);
                     mSetScreenedDataToViews();
                 }
             }
@@ -228,15 +222,30 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
 
 
 
+    private void mHideAllMandatoryCheckBox()
+    {
+        mChkHBMandatoryInvest.setVisibility(View.GONE);
+        mChkTLCMandatoryInvest.setVisibility(View.GONE);
+        mChkDLCMandatoryInvest.setVisibility(View.GONE);
+        mChkPackedCellMandatoryInvest.setVisibility(View.GONE);
+        mChkCorpuscularMandatoryInvest.setVisibility(View.GONE);
+        mChkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
+        mChkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
+        mChkPlateletMandatoryInvest.setVisibility(View.GONE);
+        mChkRDWMandatoryInvest.setVisibility(View.GONE);
+        mChkRDWSDMandatoryInvest.setVisibility(View.GONE);
+        mChkRbcCountMandatoryInvest.setVisibility(View.GONE);
+        mChkRBSMandatoryInvest.setVisibility(View.GONE);
+        mChkUrineMandatoryInvest.setVisibility(View.GONE);
+        mChkAdvisedMandatoryInvest.setVisibility(View.GONE);
+    }
+
     private void mSetScreenedDataToViews()
     {
         if(intentRecorderRefData!=null)
         {
 
-//            for (ReferredSurveyDataResponse dataIndexModel:intentRecorderRefData) {
-//
-//
-//            }
+            mHideAllMandatoryCheckBox();
             if(intentRecorderRefData.getPatient()!=null)
             {
                 ArrayList<ReferredSurveyDataResponse.DataPatientEntity> memberDataList=intentRecorderRefData.getPatient();
@@ -251,6 +260,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
 
             ArrayList<ReferredSurveyDataResponse.DataOpenEntity> dataIndexEntity= intentRecorderRefData.getData();
             for (ReferredSurveyDataResponse.DataOpenEntity dataModel:dataIndexEntity) {
+
                 ReferredSurveyDataResponse.DataEntity dataEntity=dataModel.getData();
                 if(dataModel.getTitle().equals(IntentParams.TITLE_HISTORY))
                 {
@@ -701,6 +711,8 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         if (view.getId() == R.id.cIIIsubmitPatientInput) {
             if (validateDataToPost()) {
                 postDataForCategories();
+            }else {
+                postDataForReferenceCategories();
             }
 
         }
@@ -1215,52 +1227,6 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 request.setUrineRoutineExamination(mInputUrineMandatoryInvest.getText().toString());
                 request.setRelevantInvestigation(mInputAdvisedMandatoryInvest.getText().toString());
 
-
-                // Step CheckBox
-                if(mChkHBMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkTLCMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkDLCMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkPackedCellMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkCorpuscularHBMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-
-                if(mChkPlateletMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkRDWSDMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkRbcCountMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkRBSMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-                if(mChkAdvisedMandatoryInvest.isChecked())
-                {
-                    request.setRelevantInvestigation("sent");
-                }
-
-
-
                 //step 5
                 request.setDiagnosed(selectedDiagnosis);
                 if (mChkDAlreadyKnown.isChecked()) {
@@ -1283,6 +1249,130 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIIIPatientEntryActivity.this);
                             }
                             disableProgressBar();
+                        } catch (Exception e) {
+                            Log.e(" Exception ", "" + e.getMessage());
+                            disableProgressBar();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }
+
+        } catch (Exception ee) {
+            Log.e(" Exception ", "" + ee.getMessage());
+        }
+
+    }
+
+    private void mSetCheckBoxValesForServer(PostDataForCategoryIIIRequest request)
+    {
+
+        // Step CheckBox
+        if(mChkHBMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkTLCMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkDLCMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkPackedCellMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkCorpuscularHBMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+
+        if(mChkPlateletMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkRDWSDMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkRbcCountMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkRBSMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkAdvisedMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+
+        if(mChkCorpuscularMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkRDWMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkHBConcentrationMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+        if(mChkUrineMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation("sent");
+        }
+    }
+
+    public void postDataForReferenceCategories() {
+        try {
+            if(isNetworkAvailable()) {
+                createProgressBar(R.id.cIIIrelMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                PostMandatoryDataRequest request = new PostMandatoryDataRequest();
+                request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
+                request.setPatientId(memberData.getMemberid());
+                request.setHb(mInputHBMandatoryInvest.getText().toString());
+                request.setTlc(mInputTLCMandatoryInvest.getText().toString());
+                request.setNeutrophils(mInputDLCNeutrophilsMandatoryInvest.getText().toString());
+                request.setLymphocytes(mInputLymphocytesMandatoryInvest.getText().toString());
+                request.setMonocytes(mInputDLCMonocytesMandatoryInvest.getText().toString());
+                request.setEosinophils(mInputDLCEosinophilsMandatoryInvest.getText().toString());
+                request.setBasophils(mInputDLCBasophilsMandatoryInvest.getText().toString());
+                request.setPackedCellVolume(mInputPackedCellMandatoryInvest.getText().toString());
+                request.setMeanCorpusVolume(mInputCorpuscularMandatoryInvest.getText().toString());
+                request.setMeanCorpusHemoglobin(mInputCorpuscularHBMandatoryInvest.getText().toString());
+                request.setMeanCorpusHemoglobinConcentration(mInputHBConcentrationMandatoryInvest.getText().toString());
+                request.setPlatletCount(mInputPlateletMandatoryInvest.getText().toString());
+                request.setRdwCv(mInputRDWMandatoryInvest.getText().toString());
+                request.setRdwSd(mInputRDWSDMandatoryInvest.getText().toString());
+                request.setRbcCount(mInputRbcCountMandatoryInvest.getText().toString());
+                request.setRbs(mInputRBSMandatoryInvest.getText().toString());
+                request.setUrineRoutineExamination(mInputUrineMandatoryInvest.getText().toString());
+                request.setRelevantInvestigation(mInputAdvisedMandatoryInvest.getText().toString());
+                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientData>() {
+                    @Override
+                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                mShowToast("Submitted Successfully !");
+                            } else {
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIIIPatientEntryActivity.this);
+                            }
+                            disableProgressBar();
+
                         } catch (Exception e) {
                             Log.e(" Exception ", "" + e.getMessage());
                             disableProgressBar();

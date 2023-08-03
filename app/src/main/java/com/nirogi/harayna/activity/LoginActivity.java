@@ -66,7 +66,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void loginCheck() {
         if (isNetworkAvailable()) {
             try {
-                createProgressBar(R.id.relMain);
+                createProgressBar(R.id.relLMain);
                 APIInterface apiInterface = ApiClient.getClientAuthentication().create(APIInterface.class);
                 LoginModelRequest modelRequest= new LoginModelRequest();
                 modelRequest.setUsername(enEmailUser.getText().toString());

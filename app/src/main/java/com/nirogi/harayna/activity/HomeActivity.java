@@ -174,7 +174,7 @@ public class HomeActivity extends BaseActivity {
         if (isNetworkAvailable())
         {
             try {
-                createProgressBar(R.id.relMain);
+                createProgressBar(R.id.relHMain);
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 Call<ArrayList<DistrictModel>> call = apiInterface.getDistList();
                 call.enqueue(new Callback<ArrayList<DistrictModel>>() {

@@ -9,6 +9,7 @@ import com.nirogi.harayna.model.request.PostDataForCategoryIRequest;
 import com.nirogi.harayna.model.request.PostDataForCategoryIVRequest;
 import com.nirogi.harayna.model.request.PostDataForCategoryVIRequest;
 import com.nirogi.harayna.model.request.PostDataForCategoryVRequest;
+import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.request.SearchPPPIDRequest;
 import com.nirogi.harayna.model.request.SearchPatientFromDataRequest;
 import com.nirogi.harayna.model.request.SearchReferenceIDRRequest;
@@ -48,6 +49,7 @@ public interface APIInterface
        @POST("api/v1/getPatientData")
        Call<ArrayList<PatientListModelResponse>> getSearchedPatientsFromData(@Body SearchPatientFromDataRequest modelRequest);
 
+
        @POST("api/v1/submitCatag2")
        Call<SubmitPatientData> submitDataForSurveyCatI(@Body PostDataForCategoryIRequest modelRequest);
        @POST("api/v1/submitCatag2")
@@ -61,4 +63,7 @@ public interface APIInterface
        Call<SubmitPatientData> submitDataForSurveyCatV(@Body PostDataForCategoryVRequest modelRequest);
        @POST("api/v1/submitCatag2")
        Call<SubmitPatientData> submitDataForSurveyCatVI(@Body PostDataForCategoryVIRequest modelRequest);
+
+       @POST("api/v1/submitMandatoryInves")
+       Call<SubmitPatientData> submitMandatoryInvestigationReference(@Body PostMandatoryDataRequest modelRequest);
 }

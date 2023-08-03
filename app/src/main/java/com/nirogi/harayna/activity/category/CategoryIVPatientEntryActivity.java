@@ -22,6 +22,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryIVRequest;
+import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
@@ -224,6 +225,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
     {
         if(intentRecorderRefData!=null)
         {
+            mHideAllMandatoryCheckBox();
             if(intentRecorderRefData.getPatient()!=null)
             {
                 ArrayList<ReferredSurveyDataResponse.DataPatientEntity> memberDataList=intentRecorderRefData.getPatient();
@@ -574,6 +576,27 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         });
     }
 
+    private void mHideAllMandatoryCheckBox()
+    {
+        mCIVchkHBMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkTLCMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkDLCMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkPackedCellMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkCorpuscularMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkPlateletMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkRDWMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkRDWSDMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkRbcCountMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkRBSMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkCholesterolMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkBloodUreaMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkUrineMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkAdvisedMandatoryInvest.setVisibility(View.GONE);
+        mCIVchkCreatinineMandatoryInvest.setVisibility(View.GONE);
+    }
+
     private void updateBMI()
     {
 
@@ -862,6 +885,8 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
             try {
                 if (validateDataToPost()) {
                     postDataForCategories();
+                }else {
+                    postDataForReferenceCategories();
                 }
             }catch (Exception exp)
             {
@@ -1094,6 +1119,70 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     }
                 });
             } 
+
+        } catch (Exception ee) {
+            Log.e(" Exception ", "" + ee.getMessage());
+        }
+
+    }
+
+
+    public void postDataForReferenceCategories() {
+        try {
+            if(isNetworkAvailable()) {
+                createProgressBar(R.id.cIVrelMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                PostMandatoryDataRequest request = new PostMandatoryDataRequest();
+                request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
+                request.setPatientId(memberData.getMemberid());
+                request.setHb(mCIVinputHBMandatoryInvest.getText().toString());
+                request.setTlc(mCIVinputTLCMandatoryInvest.getText().toString());
+                request.setNeutrophils(mCIVinputDLCNeutrophilsMandatoryInvest.getText().toString());
+                request.setLymphocytes(mCIVinputLymphocytesMandatoryInvest.getText().toString());
+                request.setMonocytes(mCIVinputDLCMonocytesMandatoryInvest.getText().toString());
+                request.setEosinophils(mCIVinputDLCEosinophilsMandatoryInvest.getText().toString());
+                request.setBasophils(mCIVinputDLCBasophilsMandatoryInvest.getText().toString());
+                request.setPackedCellVolume(mCIVinputPackedCellMandatoryInvest.getText().toString());
+                request.setMeanCorpusVolume(mCIVinputCorpuscularMandatoryInvest.getText().toString());
+                request.setMeanCorpusHemoglobin(mCIVinputCorpuscularHBMandatoryInvest.getText().toString());
+                request.setMeanCorpusHemoglobinConcentration(mCIVinputHBConcentrationMandatoryInvest.getText().toString());
+                request.setPlatletCount(mCIVinputPlateletMandatoryInvest.getText().toString());
+                request.setRdwCv(mCIVinputRDWMandatoryInvest.getText().toString());
+                request.setRdwSd(mCIVinputRDWSDMandatoryInvest.getText().toString());
+                request.setRbcCount(mCIVinputRbcCountMandatoryInvest.getText().toString());
+                request.setRbs(mCIVinputRBSMandatoryInvest.getText().toString());
+                request.setSerumCholestrol(mCIVinputCholesterolMandatoryInvest.getText().toString());
+                request.setBloodUrea(mCIVinputBloodUreaMandatoryInvest.getText().toString());
+                request.setSerumCreatinine(mCIVinputCreatinineMandatoryInvest.getText().toString());
+                request.setUrineRoutineExamination(mCIVinputUrineMandatoryInvest.getText().toString());
+                request.setRelevantInvestigation(mCIVinputAdvisedMandatoryInvest.getText().toString());
+                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientData>() {
+                    @Override
+                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                mShowToast("Submitted Successfully !");
+                            } else {
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIVPatientEntryActivity.this);
+                            }
+                            disableProgressBar();
+
+                        } catch (Exception e) {
+                            Log.e(" Exception ", "" + e.getMessage());
+                            disableProgressBar();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }
 
         } catch (Exception ee) {
             Log.e(" Exception ", "" + ee.getMessage());

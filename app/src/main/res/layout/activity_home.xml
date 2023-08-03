@@ -90,7 +90,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
-        android:id="@+id/relMain"
+        android:id="@+id/relHMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

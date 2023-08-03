@@ -7,7 +7,7 @@
     <include layout="@layout/tool_bar_back"/>
 
     <RelativeLayout
-        android:id="@+id/relMain"
+        android:id="@+id/relSPMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

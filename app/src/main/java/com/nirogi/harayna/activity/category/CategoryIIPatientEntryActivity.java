@@ -21,6 +21,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryIIRequest;
+import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
@@ -784,7 +785,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     postDataForCategories();
                 }
             }else {
-                mShowToast("Update Mandatory Fields !");
+                postDataForReferenceCategories();
             }
         }
     }
@@ -1294,6 +1295,50 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                 });
             }
 
+
+        } catch (Exception ee) {
+            Log.e(" Exception ", "" + ee.getMessage());
+        }
+
+    }
+
+    public void postDataForReferenceCategories() {
+        try {
+            if(isNetworkAvailable()) {
+                createProgressBar(R.id.cIIrelMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                PostMandatoryDataRequest request = new PostMandatoryDataRequest();
+                request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
+                request.setPatientId(memberData.getMemberid());
+                request.setHb(mCIIinputHBMandatoryInvest.getText().toString());
+                request.setRelevantInvestigation(mCIIinputTLCMandatoryInvest.getText().toString());
+                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientData>() {
+                    @Override
+                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                mShowToast("Submitted Successfully !");
+                            } else {
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIIPatientEntryActivity.this);
+                            }
+                            disableProgressBar();
+
+                        } catch (Exception e) {
+                            Log.e(" Exception ", "" + e.getMessage());
+                            disableProgressBar();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }
 
         } catch (Exception ee) {
             Log.e(" Exception ", "" + ee.getMessage());

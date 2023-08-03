@@ -1,7 +1,5 @@
 package com.nirogi.harayna.activity.category;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,10 +18,10 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryIRequest;
+import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
@@ -879,7 +876,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     postDataForCategories();
                 }
             }else {
-                mShowToast("Update Mandatory Fields !");
+                postDataForReferenceCategories();
             }
 
 
@@ -1114,6 +1111,50 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                             if (response.isSuccessful()) {
                                 refrenceGenratedPopup(CategoryIPatientEntryActivity.this,response.body().getRefernceId());
 //                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                            } else {
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIPatientEntryActivity.this);
+                            }
+                            disableProgressBar();
+
+                        } catch (Exception e) {
+                            Log.e(" Exception ", "" + e.getMessage());
+                            disableProgressBar();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }
+
+        } catch (Exception ee) {
+            Log.e(" Exception ", "" + ee.getMessage());
+        }
+
+    }
+
+    public void postDataForReferenceCategories() {
+        try {
+            if(isNetworkAvailable()) {
+                createProgressBar(R.id.cIrelMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                PostMandatoryDataRequest request = new PostMandatoryDataRequest();
+                request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
+                request.setPatientId(memberData.getMemberid());
+                request.setHb(mCIinputHBMandatoryInvest.getText().toString());
+                request.setRelevantInvestigation(mCIinputTLCMandatoryInvest.getText().toString());
+                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientData>() {
+                    @Override
+                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                        try {
+                            if (response.isSuccessful()) {
+                                mShowToast("Submitted Successfully !");
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIPatientEntryActivity.this);
                             }
