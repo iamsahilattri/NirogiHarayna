@@ -265,7 +265,7 @@ public class HomeActivity extends BaseActivity {
     public void getPatientListWithInput(int type)
     {
         try {
-            createProgressBar(R.id.relMain);
+            createProgressBar(R.id.relHMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             Call<ArrayList<PatientListModelResponse>> call = null;
             if(type==0)
@@ -331,7 +331,7 @@ public class HomeActivity extends BaseActivity {
     public void getPatientListWithRefID(String inputTextPPP)
     {
         try {
-            createProgressBar(R.id.relMain);
+            createProgressBar(R.id.relHMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
             request.setReferenceId(inputTextPPP);
