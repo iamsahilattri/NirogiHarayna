@@ -22,6 +22,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
 import com.nirogi.harayna.model.request.PostDataForCategoryVIRequest;
+import com.nirogi.harayna.model.request.PostDataForCategoryVRequest;
 import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
@@ -574,6 +575,137 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
         LinearLayout cVIsubmitPatientInput=findViewById(R.id.cVIsubmitPatientInput);
         cVIsubmitPatientInput.setOnClickListener(this);
         cVIchkSelectAllandatoryInvest=findViewById(R.id.cVIchkSelectAllandatoryInvest);
+
+    }
+
+    private void mSetCheckBoxValesForServer(PostDataForCategoryVIRequest request)
+    {
+        // Step CheckBox
+        if(mCVIchkHBMandatoryInvest.isChecked())
+        {
+            request.setHbChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setHbChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkTLCMandatoryInvest.isChecked())
+        {
+            request.setTlcChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setTlcChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkDLCMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigation(IntentParams.STRING_SENT);
+        }else {
+            request.setRelevantInvestigation(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkPackedCellMandatoryInvest.isChecked())
+        {
+            request.setPackedCellVolumeChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPackedCellVolumeChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkCorpuscularMandatoryInvest.isChecked())
+        {
+            request.setMeanCorpusVolume(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpusVolume(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkCorpuscularHBMandatoryInvest.isChecked())
+        {
+            request.setMeanCorpusHemoglobin(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpusHemoglobin(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkHBConcentrationMandatoryInvest.isChecked())
+        {
+            request.setMeanCorpuscularHemoglobinConcentrationChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpuscularHemoglobinConcentrationChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkPlateletMandatoryInvest.isChecked())
+        {
+            request.setPleteletChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPleteletChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkRDWMandatoryInvest.isChecked())
+        {
+            request.setRdwCvChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRdwCvChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkRDWSDMandatoryInvest.isChecked())
+        {
+            request.setRdwSdChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRdwSdChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mCVIchkRbcCountMandatoryInvest.isChecked())
+        {
+            request.setRbcChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRbcChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkRBSMandatoryInvest.isChecked())
+        {
+            request.setRbsChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRbsChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mCVIchkUrineMandatoryInvest.isChecked())
+        {
+            request.setUrineRoutineExamChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setUrineRoutineExamChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkAdvisedMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigationChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRelevantInvestigationChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mCVIchkCholesterolMandatoryInvest.isChecked())
+        {
+            request.setSerumCholesterolChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setSerumCholesterolChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mCVIchkBloodUreaMandatoryInvest.isChecked())
+        {
+            request.setBloodUreaChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setBloodUreaChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mCVIchkCreatinineMandatoryInvest.isChecked())
+        {
+            request.setSerumCreatinineChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setSerumCreatinineChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkTSHMandatoryInvest.isChecked())
+        {
+            request.setTshChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setTshChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkPSAMandatoryInvest.isChecked())
+        {
+            request.setPsaChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPsaChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mCVIchkVIAPAPMandatoryInvest.isChecked())
+        {
+            request.setPapSmaearChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPapSmaearChecks(IntentParams.STRING_NOT_SENT);
+        }
 
     }
     private void  mHideAllMandatoryCheckBox()
@@ -1201,6 +1333,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 }
                 //step 6
                 request.setPrescription(mCVIinputPrescription.getText().toString());
+                mSetCheckBoxValesForServer(request);
                 Log.e(" request ", "" + request.toString());
                 Call<SubmitPatientData> call = apiInterface.submitDataForSurveyCatVI(request);
                 call.enqueue(new Callback<SubmitPatientData>() {

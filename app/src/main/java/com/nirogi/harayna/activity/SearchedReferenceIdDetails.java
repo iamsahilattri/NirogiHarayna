@@ -100,7 +100,7 @@ public class SearchedReferenceIdDetails extends BaseActivity {
     public void getPatientListWithRefID(String inputTextPPP)
     {
         try {
-            createProgressBar(R.id.relMain);
+            createProgressBar(R.id.relSPMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
             request.setReferenceId(inputTextPPP);
@@ -151,7 +151,7 @@ public class SearchedReferenceIdDetails extends BaseActivity {
     public void getPatientDataWithRefID(String inputTextPPP)
     {
         try {
-            createProgressBar(R.id.relMain);
+            createProgressBar(R.id.relSPMain);
             APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
             SearchReferenceIDRRequest request= new SearchReferenceIDRRequest();
             request.setReferenceId(inputTextPPP);

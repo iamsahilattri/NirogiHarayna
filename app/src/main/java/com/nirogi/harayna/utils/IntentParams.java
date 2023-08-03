@@ -12,6 +12,10 @@ public interface IntentParams {
     String TITLE_SYS_EXAM="Systemic Exam";
     String TITLE_MAN_INVEST="Mandatory Investigation";
     String TITLE_DIAGNOSIS="Diagnosis";
+    String STRING_SENT="sent";
+    String STRING_NOT_SENT="not sent";
+
+
 
 
 }

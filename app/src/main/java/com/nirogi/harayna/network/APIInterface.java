@@ -50,18 +50,18 @@ public interface APIInterface
        Call<ArrayList<PatientListModelResponse>> getSearchedPatientsFromData(@Body SearchPatientFromDataRequest modelRequest);
 
 
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatI(@Body PostDataForCategoryIRequest modelRequest);
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatII(@Body PostDataForCategoryIIRequest modelRequest);
 
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatIII(@Body PostDataForCategoryIIIRequest modelRequest);
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatIV(@Body PostDataForCategoryIVRequest modelRequest);
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatV(@Body PostDataForCategoryVRequest modelRequest);
-       @POST("api/v1/submitCatag2")
+       @POST("api/v1/submitCatagByMobApp")
        Call<SubmitPatientData> submitDataForSurveyCatVI(@Body PostDataForCategoryVIRequest modelRequest);
 
        @POST("api/v1/submitMandatoryInves")

@@ -59,6 +59,233 @@ public class PostDataForCategoryIVRequest {
 //prescription
  String prescription;
 
+
+    String  hbChecks;
+    String  papSmaearChecks;
+    String  serumCreatinineChecks;
+    String  bloodUreaChecks;
+    String  rbcChecks;
+    String  rdwSdChecks;
+    String  pleteletChecks;
+    String  meanCorpuscularHemoglobinConcentrationChecks;
+    String  meanCorpuscularHemoglobinChecks;
+    String  meanCorpuscularVolumeChecks;
+
+    String  packedCellVolumeChecks;
+    String  basophilsChecks;
+    String  eosinophilsChecks;
+    String  monocytesChecks;
+    String  lymphocytesChecks;
+    String  neutrophilsChecks;
+    String  tlcChecks;
+    String  rdwCvChecks;
+    String  psaChecks;
+    String  tshChecks;
+    String  rftChecks;
+    String  serumCholesterolChecks;
+    String  urineRoutineExamChecks;
+    String  rbsChecks;
+    String  relevantInvestigationChecks;
+
+    public String getHbChecks() {
+        return hbChecks;
+    }
+
+    public void setHbChecks(String hbChecks) {
+        this.hbChecks = hbChecks;
+    }
+
+    public String getPapSmaearChecks() {
+        return papSmaearChecks;
+    }
+
+    public void setPapSmaearChecks(String papSmaearChecks) {
+        this.papSmaearChecks = papSmaearChecks;
+    }
+
+    public String getSerumCreatinineChecks() {
+        return serumCreatinineChecks;
+    }
+
+    public void setSerumCreatinineChecks(String serumCreatinineChecks) {
+        this.serumCreatinineChecks = serumCreatinineChecks;
+    }
+
+    public String getBloodUreaChecks() {
+        return bloodUreaChecks;
+    }
+
+    public void setBloodUreaChecks(String bloodUreaChecks) {
+        this.bloodUreaChecks = bloodUreaChecks;
+    }
+
+    public String getRbcChecks() {
+        return rbcChecks;
+    }
+
+    public void setRbcChecks(String rbcChecks) {
+        this.rbcChecks = rbcChecks;
+    }
+
+    public String getRdwSdChecks() {
+        return rdwSdChecks;
+    }
+
+    public void setRdwSdChecks(String rdwSdChecks) {
+        this.rdwSdChecks = rdwSdChecks;
+    }
+
+    public String getPleteletChecks() {
+        return pleteletChecks;
+    }
+
+    public void setPleteletChecks(String pleteletChecks) {
+        this.pleteletChecks = pleteletChecks;
+    }
+
+    public String getMeanCorpuscularHemoglobinConcentrationChecks() {
+        return meanCorpuscularHemoglobinConcentrationChecks;
+    }
+
+    public void setMeanCorpuscularHemoglobinConcentrationChecks(String meanCorpuscularHemoglobinConcentrationChecks) {
+        this.meanCorpuscularHemoglobinConcentrationChecks = meanCorpuscularHemoglobinConcentrationChecks;
+    }
+
+    public String getMeanCorpuscularHemoglobinChecks() {
+        return meanCorpuscularHemoglobinChecks;
+    }
+
+    public void setMeanCorpuscularHemoglobinChecks(String meanCorpuscularHemoglobinChecks) {
+        this.meanCorpuscularHemoglobinChecks = meanCorpuscularHemoglobinChecks;
+    }
+
+    public String getMeanCorpuscularVolumeChecks() {
+        return meanCorpuscularVolumeChecks;
+    }
+
+    public void setMeanCorpuscularVolumeChecks(String meanCorpuscularVolumeChecks) {
+        this.meanCorpuscularVolumeChecks = meanCorpuscularVolumeChecks;
+    }
+
+    public String getPackedCellVolumeChecks() {
+        return packedCellVolumeChecks;
+    }
+
+    public void setPackedCellVolumeChecks(String packedCellVolumeChecks) {
+        this.packedCellVolumeChecks = packedCellVolumeChecks;
+    }
+
+    public String getBasophilsChecks() {
+        return basophilsChecks;
+    }
+
+    public void setBasophilsChecks(String basophilsChecks) {
+        this.basophilsChecks = basophilsChecks;
+    }
+
+    public String getEosinophilsChecks() {
+        return eosinophilsChecks;
+    }
+
+    public void setEosinophilsChecks(String eosinophilsChecks) {
+        this.eosinophilsChecks = eosinophilsChecks;
+    }
+
+    public String getMonocytesChecks() {
+        return monocytesChecks;
+    }
+
+    public void setMonocytesChecks(String monocytesChecks) {
+        this.monocytesChecks = monocytesChecks;
+    }
+
+    public String getLymphocytesChecks() {
+        return lymphocytesChecks;
+    }
+
+    public void setLymphocytesChecks(String lymphocytesChecks) {
+        this.lymphocytesChecks = lymphocytesChecks;
+    }
+
+    public String getNeutrophilsChecks() {
+        return neutrophilsChecks;
+    }
+
+    public void setNeutrophilsChecks(String neutrophilsChecks) {
+        this.neutrophilsChecks = neutrophilsChecks;
+    }
+
+    public String getTlcChecks() {
+        return tlcChecks;
+    }
+
+    public void setTlcChecks(String tlcChecks) {
+        this.tlcChecks = tlcChecks;
+    }
+
+    public String getRdwCvChecks() {
+        return rdwCvChecks;
+    }
+
+    public void setRdwCvChecks(String rdwCvChecks) {
+        this.rdwCvChecks = rdwCvChecks;
+    }
+
+    public String getPsaChecks() {
+        return psaChecks;
+    }
+
+    public void setPsaChecks(String psaChecks) {
+        this.psaChecks = psaChecks;
+    }
+
+    public String getTshChecks() {
+        return tshChecks;
+    }
+
+    public void setTshChecks(String tshChecks) {
+        this.tshChecks = tshChecks;
+    }
+
+    public String getRftChecks() {
+        return rftChecks;
+    }
+
+    public void setRftChecks(String rftChecks) {
+        this.rftChecks = rftChecks;
+    }
+
+    public String getSerumCholesterolChecks() {
+        return serumCholesterolChecks;
+    }
+
+    public void setSerumCholesterolChecks(String serumCholesterolChecks) {
+        this.serumCholesterolChecks = serumCholesterolChecks;
+    }
+
+    public String getUrineRoutineExamChecks() {
+        return urineRoutineExamChecks;
+    }
+
+    public void setUrineRoutineExamChecks(String urineRoutineExamChecks) {
+        this.urineRoutineExamChecks = urineRoutineExamChecks;
+    }
+
+    public String getRbsChecks() {
+        return rbsChecks;
+    }
+
+    public void setRbsChecks(String rbsChecks) {
+        this.rbsChecks = rbsChecks;
+    }
+
+    public String getRelevantInvestigationChecks() {
+        return relevantInvestigationChecks;
+    }
+
+    public void setRelevantInvestigationChecks(String relevantInvestigationChecks) {
+        this.relevantInvestigationChecks = relevantInvestigationChecks;
+    }
   public String getPatientId() {
     return patientId;
   }

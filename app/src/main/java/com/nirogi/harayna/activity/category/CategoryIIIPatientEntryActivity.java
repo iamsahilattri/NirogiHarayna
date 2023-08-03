@@ -1235,6 +1235,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     request.setAlreadyKnown("no");
                 }
                 request.setPrescription(mInputPrescription.getText().toString());
+                mSetCheckBoxValesForServer(request);
                 Log.e(" request ", "" + request.toString());
                 Call<SubmitPatientData> call = apiInterface.submitDataForSurveyCatIII(request);
                 call.enqueue(new Callback<SubmitPatientData>() {
@@ -1277,62 +1278,94 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         // Step CheckBox
         if(mChkHBMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setHbChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setHbChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mChkTLCMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setTlcChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setTlcChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mChkDLCMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setRelevantInvestigation(IntentParams.STRING_SENT);
+        }else {
+            request.setRelevantInvestigation(IntentParams.STRING_NOT_SENT);
         }
         if(mChkPackedCellMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setPackedCellVolumeChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPackedCellVolumeChecks(IntentParams.STRING_NOT_SENT);
+
+        }
+        if(mChkCorpuscularMandatoryInvest.isChecked())
+        {
+            request.setMeanCorpusVolume(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpusVolume(IntentParams.STRING_NOT_SENT);
         }
         if(mChkCorpuscularHBMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
-        }
-
-        if(mChkPlateletMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-        if(mChkRDWSDMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-        if(mChkRbcCountMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-        if(mChkRBSMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-        if(mChkAdvisedMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-
-        if(mChkCorpuscularMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
-        }
-        if(mChkRDWMandatoryInvest.isChecked())
-        {
-            request.setRelevantInvestigation("sent");
+            request.setMeanCorpusHemoglobin(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpusHemoglobin(IntentParams.STRING_NOT_SENT);
         }
         if(mChkHBConcentrationMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setMeanCorpuscularHemoglobinConcentrationChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setMeanCorpuscularHemoglobinConcentrationChecks(IntentParams.STRING_NOT_SENT);
         }
+        if(mChkPlateletMandatoryInvest.isChecked())
+        {
+            request.setPleteletChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setPleteletChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mChkRDWMandatoryInvest.isChecked())
+        {
+            request.setRdwCvChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRdwCvChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mChkRDWSDMandatoryInvest.isChecked())
+        {
+            request.setRdwSdChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRdwSdChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+        if(mChkRbcCountMandatoryInvest.isChecked())
+        {
+            request.setRbcChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRbcChecks(IntentParams.STRING_NOT_SENT);
+        }
+        if(mChkRBSMandatoryInvest.isChecked())
+        {
+            request.setRbsChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRbsChecks(IntentParams.STRING_NOT_SENT);
+        }
+
         if(mChkUrineMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation("sent");
+            request.setUrineRoutineExamChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setUrineRoutineExamChecks(IntentParams.STRING_NOT_SENT);
         }
+        if(mChkAdvisedMandatoryInvest.isChecked())
+        {
+            request.setRelevantInvestigationChecks(IntentParams.STRING_SENT);
+        }else {
+            request.setRelevantInvestigationChecks(IntentParams.STRING_NOT_SENT);
+        }
+
+
+
     }
 
     public void postDataForReferenceCategories() {
