@@ -626,6 +626,29 @@ public  class ReferredSurveyDataResponse implements Serializable {
         @Expose
         @SerializedName("midArmCircum")
         private String midArmCircum;
+        @Expose
+        @SerializedName("relevantInvestigation")
+        private String relevantInvestigation;
+
+        @Expose
+        @SerializedName("hb")
+        private String hb;
+
+        public String getRelevantInvestigation() {
+            return relevantInvestigation;
+        }
+
+        public void setRelevantInvestigation(String relevantInvestigation) {
+            this.relevantInvestigation = relevantInvestigation;
+        }
+
+        public String getHb() {
+            return hb;
+        }
+
+        public void setHb(String hb) {
+            this.hb = hb;
+        }
 
         public String getMidArmCircum() {
             return midArmCircum;

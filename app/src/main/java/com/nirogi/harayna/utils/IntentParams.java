@@ -14,6 +14,11 @@ public interface IntentParams {
     String TITLE_DIAGNOSIS="Diagnosis";
     String STRING_SENT="sent";
     String STRING_NOT_SENT="not sent";
+    String REFERENCE_ID="REFERENCE_ID";
+
+    String M_DATA="mData";
+
+
 
 
 

@@ -61,11 +61,17 @@ public class SearchedPPPIDDetails extends BaseActivity {
     {
         if(getIntent()!=null)
         {
-            PPPID=getIntent().getStringExtra("PPPID");
             ArrayList<PatientListModelResponse> intentDataList =(ArrayList<PatientListModelResponse>)getIntent().getSerializableExtra("mData");
-            Log.e(" mDataList Size ",""+intentDataList.size());
+            PPPID=intentDataList.get(0).getPppid();
             mSetRecyclerData(intentDataList);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getPatientList();
+
     }
 
     private void initViews()
@@ -76,10 +82,8 @@ public class SearchedPPPIDDetails extends BaseActivity {
         swipeDown.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(isNetworkAvailable())
-                {
-                    getPatientList();
-                }
+                getPatientList();
+
                 swipeDown.setRefreshing(false);
 
             }
@@ -98,46 +102,48 @@ public class SearchedPPPIDDetails extends BaseActivity {
     public void getPatientList()
     {
         try {
-            createProgressBar(R.id.relSPMain);
-            APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
-            SearchPPPIDRequest request= new SearchPPPIDRequest();
-            request.setPppId(PPPID);
-            Call<ArrayList<PatientListModelResponse>> call = apiInterface.getSearchedPPPIDPatients(request);
-            call.enqueue(new Callback<ArrayList<PatientListModelResponse>>() {
-                @Override
-                public void onResponse(Call<ArrayList<PatientListModelResponse>> call, Response<ArrayList<PatientListModelResponse>> response) {
-                    try {
-                        if (response.isSuccessful()) {
+            if (isNetworkAvailable())
+            {
+                createProgressBar(R.id.relSPMain);
+                APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
+                SearchPPPIDRequest request= new SearchPPPIDRequest();
+                request.setPppId(PPPID);
+                Call<ArrayList<PatientListModelResponse>> call = apiInterface.getSearchedPPPIDPatients(request);
+                call.enqueue(new Callback<ArrayList<PatientListModelResponse>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<PatientListModelResponse>> call, Response<ArrayList<PatientListModelResponse>> response) {
+                        try {
+                            if (response.isSuccessful()) {
 
-                            if(response.body().size()>0)
-                            {
-                                ArrayList<PatientListModelResponse> mDataList= new ArrayList<>(response.body());
-                                mSetRecyclerData(mDataList);
-                            }else
-                            {
-                                noDataLy.setVisibility(View.VISIBLE);
-                                recyclerPatientList.setVisibility(View.GONE);
+                                if(response.body().size()>0)
+                                {
+                                    ArrayList<PatientListModelResponse> mDataList= new ArrayList<>(response.body());
+                                    mSetRecyclerData(mDataList);
+                                }else
+                                {
+                                    noDataLy.setVisibility(View.VISIBLE);
+                                    recyclerPatientList.setVisibility(View.GONE);
+                                }
+                                disableProgressBar();
+                            }else{
+                                mHandleApiErrorCode(response.code(),response.errorBody().string(), SearchedPPPIDDetails.this);
+                                disableProgressBar();
                             }
-                            disableProgressBar();
-                        }else{
-                            mHandleApiErrorCode(response.code(),response.errorBody().string(), SearchedPPPIDDetails.this);
+                        }catch (Exception e)
+                        {
+                            Log.e(" Exception ",""+e.getMessage());
                             disableProgressBar();
                         }
-                    }catch (Exception e)
-                    {
-                        Log.e(" Exception ",""+e.getMessage());
-                        disableProgressBar();
                     }
 
+                    @Override
+                    public void onFailure(Call<ArrayList<PatientListModelResponse>> call, Throwable t) {
+                        mShowToast(getString(R.string.api_failure));
+                        disableProgressBar();
+                    }
+                });
+            }
 
-                }
-
-                @Override
-                public void onFailure(Call<ArrayList<PatientListModelResponse>> call, Throwable t) {
-                    mShowToast(getString(R.string.api_failure));
-                    disableProgressBar();
-                }
-            });
         }catch (Exception ee)
         {
             Log.e(" Exception ",""+ee.getMessage());

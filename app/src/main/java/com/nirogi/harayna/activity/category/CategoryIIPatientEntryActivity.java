@@ -138,6 +138,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
         sharedPreferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_patient_input_cat_ii);
         initView();
+        mSetBackToolbar(CategoryIIPatientEntryActivity.this,"Patient Details", true, "Category II (07-59 Months)");
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
@@ -160,15 +161,20 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
     private void mSetValuesToViews() {
         try {
             if (getIntent() != null) {
-                memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
-                if (memberData != null) {
-                    mSetBackToolbar(CategoryIIPatientEntryActivity.this,"Patient Details", true, "Category II (07-59 Months)");
-                    mTxtPatientPPPID.setText(memberData.getPppid() + "");
-                    mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
-                    mTxtPatientGenderAge.setText(memberData.getGender() + "");
-                    mTxtPatientMobile.setText(memberData.getMobileno() + "");
-                    mTxtPatientAddress.setText(memberData.getAddress() + "");
-                    mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+                if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+                {
+                    memberData = (PatientListModelResponse) getIntent().getSerializableExtra(IntentParams.MEMBER_DATA);
+                    if (memberData != null) {
+                        mTxtPatientPPPID.setText(memberData.getPppid() + "");
+                        mTxtPatientName.setText(memberData.getFirstname() + " " + memberData.getLastname());
+                        mTxtPatientGenderAge.setText(memberData.getGender() + "");
+                        mTxtPatientMobile.setText(memberData.getMobileno() + "");
+                        mTxtPatientAddress.setText(memberData.getAddress() + "");
+                        mTxtPatientDistrict.setText(memberData.getDistrict() + "");
+                    }
+                }else {
+                    intentRecorderRefData = (ReferredSurveyDataResponse) getIntent().getSerializableExtra(IntentParams.SCREENED_DATA);
+                    mSetScreenedDataToViews();
                 }
             }
         } catch (Exception e) {
@@ -341,6 +347,14 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                         mSetServerValuesToSpinnerELSE(mCIIdropTbPatientHistory);
                     }
 
+                    if(dataEntity.getHistorydeworming()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getHistorydeworming(),mCIIdropDewormingPatientHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropDewormingPatientHistory);
+                    }
+
+
                     if(dataEntity.getSittingWithoutSupport()!=null)
                     {
                         mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropSittingHistory,R.array.arr_y_n);
@@ -418,7 +432,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     {
                         mSetServerValuesToSpinner(dataEntity.getJumpWithBothFeet(),mCIIdropJumpHistory,R.array.arr_y_n);
                     }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropFDirectHistory);
+                        mSetServerValuesToSpinnerELSE(mCIIdropJumpHistory);
                     }
 
 
@@ -564,10 +578,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
 
 
                 }
-                if(dataModel.getTitle().equals(IntentParams.TITLE_MILESTONE))
-                {
 
-                }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_SYS_EXAM))
                 {
                     if(dataEntity.getChest()!=null)
@@ -637,7 +648,14 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                 }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_MAN_INVEST))
                 {
-
+                    if(dataEntity.getHb()!=null)
+                    {
+                        mCIIinputHBMandatoryInvest.setText(dataEntity.getHb());
+                    }
+                    if(dataEntity.getRelevantInvestigation()!=null)
+                    {
+                        mCIIinputTLCMandatoryInvest.setText(dataEntity.getRelevantInvestigation());
+                    }
                 }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_DIAGNOSIS))
                 {
@@ -1273,8 +1291,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                refrenceGenratedPopup(CategoryIIPatientEntryActivity.this,response.body().getRefernceId());
-//                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
+                                referenceGeneratedPopup(CategoryIIPatientEntryActivity.this,response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(), response.errorBody().string(), CategoryIIPatientEntryActivity.this);
                             }
@@ -1309,7 +1326,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
-                request.setPatientId(memberData.getMemberid());
+                request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
                 request.setHb(mCIIinputHBMandatoryInvest.getText().toString());
                 request.setRelevantInvestigation(mCIIinputTLCMandatoryInvest.getText().toString());
                 Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);

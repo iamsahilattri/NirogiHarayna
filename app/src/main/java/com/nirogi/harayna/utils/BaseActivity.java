@@ -47,7 +47,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public void performBackPress(Activity mContext)
     {
-        Log.e(" performBackPress "," performBackPress ");
         AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
         builder.setTitle("Alert !");
@@ -55,19 +54,22 @@ public class BaseActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
                         mContext.finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
                         dialogInterface.dismiss();
                     }
                 })
                 .show();
+
     }
 
-    public void refrenceGenratedPopup(Activity mContext,String referenceId)
+    public void referenceGeneratedPopup(Activity mContext, String referenceId)
     {
         AlertDialog.Builder builder= new AlertDialog.Builder(mContext);
         builder.setIcon(android.R.drawable.ic_dialog_alert);
@@ -142,7 +144,6 @@ public class BaseActivity extends AppCompatActivity {
                 {
                     performBackPress(mContext);
                 }
-                finish();
             }
         });
     }

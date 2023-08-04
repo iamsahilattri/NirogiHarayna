@@ -66,8 +66,8 @@ public class SearchedReferenceIdDetails extends BaseActivity {
     {
         if(getIntent()!=null)
         {
-            referenceId=getIntent().getStringExtra("referenceId");
-            ArrayList<ReferenceIdResponse> intentDataList =(ArrayList<ReferenceIdResponse>)getIntent().getSerializableExtra("mData");
+            referenceId=getIntent().getStringExtra(IntentParams.REFERENCE_ID);
+            ArrayList<ReferenceIdResponse> intentDataList =(ArrayList<ReferenceIdResponse>)getIntent().getSerializableExtra(IntentParams.M_DATA);
             Log.e(" mDataList Size ",""+intentDataList.size());
             mSetRecyclerData(intentDataList);
         }
@@ -113,7 +113,6 @@ public class SearchedReferenceIdDetails extends BaseActivity {
 
                             if(response.body().size()>0)
                             {
-                                
                                 disableProgressBar();
                             }else
                             {
@@ -194,20 +193,11 @@ public class SearchedReferenceIdDetails extends BaseActivity {
                             }
 
                             assert mIntent != null;
-
-
-//                            Bundle args = new Bundle();
-//                            args.putSerializable(IntentParams.RECORDER_DATA,(Serializable) recorderRefData);
-//                            mIntent.putExtra(IntentParams.BUNDLE,args);
                             mIntent.putExtra(IntentParams.SCREENED_DATA, recorderRefData);
                             mIntent.putExtra(IntentParams.MEMBER_DATA, new PatientListModelResponse());
                             mIntent.putExtra(IntentParams.MEMBER_TYPE, "2");
                             startActivity(mIntent);
-//                            String catValue="";
-//                            for (ReferredSurveyDataResponse recorderRefDataV:recorderRefData) {
-//                                catValue=recorderRefDataV.getData().get(0).getData().getCategory();
-//                            }
-//                                String catValue=recorderRefData.get(0).getData().getCategory();
+                            disableProgressBar();
 
 
                         }else{

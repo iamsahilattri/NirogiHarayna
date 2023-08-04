@@ -155,7 +155,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         sharedPreferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_patient_input_cat_iii);
         initView();
-        mSetBackToolbar(CategoryIIIPatientEntryActivity.this,"Patient Details", true, "Category I (0-6 Months)");
+        mSetBackToolbar(CategoryIIIPatientEntryActivity.this,"Patient Details", true, "Category III (5-18 Years)");
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
@@ -224,7 +224,8 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
 
     private void mHideAllMandatoryCheckBox()
     {
-        mChkHBMandatoryInvest.setVisibility(View.GONE);
+        cIIIchkAllMandatoryInvest.setVisibility(View.GONE);
+        mChkHBMandatoryInvest.setButtonDrawable(null);
         mChkTLCMandatoryInvest.setVisibility(View.GONE);
         mChkDLCMandatoryInvest.setVisibility(View.GONE);
         mChkPackedCellMandatoryInvest.setVisibility(View.GONE);
@@ -1243,7 +1244,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                refrenceGenratedPopup(CategoryIIIPatientEntryActivity.this,response.body().getRefernceId());
+                                referenceGeneratedPopup(CategoryIIIPatientEntryActivity.this,response.body().getRefernceId());
 
 //                                mShowToast("Submitted Successfully with reference id " + response.body().getRefernceId());
                             } else {
@@ -1290,9 +1291,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         }
         if(mChkDLCMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation(IntentParams.STRING_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_SENT);
         }else {
-            request.setRelevantInvestigation(IntentParams.STRING_NOT_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mChkPackedCellMandatoryInvest.isChecked())
         {
@@ -1303,15 +1304,15 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         }
         if(mChkCorpuscularMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusVolume(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusVolume(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mChkCorpuscularHBMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mChkHBConcentrationMandatoryInvest.isChecked())
         {
@@ -1375,7 +1376,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
-                request.setPatientId(memberData.getMemberid());
+                request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
                 request.setHb(mInputHBMandatoryInvest.getText().toString());
                 request.setTlc(mInputTLCMandatoryInvest.getText().toString());
                 request.setNeutrophils(mInputDLCNeutrophilsMandatoryInvest.getText().toString());

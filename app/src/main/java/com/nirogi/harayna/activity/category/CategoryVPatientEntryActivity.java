@@ -22,7 +22,6 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
-import com.nirogi.harayna.model.request.PostDataForCategoryIVRequest;
 import com.nirogi.harayna.model.request.PostDataForCategoryVRequest;
 import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
@@ -157,6 +156,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         sharedPreferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_patient_input_cat_v);
         initView();
+        mSetBackToolbar(CategoryVPatientEntryActivity.this,"Patient Details", true, "Category V (40-60 Years)");
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
@@ -575,9 +575,9 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         }
         if(mCVchkDLCMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation(IntentParams.STRING_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_SENT);
         }else {
-            request.setRelevantInvestigation(IntentParams.STRING_NOT_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCVchkPackedCellMandatoryInvest.isChecked())
         {
@@ -587,15 +587,15 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         }
         if(mCVchkCorpuscularMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusVolume(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusVolume(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCVchkCorpuscularHBMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCVchkHBConcentrationMandatoryInvest.isChecked())
         {
@@ -691,8 +691,8 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
 
     private void mHideAllMandatoryCheckBox()
     {
-        mCVchkHBMandatoryInvest.setVisibility(View.GONE);
-        mCVchkTLCMandatoryInvest.setVisibility(View.GONE);
+        mCVchkHBMandatoryInvest.setButtonDrawable(null);
+        mCVchkTLCMandatoryInvest.setButtonDrawable(null);
         mCVchkDLCMandatoryInvest.setVisibility(View.GONE);
         mCVchkPackedCellMandatoryInvest.setVisibility(View.GONE);
         mCVchkCorpuscularMandatoryInvest.setVisibility(View.GONE);
@@ -1248,7 +1248,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                refrenceGenratedPopup(CategoryVPatientEntryActivity.this,response.body().getRefernceId());
+                                referenceGeneratedPopup(CategoryVPatientEntryActivity.this,response.body().getRefernceId());
 //                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryVPatientEntryActivity.this);

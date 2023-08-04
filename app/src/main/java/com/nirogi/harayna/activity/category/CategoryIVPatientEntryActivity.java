@@ -21,7 +21,6 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.nirogi.harayna.R;
-import com.nirogi.harayna.model.request.PostDataForCategoryIIIRequest;
 import com.nirogi.harayna.model.request.PostDataForCategoryIVRequest;
 import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
@@ -151,6 +150,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         sharedPreferences=NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_patient_input_cat_iv);
         initView();
+        mSetBackToolbar(CategoryIVPatientEntryActivity.this,"Patient Details", true, "Category IV (18-40 Years)");
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
@@ -548,9 +548,9 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         }
         if(mCIVchkDLCMandatoryInvest.isChecked())
         {
-            request.setRelevantInvestigation(IntentParams.STRING_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_SENT);
         }else {
-            request.setRelevantInvestigation(IntentParams.STRING_NOT_SENT);
+            request.setRelevantInvestigationChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCIVchkPackedCellMandatoryInvest.isChecked())
         {
@@ -560,15 +560,15 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         }
         if(mCIVchkCorpuscularMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusVolume(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusVolume(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularVolumeChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCIVchkCorpuscularHBMandatoryInvest.isChecked())
         {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_SENT);
         }else {
-            request.setMeanCorpusHemoglobin(IntentParams.STRING_NOT_SENT);
+            request.setMeanCorpuscularHemoglobinChecks(IntentParams.STRING_NOT_SENT);
         }
         if(mCIVchkHBConcentrationMandatoryInvest.isChecked())
         {
@@ -896,6 +896,8 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                 }
             } else {
                 mShowToast("BP should be like (34/33)");
+                return false;
+
             }
 
         }
@@ -1213,9 +1215,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                refrenceGenratedPopup(CategoryIVPatientEntryActivity.this,response.body().getRefernceId());
-
-//                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
+                                referenceGeneratedPopup(CategoryIVPatientEntryActivity.this,response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIVPatientEntryActivity.this);
                             }
@@ -1251,7 +1251,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
-                request.setPatientId(memberData.getMemberid());
+                request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
                 request.setHb(mCIVinputHBMandatoryInvest.getText().toString());
                 request.setTlc(mCIVinputTLCMandatoryInvest.getText().toString());
                 request.setNeutrophils(mCIVinputDLCNeutrophilsMandatoryInvest.getText().toString());

@@ -124,6 +124,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
         setContentView(R.layout.activity_patient_input_cat_i);
         sharedPreferences = NIROGI.getInstance().getPreferences();
         initView();
+        mSetBackToolbar(CategoryIPatientEntryActivity.this,"Patient Details", true, "Category I (0-18 Months)");
         mSetValuesToViews();
         initDataToView();
         mSetValidationListeners();
@@ -413,7 +414,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     }
                     if(dataEntity.getAnteriorFontanelle()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getAnteriorFontanelle(),mCIdropAnterFontGenPhy,R.array.arr_anterior);
+                        mSetServerValuesToSpinner(dataEntity.getAnteriorFontanelle(),mCIdropAnterFontGenPhy,R.array.arr_anterior_);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropAnterFontGenPhy);
                     }
@@ -447,7 +448,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     }
                     if(dataEntity.getPerAbdomen()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getPerAbdomen(),mCIdropPAbdomenSysExa,R.array.arr_per_abdomen);
+                        mSetServerValuesToSpinner(dataEntity.getPerAbdomen(),mCIdropPAbdomenSysExa,R.array.arr_per_abdomen_);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropPAbdomenSysExa);
                     }
@@ -481,7 +482,14 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_MAN_INVEST))
                 {
-
+                    if(dataEntity.getHb()!=null)
+                    {
+                        mCIinputHBMandatoryInvest.setText(dataEntity.getHb());
+                    }
+                    if(dataEntity.getRelevantInvestigation()!=null)
+                    {
+                        mCIinputTLCMandatoryInvest.setText(dataEntity.getRelevantInvestigation());
+                    }
                 }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_DIAGNOSIS))
                 {
@@ -887,7 +895,12 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
     @Override
     public void onBackPressed() {
-        performBackPress(CategoryIPatientEntryActivity.this);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                performBackPress(CategoryIPatientEntryActivity.this);
+            }
+        });
     }
 
     private void mShowHideLayouts(int clicked) {
@@ -1109,7 +1122,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
                         try {
                             if (response.isSuccessful()) {
-                                refrenceGenratedPopup(CategoryIPatientEntryActivity.this,response.body().getRefernceId());
+                                referenceGeneratedPopup(CategoryIPatientEntryActivity.this,response.body().getRefernceId());
 //                                mShowToast("Submitted Successfully with reference id "+response.body().getRefernceId());
                             } else {
                                 mHandleApiErrorCode(response.code(),response.errorBody().string(), CategoryIPatientEntryActivity.this);
@@ -1145,9 +1158,10 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
-                request.setPatientId(memberData.getMemberid());
+                request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
                 request.setHb(mCIinputHBMandatoryInvest.getText().toString());
                 request.setRelevantInvestigation(mCIinputTLCMandatoryInvest.getText().toString());
+                Log.e(" request ",""+request.toString());
                 Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
                 call.enqueue(new Callback<SubmitPatientData>() {
                     @Override

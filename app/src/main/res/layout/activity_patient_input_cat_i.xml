@@ -1074,7 +1074,7 @@
                                         android:textColor="@color/valueTextColor"
                                         android:layout_marginStart="5dp"
                                         android:textSize="14sp"
-                                        android:hint="20-80 (per min))"
+                                        android:hint="20-30 (per min))"
                                         android:layout_marginEnd="10dp"
                                         android:textColorHint="@color/hintColorText"
                                         android:layout_height="wrap_content"/>

@@ -311,8 +311,8 @@
                                 android:fontFamily="@font/dosis_light"
                                 android:hint="@string/enter_reference_id"
                                 android:lines="1"
-                                android:padding="5dp"
                                 android:text="@string/test_refrence_id"
+                                android:padding="5dp"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="14sp" />

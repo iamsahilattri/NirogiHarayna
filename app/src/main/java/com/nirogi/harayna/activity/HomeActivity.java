@@ -26,6 +26,7 @@ import com.nirogi.harayna.model.response.ReferenceIdResponse;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
+import com.nirogi.harayna.utils.IntentParams;
 import com.nirogi.harayna.utils.NIROGI;
 import com.nirogi.harayna.utils.SharedParams;
 
@@ -292,8 +293,6 @@ public class HomeActivity extends BaseActivity {
                                 ArrayList<PatientListModelResponse> mDataList= new ArrayList<>(response.body());
                                 Intent mIntent= new Intent(HomeActivity.this, SearchedPPPIDDetails.class);
                                 mIntent.putExtra("mData",mDataList);
-                                mIntent.putExtra("inputValue","");
-                                mIntent.putExtra("inputData","");
                                 startActivity(mIntent);
                             }else {
                                 mShowToast("No Record Found !");
@@ -346,8 +345,8 @@ public class HomeActivity extends BaseActivity {
                             {
                                 ArrayList<ReferenceIdResponse> mDataList= new ArrayList<>(response.body());
                                 Intent mIntent= new Intent(HomeActivity.this, SearchedReferenceIdDetails.class);
-                                mIntent.putExtra("mData",mDataList);
-                                mIntent.putExtra("referenceId",inputTextPPP);
+                                mIntent.putExtra(IntentParams.M_DATA,mDataList);
+                                mIntent.putExtra(IntentParams.REFERENCE_ID,inputTextPPP);
                                 startActivity(mIntent);
                             }else {
                                 mShowToast("No Record Found !");
