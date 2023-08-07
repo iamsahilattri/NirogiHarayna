@@ -19,6 +19,7 @@ import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferenceIdResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
+import com.nirogi.harayna.model.response.SubmitPatientMandatoryData;
 
 import java.util.ArrayList;
 
@@ -65,5 +66,5 @@ public interface APIInterface
        Call<SubmitPatientData> submitDataForSurveyCatVI(@Body PostDataForCategoryVIRequest modelRequest);
 
        @POST("api/v1/submitMandatoryInves")
-       Call<SubmitPatientData> submitMandatoryInvestigationReference(@Body PostMandatoryDataRequest modelRequest);
+       Call<SubmitPatientMandatoryData> submitMandatoryInvestigationReference(@Body PostMandatoryDataRequest modelRequest);
 }

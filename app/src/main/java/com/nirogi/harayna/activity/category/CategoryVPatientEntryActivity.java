@@ -27,6 +27,7 @@ import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
+import com.nirogi.harayna.model.response.SubmitPatientMandatoryData;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
@@ -1184,6 +1185,8 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 request.setUserId(preferences.getString(SharedParams.SUB, null));
 
 
+
+
                 // Step 1
                 request.setWeight(mCVinputWeightGenPhy.getText().toString());
                 request.setHeight(mCVinputHeightGenPhy.getText().toString());
@@ -1291,7 +1294,16 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
-                request.setPatientId(memberData.getMemberid());
+
+                request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
+                request.setCreatedBy(sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, ""));
+                request.setCreatedDate(getDateToSend());
+                request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
+                request.setDistrict(preferences.getString(SharedParams.DISTRICT, null));
+                request.setFacility(sharedPreferences.getString(SharedParams.FACTYPE, "") + "/" + sharedPreferences.getString(SharedParams.FACILITY, ""));
+                request.setCategory("5");
+                request.setUserId(preferences.getString(SharedParams.SUB, null));
+
                 request.setHb(mCVinputHBMandatoryInvest.getText().toString());
                 request.setTlc(mCVinputTLCMandatoryInvest.getText().toString());
                 request.setNeutrophils(mCVinputDLCNeutrophilsMandatoryInvest.getText().toString());
@@ -1317,10 +1329,10 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 request.setUrineRoutineExamination(mCVinputUrineMandatoryInvest.getText().toString());
                 request.setRelevantInvestigation(mCVinputAdvisedMandatoryInvest.getText().toString());
 
-                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
-                call.enqueue(new Callback<SubmitPatientData>() {
+                Call<SubmitPatientMandatoryData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientMandatoryData>() {
                     @Override
-                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                    public void onResponse(Call<SubmitPatientMandatoryData> call, Response<SubmitPatientMandatoryData> response) {
                         try {
                             if (response.isSuccessful()) {
                                 mShowToast("Submitted Successfully !");
@@ -1338,7 +1350,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     }
 
                     @Override
-                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                    public void onFailure(Call<SubmitPatientMandatoryData> call, Throwable t) {
                         mShowToast(getString(R.string.api_failure));
                         disableProgressBar();
                     }

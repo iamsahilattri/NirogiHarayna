@@ -27,6 +27,7 @@ import com.nirogi.harayna.model.request.PostMandatoryDataRequest;
 import com.nirogi.harayna.model.response.PatientListModelResponse;
 import com.nirogi.harayna.model.response.ReferredSurveyDataResponse;
 import com.nirogi.harayna.model.response.SubmitPatientData;
+import com.nirogi.harayna.model.response.SubmitPatientMandatoryData;
 import com.nirogi.harayna.network.APIInterface;
 import com.nirogi.harayna.network.ApiClient;
 import com.nirogi.harayna.utils.BaseActivity;
@@ -154,6 +155,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         super.onCreate(savedInstanceState);
         sharedPreferences = NIROGI.getInstance().getPreferences();
         setContentView(R.layout.activity_patient_input_cat_iii);
+        doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         initView();
         mSetBackToolbar(CategoryIIIPatientEntryActivity.this,"Patient Details", true, "Category III (5-18 Years)");
         mSetValuesToViews();
@@ -168,7 +170,6 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
     }
 
     private void initDataToView() {
-        doctorName = sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, "");
         mTxtFacilityName.setText(sharedPreferences.getString(SharedParams.FACTYPE, "") + " " + sharedPreferences.getString(SharedParams.FACILITY, ""));
         mTxtFacilityIncharge.setText("Dr . " + doctorName);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -1380,8 +1381,18 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 createProgressBar(R.id.cIIIrelMain);
                 APIInterface apiInterface = ApiClient.getClientAuthenticationWithAuth(preferences.getString(SharedParams.AUTH_TOKEN,"")).create(APIInterface.class);
                 PostMandatoryDataRequest request = new PostMandatoryDataRequest();
+
+
                 request.setReferenceId(intentRecorderRefData.getData().get(0).getData().getReferenceid());
                 request.setPatientId(intentRecorderRefData.getPatient().get(0).getData().getMemberId());
+                request.setCreatedBy(sharedPreferences.getString(SharedParams.FNAME, "") + "" + sharedPreferences.getString(SharedParams.LNAME, ""));
+                request.setCreatedDate(getDateToSend());
+                request.setDistrict(preferences.getString(SharedParams.DISTRICT, null));
+                request.setFacility(sharedPreferences.getString(SharedParams.FACTYPE, "") + "/" + sharedPreferences.getString(SharedParams.FACILITY, ""));
+                request.setCategory("3");
+                request.setUserId(preferences.getString(SharedParams.SUB, null));
+
+
                 request.setHb(mInputHBMandatoryInvest.getText().toString());
                 request.setTlc(mInputTLCMandatoryInvest.getText().toString());
                 request.setNeutrophils(mInputDLCNeutrophilsMandatoryInvest.getText().toString());
@@ -1400,10 +1411,10 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 request.setRbs(mInputRBSMandatoryInvest.getText().toString());
                 request.setUrineRoutineExamination(mInputUrineMandatoryInvest.getText().toString());
                 request.setRelevantInvestigation(mInputAdvisedMandatoryInvest.getText().toString());
-                Call<SubmitPatientData> call = apiInterface.submitMandatoryInvestigationReference(request);
-                call.enqueue(new Callback<SubmitPatientData>() {
+                Call<SubmitPatientMandatoryData> call = apiInterface.submitMandatoryInvestigationReference(request);
+                call.enqueue(new Callback<SubmitPatientMandatoryData>() {
                     @Override
-                    public void onResponse(Call<SubmitPatientData> call, Response<SubmitPatientData> response) {
+                    public void onResponse(Call<SubmitPatientMandatoryData> call, Response<SubmitPatientMandatoryData> response) {
                         try {
                             if (response.isSuccessful()) {
                                 mShowToast("Submitted Successfully !");
@@ -1421,7 +1432,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     }
 
                     @Override
-                    public void onFailure(Call<SubmitPatientData> call, Throwable t) {
+                    public void onFailure(Call<SubmitPatientMandatoryData> call, Throwable t) {
                         mShowToast(getString(R.string.api_failure));
                         disableProgressBar();
                     }

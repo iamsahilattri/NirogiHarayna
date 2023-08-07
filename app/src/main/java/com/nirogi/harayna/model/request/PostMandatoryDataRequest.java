@@ -2,8 +2,17 @@ package com.nirogi.harayna.model.request;
 
 public class PostMandatoryDataRequest {
 
+    String  patientId;
+    String  district;
+    String  facility;
+    String  createdDate;
+    String  createdBy;
+    String  category;
+
+    String  userId;
+
+
     String referenceId;
-    String patientId;
     String hb;
     String relevantInvestigation;
 
@@ -32,6 +41,54 @@ public class PostMandatoryDataRequest {
     String psaForMales;
 
     String papSmear;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getFacility() {
+        return facility;
+    }
+
+    public void setFacility(String facility) {
+        this.facility = facility;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getPapSmear() {
         return papSmear;
