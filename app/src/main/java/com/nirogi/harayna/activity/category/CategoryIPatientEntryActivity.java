@@ -287,9 +287,9 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropPhysIllHistory);
                     }
-                    if(dataEntity.getFamilyhistoryifyes()!=null)
+                    if(dataEntity.getHistoryfamily()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getFamilyhistoryifyes(),mCIdropSignHistory,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getHistoryfamily(),mCIdropSignHistory,R.array.arr_yes_no);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropSignHistory);
                     }
@@ -312,26 +312,9 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropTbPatientHistory);
                     }
-                    if(dataEntity.getSocialSmile()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSocialSmile(),mCIdropSocialSmileHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIdropSocialSmileHistory);
-                    }
 
-                    if(dataEntity.getNeckHolding()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getNeckHolding(),mCIdropNeckHoldingHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIdropNeckHoldingHistory);
-                    }
 
-                    if(dataEntity.getSittingWithSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSittingWithSupport(),mCIdropSittingSupportHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIdropSittingSupportHistory);
-                    }
+
 
 
 
@@ -340,6 +323,25 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
                 }
 
+                if(dataModel.getTitle().equals(IntentParams.TITLE_MILESTONE)) {
+                    if (dataEntity.getSocialSmile() != null) {
+                        mSetServerValuesToSpinner(dataEntity.getSocialSmile(), mCIdropSocialSmileHistory, R.array.arr_y_n);
+                    } else {
+                        mSetServerValuesToSpinnerELSE(mCIdropSocialSmileHistory);
+                    }
+
+                    if (dataEntity.getNeckHolding() != null) {
+                        mSetServerValuesToSpinner(dataEntity.getNeckHolding(), mCIdropNeckHoldingHistory, R.array.arr_y_n);
+                    } else {
+                        mSetServerValuesToSpinnerELSE(mCIdropNeckHoldingHistory);
+                    }
+
+                    if (dataEntity.getSittingWithSupport() != null) {
+                        mSetServerValuesToSpinner(dataEntity.getSittingWithSupport(), mCIdropSittingSupportHistory, R.array.arr_y_n);
+                    } else {
+                        mSetServerValuesToSpinnerELSE(mCIdropSittingSupportHistory);
+                    }
+                }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_GEN_EXAM))
                 {
                     if(dataEntity.getWeight()!=null)
@@ -428,10 +430,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
 
 
                 }
-                if(dataModel.getTitle().equals(IntentParams.TITLE_MILESTONE))
-                {
 
-                }
                 if(dataModel.getTitle().equals(IntentParams.TITLE_SYS_EXAM))
                 {
                     if(dataEntity.getChest()!=null)
@@ -473,9 +472,9 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropEyeCongenitalSysExa);
                     }
-                    if(dataEntity.getColorVision()!=null)
+                    if(dataEntity.getMovementOfEyeWithLight()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getColorVision(),mCIdropColourBlindnesSysExa,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getMovementOfEyeWithLight(),mCIdropColourBlindnesSysExa,R.array.arr_yes_no);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIdropColourBlindnesSysExa);
                     }
@@ -495,7 +494,7 @@ public class CategoryIPatientEntryActivity extends BaseActivity implements View.
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mCIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mCIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mCIchkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)

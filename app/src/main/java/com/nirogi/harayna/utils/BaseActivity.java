@@ -143,6 +143,8 @@ public class BaseActivity extends AppCompatActivity {
                 if(mCheck)
                 {
                     performBackPress(mContext);
+                }else {
+                    finish();
                 }
             }
         });

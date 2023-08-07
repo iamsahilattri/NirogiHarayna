@@ -373,7 +373,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                     }
                     if(dataEntity.getBreastExam()!=null)
                     {
-                        mSetServerValuesToEditText(dataEntity.getGenitalExam(),mCVIinputBreastSysExa);
+                        mSetServerValuesToEditText(dataEntity.getBreastExam(),mCVIinputBreastSysExa);
                     }else {
                         mSetServerValuesToEditTextELSE(mCVIinputBreastSysExa);
                     }
@@ -431,7 +431,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mCVIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mCVIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mCVIchkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)
@@ -710,23 +710,24 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
     }
     private void  mHideAllMandatoryCheckBox()
     {
-        mCVIchkHBMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkTLCMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkDLCMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkPackedCellMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkCorpuscularMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkPlateletMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkRDWMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkRDWSDMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkRbcCountMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkRBSMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkCholesterolMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkBloodUreaMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkUrineMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkAdvisedMandatoryInvest.setVisibility(View.GONE);
-        mCVIchkCreatinineMandatoryInvest.setVisibility(View.GONE);
+        cVIchkSelectAllandatoryInvest.setVisibility(View.GONE);
+        mCVIchkHBMandatoryInvest.setButtonDrawable(null);
+        mCVIchkTLCMandatoryInvest.setButtonDrawable(null);
+        mCVIchkDLCMandatoryInvest.setButtonDrawable(null);
+        mCVIchkPackedCellMandatoryInvest.setButtonDrawable(null);
+        mCVIchkCorpuscularMandatoryInvest.setButtonDrawable(null);
+        mCVIchkCorpuscularHBMandatoryInvest.setButtonDrawable(null);
+        mCVIchkHBConcentrationMandatoryInvest.setButtonDrawable(null);
+        mCVIchkPlateletMandatoryInvest.setButtonDrawable(null);
+        mCVIchkRDWMandatoryInvest.setButtonDrawable(null);
+        mCVIchkRDWSDMandatoryInvest.setButtonDrawable(null);
+        mCVIchkRbcCountMandatoryInvest.setButtonDrawable(null);
+        mCVIchkRBSMandatoryInvest.setButtonDrawable(null);
+        mCVIchkCholesterolMandatoryInvest.setButtonDrawable(null);
+        mCVIchkBloodUreaMandatoryInvest.setButtonDrawable(null);
+        mCVIchkUrineMandatoryInvest.setButtonDrawable(null);
+        mCVIchkAdvisedMandatoryInvest.setButtonDrawable(null);
+        mCVIchkCreatinineMandatoryInvest.setButtonDrawable(null);
     }
 
     private void checkMandatoryAll()
@@ -989,6 +990,7 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
                 }
             } else {
                 mShowToast("BP should be like (34/33)");
+                return false;
             }
 
         }
@@ -1095,8 +1097,11 @@ public class CategoryVIPatientEntryActivity extends BaseActivity implements View
             }
         }
         if (view.getId() == R.id.cVIsubmitPatientInput) {
-            if (validateDataToPost()) {
-                postDataForCategories();
+            if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+            {
+                if (validateDataToPost()) {
+                    postDataForCategories();
+                }
             }else {
                 postDataForReferenceCategories();
             }

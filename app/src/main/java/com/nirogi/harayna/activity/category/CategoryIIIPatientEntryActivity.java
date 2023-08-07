@@ -132,11 +132,11 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
     private PatientListModelResponse memberData;
     private AppCompatImageView iconHistory;
     private LinearLayout lyHistoryExValue;
-    private AppCompatSpinner mCIIdropHosAdminHistory;
-    private AppCompatSpinner mCIIdropFamilyHistory;
-    private AppCompatSpinner mCIIdropImmunizationHistory;
-    private AppCompatSpinner mCIIdropTbPatientHistory;
-    private AppCompatSpinner mCIIdropDewormingPatientHistory;
+    private AppCompatSpinner mCIIIdropHosAdminHistory;
+    private AppCompatSpinner mCIIIdropFamilyHistory;
+    private AppCompatSpinner mCIIIdropImmunizationHistory;
+    private AppCompatSpinner mCIIIdropTbPatientHistory;
+    private AppCompatSpinner mCIIIdropDewormingPatientHistory;
     private AppCompatSpinner mCIIIdropConjectionAnGenPhy;
     private AppCompatSpinner mCIIIdropSkinTugaGenPhy;
     private AppCompatSpinner mCIIIdropSkinLeGenPhy;
@@ -224,21 +224,22 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
 
     private void mHideAllMandatoryCheckBox()
     {
+
         cIIIchkAllMandatoryInvest.setVisibility(View.GONE);
         mChkHBMandatoryInvest.setButtonDrawable(null);
-        mChkTLCMandatoryInvest.setVisibility(View.GONE);
-        mChkDLCMandatoryInvest.setVisibility(View.GONE);
-        mChkPackedCellMandatoryInvest.setVisibility(View.GONE);
-        mChkCorpuscularMandatoryInvest.setVisibility(View.GONE);
-        mChkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
-        mChkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
-        mChkPlateletMandatoryInvest.setVisibility(View.GONE);
-        mChkRDWMandatoryInvest.setVisibility(View.GONE);
-        mChkRDWSDMandatoryInvest.setVisibility(View.GONE);
-        mChkRbcCountMandatoryInvest.setVisibility(View.GONE);
-        mChkRBSMandatoryInvest.setVisibility(View.GONE);
-        mChkUrineMandatoryInvest.setVisibility(View.GONE);
-        mChkAdvisedMandatoryInvest.setVisibility(View.GONE);
+        mChkTLCMandatoryInvest.setButtonDrawable(null);
+        mChkDLCMandatoryInvest.setButtonDrawable(null);
+        mChkPackedCellMandatoryInvest.setButtonDrawable(null);
+        mChkCorpuscularMandatoryInvest.setButtonDrawable(null);
+        mChkCorpuscularHBMandatoryInvest.setButtonDrawable(null);
+        mChkHBConcentrationMandatoryInvest.setButtonDrawable(null);
+        mChkPlateletMandatoryInvest.setButtonDrawable(null);
+        mChkRDWMandatoryInvest.setButtonDrawable(null);
+        mChkRDWSDMandatoryInvest.setButtonDrawable(null);
+        mChkRbcCountMandatoryInvest.setButtonDrawable(null);
+        mChkRBSMandatoryInvest.setButtonDrawable(null);
+        mChkUrineMandatoryInvest.setButtonDrawable(null);
+        mChkAdvisedMandatoryInvest.setButtonDrawable(null);
     }
 
     private void mSetScreenedDataToViews()
@@ -267,29 +268,30 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 {
                     if(dataEntity.getHistroyadmillness()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getHistroyadmillness(),mCIIdropHosAdminHistory,R.array.arr_mode_del);
+                        mSetServerValuesToSpinner(dataEntity.getHistroyadmillness(),mCIIIdropHosAdminHistory,R.array.arr_mode_del);
                     }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropHosAdminHistory);
+                        mSetServerValuesToSpinnerELSE(mCIIIdropHosAdminHistory);
                     }
                     //  Any Significant family History
-                    if(dataEntity.getFamilyhistoryifyes()!=null)
+                    if(dataEntity.getHistoryfamily()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getFamilyhistoryifyes(),mCIIdropFamilyHistory,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getHistoryfamily(),mCIIIdropFamilyHistory,R.array.arr_yes_no);
                     }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropFamilyHistory);
-                    }
-                    if(dataEntity.getImmunstatus()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getImmunstatus(),mCIIdropImmunizationHistory,R.array.arr_yes_no);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropImmunizationHistory);
+                        mSetServerValuesToSpinnerELSE(mCIIIdropFamilyHistory);
                     }
                     if(dataEntity.getHistorydeworming()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getHistorydeworming(),mCIIdropDewormingPatientHistory,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getHistorydeworming(),mCIIIdropDewormingPatientHistory,R.array.arr_yes_no);
                     }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropDewormingPatientHistory);
+                        mSetServerValuesToSpinnerELSE(mCIIIdropDewormingPatientHistory);
                     }
+                    if(dataEntity.getContactwithtb()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getContactwithtb(),mCIIIdropTbPatientHistory,R.array.arr_yes_no);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIIdropTbPatientHistory);
+                    }
+
                 }
 
                 if(dataModel.getTitle().equals(IntentParams.TITLE_GEN_EXAM))
@@ -393,9 +395,9 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                     }
                     if(dataEntity.getSpeech()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getSpeech(),mCIIIdropEarDisGenPhy,R.array.arr_speech);
+                        mSetServerValuesToSpinner(dataEntity.getSpeech(),mCIIIdropSpeechGenPhy,R.array.arr_speech);
                     }else {
-                        mSetServerValuesToSpinnerELSE(mCIIIdropEarDisGenPhy);
+                        mSetServerValuesToSpinnerELSE(mCIIIdropSpeechGenPhy);
                     }
                     if(dataEntity.getIq()!=null)
                     {
@@ -484,7 +486,7 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mChkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mChkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mChkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)
@@ -601,11 +603,11 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
         findViewById(R.id.cIIIlyHistoryEx).setOnClickListener(this);
         iconHistory =findViewById(R.id.cIIIiconHistory);
         lyHistoryExValue =findViewById(R.id.cIIIlyHistoryExValue);
-        mCIIdropHosAdminHistory =findViewById(R.id.cIIIdropHosAdminHistory);
-        mCIIdropFamilyHistory =findViewById(R.id.cIIIdropFamilyHistory);
-        mCIIdropImmunizationHistory =findViewById(R.id.cIIIdropImmunizationHistory);
-        mCIIdropTbPatientHistory =findViewById(R.id.cIIIdropTbPatientHistory);
-        mCIIdropDewormingPatientHistory =findViewById(R.id.cIIIdropDewormingPatientHistory);
+        mCIIIdropHosAdminHistory =findViewById(R.id.cIIIdropHosAdminHistory);
+        mCIIIdropFamilyHistory =findViewById(R.id.cIIIdropFamilyHistory);
+        mCIIIdropImmunizationHistory =findViewById(R.id.cIIIdropImmunizationHistory);
+        mCIIIdropTbPatientHistory =findViewById(R.id.cIIIdropTbPatientHistory);
+        mCIIIdropDewormingPatientHistory =findViewById(R.id.cIIIdropDewormingPatientHistory);
         mCIIIdropConjectionAnGenPhy =findViewById(R.id.cIIIdropConjectionAnGenPhy);
         mCIIIdropSkinTugaGenPhy =findViewById(R.id.cIIIdropSkinTugaGenPhy);
         mCIIIdropSkinLeGenPhy =findViewById(R.id.cIIIdropSkinLeGenPhy);
@@ -710,8 +712,11 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
             }
         }
         if (view.getId() == R.id.cIIIsubmitPatientInput) {
-            if (validateDataToPost()) {
-                postDataForCategories();
+            if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+            {
+                if (validateDataToPost()) {
+                    postDataForCategories();
+                }
             }else {
                 postDataForReferenceCategories();
             }
@@ -1167,11 +1172,11 @@ public class CategoryIIIPatientEntryActivity extends BaseActivity implements Vie
                 request.setUserId(preferences.getString(SharedParams.SUB, null));
 
                 //step 1
-                request.setHistroyAdmIllness(mCIIdropHosAdminHistory.getSelectedItem() + "");
-                request.setHistoryFamily(mCIIdropFamilyHistory.getSelectedItem() + "");
-                request.setImmunStatus(mCIIdropImmunizationHistory.getSelectedItem() + "");
-                request.setContactWithTB(mCIIdropTbPatientHistory.getSelectedItem() + "");
-                request.setHistoryDeworming(mCIIdropDewormingPatientHistory.getSelectedItem() + "");
+                request.setHistroyAdmIllness(mCIIIdropHosAdminHistory.getSelectedItem() + "");
+                request.setHistoryFamily(mCIIIdropFamilyHistory.getSelectedItem() + "");
+                request.setImmunStatus(mCIIIdropImmunizationHistory.getSelectedItem() + "");
+                request.setContactWithTB(mCIIIdropTbPatientHistory.getSelectedItem() + "");
+                request.setHistoryDeworming(mCIIIdropDewormingPatientHistory.getSelectedItem() + "");
 
 
                 //step 2

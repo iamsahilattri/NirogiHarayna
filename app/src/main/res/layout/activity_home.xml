@@ -262,12 +262,13 @@
                                 android:background="#00000000"
                                 android:fontFamily="@font/dosis_light"
                                 android:hint="@string/enter_pppid"
-                                android:lines="1"
                                 android:text="@string/test_ppid"
+                                android:lines="1"
                                 android:padding="5dp"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
@@ -311,11 +312,12 @@
                                 android:fontFamily="@font/dosis_light"
                                 android:hint="@string/enter_reference_id"
                                 android:lines="1"
-                                android:text="@string/test_refrence_id"
                                 android:padding="5dp"
+                                android:text="@string/test_refrence_id"
                                 android:textColor="@color/colorBlack"
                                 android:textColorHint="@color/colorGray"
                                 android:textSize="14sp" />
+
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>

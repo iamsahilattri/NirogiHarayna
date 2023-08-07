@@ -355,102 +355,6 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                     }
 
 
-                    if(dataEntity.getSittingWithoutSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropSittingHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropSittingHistory);
-                    }
-
-                    if(dataEntity.getStandingWithoutSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getStandingWithoutSupport(),mCIIdropSandHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropSandHistory);
-                    }
-
-                    if(dataEntity.getStandingWithSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getStandingWithSupport(),mCIIdropStandigingWithHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropStandigingWithHistory);
-                    }
-
-
-                    if(dataEntity.getPincerGrasp()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropPincerGraspHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropPincerGraspHistory);
-                    }
-
-                    if(dataEntity.getStrangerAnxiety()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getStrangerAnxiety(),mCIIdropStrangerAnxietyHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropStrangerAnxietyHistory);
-                    }
-
-                    if(dataEntity.getBisyllableSpeech()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getBisyllableSpeech(),mCIIdropSpeachHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropSpeachHistory);
-                    }
-
-                    if(dataEntity.getWalkingWithoutSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getWalkingWithoutSupport(),mCIIdropWalkSupportHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropWalkSupportHistory);
-                    }
-
-                    if(dataEntity.getSpeakFiveToTenWords()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSpeakFiveToTenWords(),mCIIdropSpeakHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropSpeakHistory);
-                    }
-
-                    if(dataEntity.getFollowSimpleDirection()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getFollowSimpleDirection(),mCIIdropFDirectHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropFDirectHistory);
-                    }
-
-
-                    if(dataEntity.getWalkStairsWithSupport()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getWalkStairsWithSupport(),mCIIdropWalkUPDownHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropWalkUPDownHistory);
-                    }
-
-
-                    if(dataEntity.getJumpWithBothFeet()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getJumpWithBothFeet(),mCIIdropJumpHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropJumpHistory);
-                    }
-
-
-                    if(dataEntity.getScrabbling()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getScrabbling(),mCIIdropScrabblingHistory,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropScrabblingHistory);
-                    }
-
-
-                    if(dataEntity.getSpeakAtleastFiftyWords()!=null)
-                    {
-                        mSetServerValuesToSpinner(dataEntity.getSpeakAtleastFiftyWords(),mCIIdropSpeak50History,R.array.arr_y_n);
-                    }else {
-                        mSetServerValuesToSpinnerELSE(mCIIdropSpeak50History);
-                    }
-
 
 
 
@@ -579,6 +483,107 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
 
                 }
 
+                if(dataModel.getTitle().equals(IntentParams.TITLE_MILESTONE))
+                {
+
+                    if(dataEntity.getSittingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropSittingHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSittingHistory);
+                    }
+
+                    if(dataEntity.getStandingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStandingWithoutSupport(),mCIIdropSandHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSandHistory);
+                    }
+
+                    if(dataEntity.getStandingWithSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStandingWithSupport(),mCIIdropStandigingWithHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropStandigingWithHistory);
+                    }
+
+
+                    if(dataEntity.getPincerGrasp()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSittingWithoutSupport(),mCIIdropPincerGraspHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropPincerGraspHistory);
+                    }
+
+                    if(dataEntity.getStrangerAnxiety()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getStrangerAnxiety(),mCIIdropStrangerAnxietyHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropStrangerAnxietyHistory);
+                    }
+
+                    if(dataEntity.getBisyllableSpeech()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getBisyllableSpeech(),mCIIdropSpeachHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeachHistory);
+                    }
+
+                    if(dataEntity.getWalkingWithoutSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getWalkingWithoutSupport(),mCIIdropWalkSupportHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropWalkSupportHistory);
+                    }
+
+                    if(dataEntity.getSpeakFiveToTenWords()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSpeakFiveToTenWords(),mCIIdropSpeakHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeakHistory);
+                    }
+
+                    if(dataEntity.getFollowSimpleDirection()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getFollowSimpleDirection(),mCIIdropFDirectHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropFDirectHistory);
+                    }
+
+
+                    if(dataEntity.getWalkStairsWithSupport()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getWalkStairsWithSupport(),mCIIdropWalkUPDownHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropWalkUPDownHistory);
+                    }
+
+
+                    if(dataEntity.getJumpWithBothFeet()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getJumpWithBothFeet(),mCIIdropJumpHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropJumpHistory);
+                    }
+
+
+                    if(dataEntity.getScrabbling()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getScrabbling(),mCIIdropScrabblingHistory,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropScrabblingHistory);
+                    }
+
+
+                    if(dataEntity.getSpeakAtleastFiftyWords()!=null)
+                    {
+                        mSetServerValuesToSpinner(dataEntity.getSpeakAtleastFiftyWords(),mCIIdropSpeak50History,R.array.arr_y_n);
+                    }else {
+                        mSetServerValuesToSpinnerELSE(mCIIdropSpeak50History);
+                    }
+
+                }
+
                 if(dataModel.getTitle().equals(IntentParams.TITLE_SYS_EXAM))
                 {
                     if(dataEntity.getChest()!=null)
@@ -661,7 +666,7 @@ public class CategoryIIPatientEntryActivity extends BaseActivity implements View
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mCIIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mCIIchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mCIIchkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)

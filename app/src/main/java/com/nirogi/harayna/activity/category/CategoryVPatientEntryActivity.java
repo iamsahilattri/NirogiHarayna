@@ -150,6 +150,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
     private AppCompatEditText mCVinputPrescription;
     private ReferredSurveyDataResponse intentRecorderRefData;
 
+    private  CheckBox cVchkAll;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -310,7 +311,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     }
                     if(dataEntity.getPedalOedema()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getIq(),mCVdropPOedemaGenPhy,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getPedalOedema(),mCVdropPOedemaGenPhy,R.array.arr_yes_no);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCVdropPOedemaGenPhy);
                     }
@@ -393,7 +394,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                     }
                     if(dataEntity.getBreastExam()!=null)
                     {
-                        mSetServerValuesToEditText(dataEntity.getGenitalExam(),mCVinputBreastSysExa);
+                        mSetServerValuesToEditText(dataEntity.getBreastExam(),mCVinputBreastSysExa);
                     }else {
                         mSetServerValuesToEditTextELSE(mCVinputBreastSysExa);
                     }
@@ -420,7 +421,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mCVchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mCVchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mCVchkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)
@@ -556,6 +557,8 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
         mCVinputPrescription =  findViewById(R.id.cVinputPrescription);
         LinearLayout mCVsubmitPatientInput = findViewById(R.id.cVsubmitPatientInput);
         mCVsubmitPatientInput.setOnClickListener(this);
+        cVchkAll=findViewById(R.id.cVchkAll);
+
     }
     private void mSetCheckBoxValesForServer(PostDataForCategoryVRequest request)
     {
@@ -691,30 +694,30 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
 
     private void mHideAllMandatoryCheckBox()
     {
+        cVchkAll.setVisibility(View.GONE);
         mCVchkHBMandatoryInvest.setButtonDrawable(null);
         mCVchkTLCMandatoryInvest.setButtonDrawable(null);
-        mCVchkDLCMandatoryInvest.setVisibility(View.GONE);
-        mCVchkPackedCellMandatoryInvest.setVisibility(View.GONE);
-        mCVchkCorpuscularMandatoryInvest.setVisibility(View.GONE);
-        mCVchkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
-        mCVchkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
-        mCVchkPlateletMandatoryInvest.setVisibility(View.GONE);
-        mCVchkRDWMandatoryInvest.setVisibility(View.GONE);
-        mCVchkRDWSDMandatoryInvest.setVisibility(View.GONE);
-        mCVchkRbcCountMandatoryInvest.setVisibility(View.GONE);
-        mCVchkRBSMandatoryInvest.setVisibility(View.GONE);
-        mCVchkCholesterolMandatoryInvest.setVisibility(View.GONE);
-        mCVchkBloodUreaMandatoryInvest.setVisibility(View.GONE);
-        mCVchkUrineMandatoryInvest.setVisibility(View.GONE);
-        mCVchkAdvisedMandatoryInvest.setVisibility(View.GONE);
-        mCVchkCreatinineMandatoryInvest.setVisibility(View.GONE);
-        mCVchkTSHMandatoryInvest.setVisibility(View.GONE);
-        mCVchkPSAMandatoryInvest.setVisibility(View.GONE);
-        mCVchkVIAPAPMandatoryInvest.setVisibility(View.GONE);
+        mCVchkDLCMandatoryInvest.setButtonDrawable(null);
+        mCVchkPackedCellMandatoryInvest.setButtonDrawable(null);
+        mCVchkCorpuscularMandatoryInvest.setButtonDrawable(null);
+        mCVchkCorpuscularHBMandatoryInvest.setButtonDrawable(null);
+        mCVchkHBConcentrationMandatoryInvest.setButtonDrawable(null);
+        mCVchkPlateletMandatoryInvest.setButtonDrawable(null);
+        mCVchkRDWMandatoryInvest.setButtonDrawable(null);
+        mCVchkRDWSDMandatoryInvest.setButtonDrawable(null);
+        mCVchkRbcCountMandatoryInvest.setButtonDrawable(null);
+        mCVchkRBSMandatoryInvest.setButtonDrawable(null);
+        mCVchkCholesterolMandatoryInvest.setButtonDrawable(null);
+        mCVchkBloodUreaMandatoryInvest.setButtonDrawable(null);
+        mCVchkUrineMandatoryInvest.setButtonDrawable(null);
+        mCVchkAdvisedMandatoryInvest.setButtonDrawable(null);
+        mCVchkCreatinineMandatoryInvest.setButtonDrawable(null);
+        mCVchkTSHMandatoryInvest.setButtonDrawable(null);
+        mCVchkPSAMandatoryInvest.setButtonDrawable(null);
+        mCVchkVIAPAPMandatoryInvest.setButtonDrawable(null);
     }
     private void checkMandatoryAll()
     {
-        CheckBox cVchkAll=findViewById(R.id.cVchkAll);
 
         cVchkAll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -949,6 +952,7 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
                 }
             } else {
                 mShowToast("BP should be like (34/33)");
+                return false;
             }
 
         }
@@ -1043,8 +1047,11 @@ public class CategoryVPatientEntryActivity extends BaseActivity implements View.
             }
         }
         if (view.getId() == R.id.cVsubmitPatientInput) {
-            if (validateDataToPost()) {
-                postDataForCategories();
+            if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+            {
+                if (validateDataToPost()) {
+                    postDataForCategories();
+                }
             }else {
                 postDataForReferenceCategories();
             }

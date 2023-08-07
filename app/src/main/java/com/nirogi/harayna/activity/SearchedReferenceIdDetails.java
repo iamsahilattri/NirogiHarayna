@@ -68,7 +68,6 @@ public class SearchedReferenceIdDetails extends BaseActivity {
         {
             referenceId=getIntent().getStringExtra(IntentParams.REFERENCE_ID);
             ArrayList<ReferenceIdResponse> intentDataList =(ArrayList<ReferenceIdResponse>)getIntent().getSerializableExtra(IntentParams.M_DATA);
-            Log.e(" mDataList Size ",""+intentDataList.size());
             mSetRecyclerData(intentDataList);
         }
     }

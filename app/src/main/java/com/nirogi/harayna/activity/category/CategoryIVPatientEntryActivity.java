@@ -304,7 +304,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     }
                     if(dataEntity.getPedalOedema()!=null)
                     {
-                        mSetServerValuesToSpinner(dataEntity.getIq(),mCIVdropPOedemaGenPhy,R.array.arr_yes_no);
+                        mSetServerValuesToSpinner(dataEntity.getPedalOedema(),mCIVdropPOedemaGenPhy,R.array.arr_yes_no);
                     }else {
                         mSetServerValuesToSpinnerELSE(mCIVdropPOedemaGenPhy);
                     }
@@ -387,7 +387,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                     }
                     if(dataEntity.getBreastExam()!=null)
                     {
-                        mSetServerValuesToEditText(dataEntity.getGenitalExam(),mCIVinputBreastSysExa);
+                        mSetServerValuesToEditText(dataEntity.getBreastExam(),mCIVinputBreastSysExa);
                     }else {
                         mSetServerValuesToEditTextELSE(mCIVinputBreastSysExa);
                     }
@@ -400,7 +400,7 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
                 {
                     if(dataEntity.getAlreadyKnown()!=null)
                     {
-                        mCIVchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equals("No"));
+                        mCIVchkDAlreadyKnown.setChecked(!dataEntity.getAlreadyKnown().equalsIgnoreCase("No"));
                     }
                     mCIVchkDAlreadyKnown.setEnabled(false);
                     if(dataEntity.getPrescription()!=null)
@@ -694,23 +694,24 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
 
     private void mHideAllMandatoryCheckBox()
     {
-        mCIVchkHBMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkTLCMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkDLCMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkPackedCellMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkCorpuscularMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkCorpuscularHBMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkHBConcentrationMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkPlateletMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkRDWMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkRDWSDMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkRbcCountMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkRBSMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkCholesterolMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkBloodUreaMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkUrineMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkAdvisedMandatoryInvest.setVisibility(View.GONE);
-        mCIVchkCreatinineMandatoryInvest.setVisibility(View.GONE);
+        cIVchkSelectAllandatoryInvest.setVisibility(View.GONE);
+        mCIVchkHBMandatoryInvest.setButtonDrawable(null);
+        mCIVchkTLCMandatoryInvest.setButtonDrawable(null);
+        mCIVchkDLCMandatoryInvest.setButtonDrawable(null);
+        mCIVchkPackedCellMandatoryInvest.setButtonDrawable(null);
+        mCIVchkCorpuscularMandatoryInvest.setButtonDrawable(null);
+        mCIVchkCorpuscularHBMandatoryInvest.setButtonDrawable(null);
+        mCIVchkHBConcentrationMandatoryInvest.setButtonDrawable(null);
+        mCIVchkPlateletMandatoryInvest.setButtonDrawable(null);
+        mCIVchkRDWMandatoryInvest.setButtonDrawable(null);
+        mCIVchkRDWSDMandatoryInvest.setButtonDrawable(null);
+        mCIVchkRbcCountMandatoryInvest.setButtonDrawable(null);
+        mCIVchkRBSMandatoryInvest.setButtonDrawable(null);
+        mCIVchkCholesterolMandatoryInvest.setButtonDrawable(null);
+        mCIVchkBloodUreaMandatoryInvest.setButtonDrawable(null);
+        mCIVchkUrineMandatoryInvest.setButtonDrawable(null);
+        mCIVchkAdvisedMandatoryInvest.setButtonDrawable(null);
+        mCIVchkCreatinineMandatoryInvest.setButtonDrawable(null);
     }
 
     private void updateBMI()
@@ -1001,8 +1002,11 @@ public class CategoryIVPatientEntryActivity extends BaseActivity implements View
         }
         if (view.getId() == R.id.cIVsubmitPatientInput) {
             try {
-                if (validateDataToPost()) {
-                    postDataForCategories();
+                if(getIntent().getSerializableExtra(IntentParams.MEMBER_TYPE).equals("1"))
+                {
+                    if (validateDataToPost()) {
+                        postDataForCategories();
+                    }
                 }else {
                     postDataForReferenceCategories();
                 }
